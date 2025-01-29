@@ -1,3 +1,6 @@
+import json
+
+
 #CONTACT LIST
 
 # DATA STORAGE / DATA TYPES
@@ -59,13 +62,17 @@ def search(people):
 
 
 print("\nWola, Welcome to the Contact Management System.")
-people = [
-    {"name": "Tom", "age": 74, "email": "tom@mail.com"},
-    {"name": "Ron", "age": 42, "email": "ron@mail.com"},
-    {"name": "Don", "age": 32, "email": "don@mail.com"},
-    {"name": "John", "age": 92, "email": "john@mail.com"},
 
-]
+with open("contacts.json", "r") as f:
+    people = json.load(f) ["contacts"]
+
+# people = [
+#     {"name": "Tom", "age": 74, "email": "tom@mail.com"},
+#     {"name": "Ron", "age": 42, "email": "ron@mail.com"},
+#     {"name": "Don", "age": 32, "email": "don@mail.com"},
+#     {"name": "John", "age": 92, "email": "john@mail.com"},
+
+# ]
 
 while True:
     print("\nContact List Size: ", len(people))
@@ -86,3 +93,8 @@ while True:
         break
     else:
         print("Invalid command.")
+
+
+with open("contacts.json", "w") as f:
+    json.dump( {"contacts": people}, f)
+    # people = json.load(f) ["contacts"]
