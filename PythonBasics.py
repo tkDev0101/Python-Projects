@@ -14,3 +14,9 @@
 
 # "not" operator reverses a condition
 
+# i = 0
+# while i <= 15:
+#     print(i)
+#     i += 3
+#     # continue break
+
