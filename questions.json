@@ -1,0 +1,84 @@
+{
+    "questions": [
+        {
+            "question": "What is the engine displacement of the BMW E39 M5?",
+            "options": [
+                "4.9L V8",
+                "3.0L Inline-6",
+                "5.0L V10",
+                "4.4L V8"
+            ],
+            "answer": "4.9L V8"
+        },
+        {
+            "question": "Which drivetrain does the BMW M5 Competition use?",
+            "options": [
+                "Rear-Wheel Drive (RWD)",
+                "All-Wheel Drive (AWD)",
+                "Front-Wheel Drive (FWD)",
+                "Four-Wheel Drive (4WD)"
+            ],
+            "answer": "All-Wheel Drive (AWD)"
+        },
+        {
+            "question": "What is the horsepower of the Toyota Land Cruiser 300's twin-turbo V6 engine?",
+            "options": [
+                "305 hp",
+                "409 hp",
+                "350 hp",
+                "450 hp"
+            ],
+            "answer": "409 hp"
+        },
+        {
+            "question": "Which BMW E39 model was equipped with the M54B30 engine?",
+            "options": [
+                "525i",
+                "528i",
+                "530i",
+                "540i"
+            ],
+            "answer": "530i"
+        },
+        {
+            "question": "What is the 0-100 km/h (0-62 mph) time of the BMW M5 Competition (F90)?",
+            "options": [
+                "3.3 seconds",
+                "3.8 seconds",
+                "4.0 seconds",
+                "2.9 seconds"
+            ],
+            "answer": "3.3 seconds"
+        },
+        {
+            "question": "What is the maximum torque output of the BMW M5 Competition (F90)?",
+            "options": [
+                "600 Nm",
+                "650 Nm",
+                "750 Nm",
+                "800 Nm"
+            ],
+            "answer": "750 Nm"
+        },
+        {
+            "question": "Which transmission is used in the Toyota Land Cruiser 300?",
+            "options": [
+                "6-speed automatic",
+                "8-speed automatic",
+                "10-speed automatic",
+                "7-speed automatic"
+            ],
+            "answer": "10-speed automatic"
+        },
+        {
+            "question": "Which BMW E39 model had the most powerful engine?",
+            "options": [
+                "540i",
+                "530i",
+                "M5",
+                "528i"
+            ],
+            "answer": "M5"
+        }
+    ]
+}
