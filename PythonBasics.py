@@ -60,7 +60,7 @@ while True:
             print("\nPlease choose a Valid Menu Option (1 - 4)")
 
     except ValueError:
-        print("\nInvalid INPUT. Please enter a NUMBER!")
+        print("\nInvalid INPUT. Please enter a NUMBER! ")
 
 
 
