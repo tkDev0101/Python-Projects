@@ -21,19 +21,50 @@
 #     # continue break
 
 
-# while True:
-#     sign = input("\nType an expression: "
-#                    +"\n\t(+ - * / % **)"
-#                    +"\n >> ")
-    
-#     if sign =="+" or sign =="-" or sign =="*" or sign =="/" or sign =="%" or sign =="**":
-#         break  # Exit the loop after a valid choice
-#     else:
-#         print("\nPlease choose a Valid Mathimatical Expression.")
-#         # The loop will repeat, asking the question again
 
 
+menu_option = 0
+
+while True:
+    print("\n**WELCOME TO MAIN MENU**")
+    int(menu_option = input("\nType an expression: "
+                +"\n1. Add Item"
+                +"\n2. View Items"
+                +"\n3. Something"
+                +"\n4. Exit"
+                +"\n\n\tYour Chioce: "))
     
+    if 1 >= menu_option <= 4:
+        match menu_option:
+            case 1:
+                call_method = "Add_Item_method()"
+
+            case 2:
+                call_method = "View_Item_method()"
+
+            case 3:
+                call_method = "something_method()"
+
+            case 4:
+                call_method = "Exit.environment()"
+
+            case _:
+                print("Ayt, it's you and the Almighty then.")
+
+                break  # Exit the loop after a valid choice
+    else:
+        print("\nPlease choose a Valid Menu Option (1 - 4)")
+        # The loop will repeat, asking the question again
+
+
+        
+print(call_method)
+
+
+
+
+
+
 
 # def get_number( number ):
 
@@ -46,18 +77,4 @@
 
 
 # operand = get_number(1)
-
-
-def validate_number():
-
-    while True:
-        numbers = input("\nSelect the Correct Number: ")
-        try: 
-            return float(numbers)
-        except:
-            print("Invalid number, try again")
-
-
-numbers = validate_number()
-
 
