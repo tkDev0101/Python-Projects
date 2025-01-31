@@ -1,14 +1,1 @@
-{
-    "contacts": [
-        {
-            "name": "Tom",
-            "age": 74,
-            "email": "tom@mail.com"
-        },
-        {
-            "name": "cebo",
-            "age": "16",
-            "email": "cebo@gmai.zam"
-        }
-    ]
-}
+{"contacts": [{"name": "cebo", "age": "16", "email": "cebo@gmai.zam"}, {"name": "ngcebo", "age": "23", "email": "ngcebo@gmail.com"}, {"name": "owami", "age": "18", "email": "owami18@gmail.com"}]}
