@@ -1,0 +1,735 @@
+Transcript - How To Make a Django REST API - Full Tutorial & Deployment
+	Tech With Tim
+
+
+Introduction
+0:00
+In this video, I'll teach you how to make a Django API using Python and the Django Rest framework.
+0:05
+The API will look something like this and will be able to create, read, update and delete data.
+0:11
+Now at the end of the video I’ll even show you how we deploy this API to a public URL. And if you want to test out the API that we’ll be building,
+0:18
+I'll leave a link in the description right now. If you click on that link, it's going to bring you to a platform called ACORN.
+0:24
+Now we've teamed up with them for this video. This is a completely free platform. You can sign in with your GitHub account and what will happen
+0:30
+is it will actually start running an instance of this API. Once it's finished running, you can click on this button right here
+0:36
+and it will bring you to a deployed public version of it where you can actually test it out. So you can go to slash blog posts and this will be your own instance of the API.
+0:45
+You can mess around with it. You can do whatever you want and you can test it out. So I'm going to show you exactly how we do that.
+0:50
+So once the video is finished, you can deploy the API that we made. You can share it with people and you can use it from the internet,
+0:56
+not just from localhost. With that said, let's get into the video. So to begin, we need to do a little bit of setup here and install the necessary packages.
+Installation/Setup
+1:04
+At this point, I'm going to assume that you have Python installed on your system and what you'll do next is open up
+1:09
+an editor something like via code and simply open a folder. In this case, have opened a folder called API.
+1:15
+It's important that we are working inside of a folder and that our terminal is in that location for the commands that I'm going to show you to run.
+1:22
+Now what we'll do is we'll create a new file where we'll specify the requirements that we need for this project.
+1:27
+So we're going to say “requirements.txt” In inside of here, we're going to write out Django, Django Rest framework.
+1:35
+And then we also want environs like that. Okay, So these are the three packages that we're going to need to install
+1:41
+in order for us to work with Django. Now that we have these in the “requirements.txt” what we'll do is installed them using the PIP command.
+1:48
+So from our terminal here in the same directory where we have our “requirements.txt” file we're going to type
+1:54
+PIP three install hyphen our requirements dot text. This will simply install all of the packages that are inside of this file.
+2:02
+Now, if you're on windows, you're going to change this command to simply be PIP. If you're on Mac or Linux, it'll be PIP three.
+2:08
+So we're going to go ahead and hit Enter and it should install all of these for us. Once that's installed, we have most of the basic setup done
+2:14
+and now all we need to do is create a new Django project. So now that we have our dependencies installed, we're going to use a command to create a new Django project.
+Creating A Django Project
+2:23
+Now to do that, we're going to type Django Dash Admin Start project and then we're going to call this my site.
+2:29
+You can call it whatever you want, but I recommend you go with the name of “mysite.” Now, for some of you, this command will work.
+2:34
+For others it will not. In my case, this command is not work. So the way that I fix this is I'm going to remove the admin
+2:41
+and I'm going to type python 3-m and then Django start, project “mysite.”
+2:46
+So if you're on Mac, it's going to be Python three. If you're on Windows, it's simply going to be Python. Okay.
+2:52
+So go ahead and run that. And we should see that we get a new directory being created here called “mysite.”
+2:57
+This is where we'll write our API and we will run the next commands. So we're going to change directories into my site.
+3:04
+So now notice I'm inside of this directory in my terminal. From here we're going to create a new app.
+3:10
+Now, inside of our projects, we have various apps, apps or ways to separate out different pieces of logic.
+3:15
+In this case, we're going to have a simple app. This will be for the API. So we always need at least one app.
+3:21
+So we're going to create one called API. To do that, we're going to type Python three managed API.
+3:27
+Notice that's the file that's right here. And then we're going to say start app and we're going to give this a name.
+3:32
+I'm going to go with API and I recommend you give it the same name. Go ahead and hit enter and you'll see a new directory is created here called API.
+3:41
+Now what we need to do is we need to connect this app with our main Python project or our Django project Siri.
+3:47
+And the way we do that is we go into “mysite” directory, we go into settings.py Let's make this a little bit easier to see and we go into where we see installed
+3:57
+apps here and we add our application into the installed apps. To do that, we simply add a string and we give it the same
+4:04
+name as the project name or the app name sorry, which is API. So notice we created a new app called API
+4:10
+and I've added that here to the installed apps. Now, as well as that we're going to add the Django Rest framework in here
+4:16
+because this is something we'll use to have some nice clean views for our API. So we're going to say rest underscore framework inside of the installed apps.
+4:25
+And for now that's all we need to change inside of settings.py Now that we have linked our API with our project, what we want to do is
+4:32
+start building out the model or the data that our API is going to interact with. Now you can obviously have multiple data sources, in this case multiple models.
+4:41
+We're going to start with a single model. What we're going to do is open the API folder inside of the API folder.
+Defining The Models
+4:47
+We see that we have a file called model start. PY Now this is where we define the different database models.
+4:52
+Now Django uses something known as an or M, Now an or M is an object relational mapping. And what this does is it maps a python object to a database instance.
+5:02
+This is really nice because it allows us to use multiple types of databases and have Django handle all of the low
+5:08
+level commands that actually create, update and retrieve data. And in our case, we can use a higher level python wrapper,
+5:15
+which is known as the forum to access our data, create our data, etc. You'll see how easy Django makes it using the Django Rest
+5:22
+framework in just a second. But bear with me while we create our first database model. So we're going to create a class here.
+5:29
+This is how you do it in Django, and we're going to say that this is blogpost. Now this needs to inherit from the model start model.
+5:36
+When we do that, we get all of the basic functionality of a database model, which in this case is really equivalent to a table in something like a sequel database.
+5:44
+Now what we need to do is to find all of the different columns that we have for our model or the fields or type of information story that it will store.
+5:52
+So we're going to begin with a title, and we're going to say that this is the model's Dorte Char field.
+5:57
+And inside of the char field, we can specify a parameter which is the maximum length equal to something like 100.
+6:04
+Next, we're going to specify that for each of our blog posts, we'll have some content. This will be a model's dot text field.
+6:11
+Keep in mind, you can make this anything you want, but I'm just going with some basic fields here and we're going to have a published underscore date, and this is going to be
+6:18
+equal to the model's start date time field. And we're going to add a parameter here called Auto add now,
+6:26
+which is equal to true, which specifies that we don't need to actually set what the time and date is whenever we create a new instance of this model.
+6:34
+So we have a new row in our database, It's going to automatically kind of fill in the published date for us.
+6:39
+Next, we're simply going to say, define, underscore, underscore, string, underscore, underscore. We're going to take in a self and we're going to return be self title of the model.
+6:47
+Just if we end up printing out this model, we actually see some information about it. So that's really it for the model.
+6:52
+You can get much more complicated here in the store. A lot of different types of data. You can have relationships, you can have multiple models,
+6:58
+but for now we're going to do a very simple one. We're going to focus on the API views and then later on you can adjust the models
+7:04
+and you can create multiple views for making different types of models. Now that we have our model, we need to create something
+Defining The Serializer
+7:09
+known as a serialized here. So I'm going to make a new file here and it's going to be called
+7:15
+Serializers.py Now, instead of here, what we're going to do is specify a class
+7:20
+that will take this model and convert it into Jason compatible data. If you're unfamiliar with Jason, this is JavaScript object notation,
+7:28
+and whenever we work with an API, we're essentially sending and receiving JSON data. It looks something very similar to a Python dictionary, but the idea is
+7:36
+that we're going to have all of these python objects that we'll be working with in our code, and these represent information in our database.
+7:43
+We want to create what's known as a serialization that will take an instance of this Python object and convert it
+7:49
+into something that we can actually return and interact with from our API. So it might seem a little bit abstract right now, but bear with me,
+7:56
+it will make sense. So we're going to say from the rest framework import this serialization.
+8:01
+We're going to say from dot models import in the blog post like so now we're going to go and create a class.
+8:10
+I'm going to call this the blog post serialization, and this is going to inherit from the serialize or sort the model serialization.
+8:18
+So a lot of this is already done for us. We just need to kind of hook up the different models. Now we're going to create something known as a media class.
+8:25
+We're going to say class meta, we're going to say the model is equal to the blogpost and we're going to specify the fields
+8:32
+that we would like to serialize and return When we use the serialize it. Now the fields are going to be ID
+8:38
+title content and the published date. Now you don't have to do all of these, but if you don't include
+8:46
+one of them, it's not actually going to be returned in the API. Okay. So you need to make sure that any field you want to be returned from your API,
+8:53
+you specify and here ID is a field that will automatically be added to all of our models. We don't need to specify that when we create the model.
+9:01
+Okay, so we now have our serialize and we have our model. The next step is to create a view that actually utilizes the model and the serialize here.
+Creating Views
+9:08
+So we're going to go inside of used our PY and we're going to use some Django Rest framework views. And the really nice thing about the Django Rest framework is that it
+9:16
+provides some default views for creating, updating, deleting, etc. and doing the standard operations that you would with a rest API.
+9:23
+Hence why we installed the Django Rest framework. So what we're going to do here is import a few things from Django
+9:29
+Rest framework that give us something known as a generic view. And that's that nice view that you saw
+9:34
+when I gave you that original demo at the beginning of the tutorial. So we're going to say from the rest framework
+9:41
+import generics like So now generics contains generic views
+9:47
+that can be used to update, delete, etc., any type of model. So what we're going to do is create a simple view for now,
+9:53
+and we're going to say class, blog post list, create is equal to the generics
+10:00
+dot list, create API view. And then inside of here, we just need to specify a few basic things.
+10:06
+The first thing we need to do is specify the query set. Now the query set is going to be equal to blog,
+10:12
+which we're going to import in a second dot, objects, dot, all that means we now need to import blog posts.
+10:19
+So we're going to say from DOT models, import the blog post. Now what we're doing here
+10:24
+is we're just getting all of the different blog posts, objects that exist. This is how you do it. Using the Aurum in Django Object Relational mapping.
+10:33
+If you want to get all of them, you simply say the name of the model, which is what we specified here. Dot objects dot all gives you all of the instances of our blog post.
+10:41
+Now that is our query set. And then beneath this we specify the serialized or that we want to use when we're actually returning this data.
+10:49
+So we're going to say sterilizer, underscore, class is equal to and then this is going to be the blog
+10:56
+post serialize here, which we also need to import. So we're going to say from dot serialize there's import the blog post
+11:03
+serialize here. Now that's actually it. We've just created a view. We now need to connect it with a URL.
+11:09
+But what this view will provide is a way for us to create a new blog post and to get all of the blog posts that exist.
+11:16
+You can extend this and you can make it more complicated, but right now, just with what we have, once we add a URL for it,
+11:22
+it will automatically allow us to create and then return all of the different blog post objects. That's what this generic API view does.
+11:29
+There are a ton of other generic API views. You can look them up from the documentation and I'll show you one more after this.
+Defining The URLs
+11:36
+Now that we have the view though, what we need to do is specify a route or a new URL that allows us to access the view.
+11:42
+To do that, we need to make a new file. So we're going to make a file inside of our API app called URLs Dot Pie.
+11:48
+Now there's a two step kind of routing system here. What will happen is inside of my site in the URLs dot pie file,
+11:56
+so I know it's a little bit difficult to see. Let's close that. If you go into my site and URLs pie, you can see that
+12:01
+we actually have the ability to forward you URLs to different apps.
+12:07
+The way this works is we will always start by looking in this file and we'll look for a specific pattern and then we'll take the remainder
+12:14
+after that pattern and forward it over to a different app. In this case, if we go to admin, so we go to the URL of our server
+12:22
+and then admin, it's going to take whatever comes after the slash here and it's going to follow it over to the admin site
+12:29
+you URLs to parse the rest of the request. In our case, what we want to do is we want to take any URL.
+12:35
+So anything that they type in and we want to forward that over to our API app. The reason why we have this file here is you might have different apps
+12:42
+and they may all have different prefixes and then have similar types of URLs. You'll see what I mean in a second, but for now
+12:48
+we can actually remove the import from admin because we don't need that. We can change what's here to say path and just be an empty path.
+12:56
+And then we're going to write a function called Include and we're going to include the API URLs and we're going to import the include function.
+13:06
+Now what we're saying here is whenever we receive any type of URL, it doesn't matter what it starts with, what it ends with doesn't matter.
+13:13
+We're going to take it and we're simply going to pass it over to the API URLs, file where it will then be parsed from there.
+13:20
+Keep in mind that if you wanted to, you could do something like API slash. And now if we want to access a URL that we write inside of our API
+13:28
+app to get there, we would do something like the server URL slash API slash, and then whatever the route is for our different views.
+13:37
+Again, I know it's a little bit confusing, but you'll see what I mean when we write the URLs in our API. So now we have the URLs being forwarded over to that app.
+13:44
+So let's just make this an empty string again. Let's go over the URL, stop by now and let's write these different URLs and connect them with the views that we just made.
+13:53
+The view is the root. It's what's going to be rendered onto the screen or we'll return data and the URL is how we get there.
+13:58
+So we're going to say from Django dot URLs import path.
+14:04
+We're going to say from dot import views, the dot just means the current directory or the current package in this case.
+14:12
+So we're going to do that and import the views file. We will then be able to access the view that we wrote. We're then simply going to say the URL patterns is equal to an array
+14:21
+and instead of here we're going to make a new path, and the path we're going to have is blog posts
+14:27
+and then slash and make sure you have this trailing slash. Now, what we're going to do is we're going to say views dot the blog post
+14:35
+list, create a dot as underscore view, and we're simply going to give this a name
+14:41
+and we're going to say this is the blog post view create view.
+14:46
+Now, I know it's a little bit long, but let's zoom out here so you can read all of it. We're doing import ing the path from the Django URLs.
+14:54
+We're importing the views, and then what we're using is something known as a class based view. That's what we've created here.
+15:00
+This is a generic view, and the way that we render it is you say views dot whatever the name of the classes dot as view.
+15:07
+This pretty much means anytime we go to the blog post route here we're going to be brought to this page where we can then interact with the API.
+15:15
+Now keep in mind we're going to do this from the browser, but you can do this from Postman, you can do this from a different server.
+15:21
+You don't have to do this graphically. It's just nice to be able to view it graphically as we go through the tutorial. So we were actually just about to run the server.
+Database Migrations
+15:28
+But before we do that, there's actually one step that we need to do which is migrating our database and we'll talk about that step.
+15:35
+But first of all, I'd just like you to go into the model.py file and notice that we have this auto ad now.
+15:41
+It actually needs to be auto now. Ad I just had r, I just found that sorry while I was looking at it.
+15:46
+So let's just fix that small mistake there that I had instead of the published date. Now what we're going to do is we're going to bring up the terminal
+15:52
+and we're going to apply a database migration. Now, any time you create a new model or you make any changes to your models,
+15:59
+what you'll do is you'll make a new migration and you'll apply it. And what that's going to do is use the Django Forum
+16:05
+to automatically create the correct skill tables or do whatever it needs to do essentially in the database for this to work properly.
+16:12
+So the way we do that is we make sure we're inside of our my site directory and we type Python three managed our pie
+16:19
+and then we're going to say make migrations. Now make migrations is going to create the files
+16:25
+that will specify what migrations need to be applied. In this case, you can see we're going to create a model blogpost.
+16:31
+Now we need to actually apply the migrations and to apply the migrations, we simply type the command migrate.
+16:37
+So Python three managed a pie, make migration ins, wait for that to finish, then Python three managed our pie migrate.
+16:44
+When we do that, we'll see that this is actually applied and we've now created the tables in our SQL database, which is called DB dot SQLite three.
+16:52
+Now we can clear and we can type the command Python managed our pie and then run server.
+16:58
+And when we do that, it will start running our Python API. So let's go ahead and do that. We shouldn't get any errors here.
+17:04
+Again, make sure you fix this so it says auto. Now ADD and you will see that we have this URL which is where our API is being ran.
+17:11
+So what we can do now is simply go to this in our browser. So I'm going to control click it. It's going to show me an error right away. Don't freak out.
+17:18
+The reason for this is because we need to go to the blogpost URL, so we're going to go slash blog post and when we do that, we'll see our API view.
+17:28
+Now inside of here, we can create a new blog post to do that. We can do something like title
+17:33
+and then test content and we can click on post and now you'll see a new blog post is created.
+17:39
+We have the option to call, get when we call get. It gives us an array that contains all of these. Now, in this case we get a nice graphical view
+17:46
+showing us how the API works, but of course you can use this or something like Postman Curl. The command line doesn't matter, you just need to call the API correctly
+17:53
+with the correct headers in the correct field names. In this case, the field names will be a title and content.
+17:59
+Those are the two required ones to create a new blog post. Okay, so that is that root. But I now want to shut down the server and I want to show you how
+18:07
+we create some other routes that allow us to do some more specific things. So first of all, let's go into the views,
+Creating More Complex Views
+18:12
+the PY file, and I want to mention that you may have noticed we didn't actually have the ability to delete any of the blog posts that we had.
+18:19
+Now we can make it so that we can delete all of the blog posts in a single root. The way we can do that is by adding a root here to this API view
+18:27
+because we can actually override the default view. Sorry, or we can actually create a new root
+18:34
+that allows us to delete individual blog posts. Let's do that first and then I'll show you the overwrite.
+18:39
+What I'm going to do is create a new class here and this is going to be the blog post and then the retrieve, if I spelt that correctly,
+18:48
+updates and destroy view. Now inside of here,
+18:53
+this is going to be generics DOT and this is the retrieve destroy API view or actually sorry retrieve update destroy API view.
+19:01
+I know it's a little bit long, so let's make this a bit easier to see. And inside of here we're going to specify the same thing that we did before.
+19:09
+And so we're going to copy the query set and be serialize or class. We're going to paste that inside of here and we're going to have the lookup
+19:17
+underscore fields be equal to peek, which stands for Primary Key, which in this case is going to be the idea of our blog blogpost.
+19:25
+Now all this is doing is giving us another generic view. This will allow us to access an individual post
+19:31
+and then we can update that post and delete that post. So that's it for The View. Now what we'll do is we'll go over to our URLs.
+19:38
+It will make a URL to map to that view. Hopefully you're kind of getting the process by now. So we're going to put a comma here.
+19:44
+We're going to make a new path in this path is going to be blog posts slash. And then in this case, we're actually going to take a path parameter to do that.
+19:52
+We're going to say int colon, and then this is going to be peak, which stands for Primary Key.
+19:58
+We're going to have another slash. Then we're going to say Views dot the blog post
+20:04
+and this is the retrieve update destroy view. And we're going to say as underscore view like that.
+20:11
+And then we're going to give this a name and we can just say update. I'm just giving it a short name for now because I don't want to write out the whole thing.
+20:18
+Okay. So what we've done here specified, hey, we're going to have the same route with blog post, but this time if you pass as a part
+20:24
+of that path, the idea of the object you want to retrieve, what you can do is you can update, delete it, retrieve it, that's it.
+20:32
+So now what we'll do is we'll go here and rerun our server. We'll open it up again, slowly, bring it over here.
+20:39
+And if I go over to slash one sorry slash blog post slash
+20:46
+one, we'll see that we access the blog post with ID one, which is the following one here. So I could say test content, update this and then put
+20:56
+and then if I want, I can delete this by clicking on the delete button. And now if we go back and we view all of the blog posts,
+21:02
+you'll see that we don't have any because we deleted them. Okay, so that's almost all that I wanted to show you.
+21:07
+Last thing, I will quickly run you through. Run you through here. Sorry. Before we get into the deployment is how we override some of our views.
+21:15
+So if we go to views dot py, you'll notice that inside of here what we can actually do is override any FTP method if we wanted
+21:22
+to make this slightly more custom. So in this case we're really using the generic views from Django because they're quite good and they're quite useful.
+21:29
+However we can override them. So what I could do is I could say define delete inside of here.
+21:35
+Now for delete I need to take in self request star args and star star quirks like that.
+21:42
+I then will say blog post dot objects dot all
+21:48
+and then I can say something like dot delete and then I can return a response which we're going to have to import in a second.
+21:55
+And we're going to say the status is equal to status. Star http underscore two of four underscore no underscore content
+22:04
+like that. And now what we'll do is simply import from the rest framework.
+22:10
+Actually, yes, from the rest framework, we'll import status and then we'll say from the rest framework, dot
+22:19
+response, imports response. And now what we've done is we've just written our own routes.
+22:25
+And what this will do is add a delete root now to this API view. And what will happen is it will just delete all of the different blog posts
+22:32
+that exist and then return a response, which is HTTP two or for no content, which is what we're supposed to return when we delete something.
+22:40
+So just to quickly show that to you so you can see how easy this is and how it works. Now, if I load up my server and I go to the page
+22:47
+slash blog posts, okay, you'll see that now a delete button exists, and if we click
+22:54
+that delete button, it will actually just delete all of the blog posts that we have because that's the custom logic that we wrote here.
+23:00
+We just deleted all of the blog posts. So to wrap up writing our views, I'll show you creating a custom API view because this can be somewhat useful.
+Creating Custom Views
+23:08
+So I'm going to say from the rest framework dot views Imports the API view and I'm just going to paste in a view here
+23:16
+that you can reference if you want to do this. So let's say we want to make our own routes where we don't want to use the generic ones.
+23:21
+What we can do is inherit from the general API view and then what we can do is write different methods based on the name of the method
+23:29
+we want to implement. So in this case get we could write, post, delete, put patch, etc. and they'll automatically be added for us to whatever the route is that we write.
+23:38
+Now, in this case, this is simulating getting all of the blog posts that have a matching title.
+23:43
+So what I've done is I've said, okay, well maybe I'm going to have a query parameter here called title. What I'll do is check if the title exists, if it does, and I want to find
+23:51
+any of the blog posts that have that information contained in their title. Then if I don't have a title, I'll get all of the blog posts or manually
+23:59
+serialize them by using the blog post sterilizer, which I can do using this. And then I'll return a response that contains the data provided
+24:07
+from the serialization with a status of HTTP 200. Okay, Now if I wanted to connect this with the URLs, same thing.
+24:15
+I would just have whatever the name of this is dot as view and then that'd be it. I just simply have written a simple API view here
+24:23
+that allows me to query based on the name of a object. All right. So that's going to wrap up the coding phase of this video.
+24:29
+The next thing that I want to show you how to do is actually deploy this API so you can share it with other people
+24:34
+and you can get it running on a public endpoint because currently we have this simply running on localhost
+24:40
+on our port 8000, but instead we might want to run this on a public URL so it's a bit more flexible. Other people can use it
+24:47
+and we can actually test it in a production environment. So to do that, bear with me. I'm going to run you through the steps now for the deployment here.
+Deploying The API
+24:54
+We're going to use something known as ACORN. ACORN is free. You do not need to pay to use it. And I have teamed up with them for this video.
+25:01
+Now, what ACORN allows us to do is create something known as an ACORN file. Now, this ACORN file will specify our entire application
+25:09
+and pretty much describe how it should be deployed. We can then use this ACORN file to build an ACORN
+25:15
+image somewhat similar to something like a Docker image. We can then publish that image and we can use it
+25:20
+to deploy as many instances of our application as we like. Now, this is great because it allows us to actually deploy this out quite quickly,
+25:27
+but it also allows us to share our application with other people by giving them the ACORN image.
+25:32
+You're going to see what I mean. And I made an entire video about this if you want some more details, so I'll link that here by putting it on the screen
+25:38
+and leaving a link to it in the description. Now, the first thing we need to do here is actually create a docker file
+25:44
+which specifies how we run our application. And then the ACORN file will specify all of the services
+25:50
+and the additional configuration we need when we actually want to deploy this out. So we're going to make a new file inside of my site called Docker File.
+25:58
+Now I'm going to paste in the contents of this file and you can copy it from the links in the description. All of this code will be available on GitHub.
+26:05
+It just doesn't make sense for me to write all of this out because it's fairly long. So let's quickly go through what this file actually looks like.
+26:12
+We start by specifying the syntax for the Docker file. We specify the image we want to build this from.
+26:18
+Then we have that we're exposing port 8000 because that's where our server will be running. We specify the working directory, we install some system dependencies,
+26:26
+we copy the requirements to a text file, which means we actually need to take this file and we need to put it inside of the
+26:32
+my site directory, so make sure it's inside of there. We then use the PIP command to install all of the requirements.
+26:39
+We copy all of the contents of this directory. We specify the entry point which is using Python three
+26:45
+and then the command that we want to run to run our server, which is Python three managed API run server.
+26:50
+And then we just specify we want to run it on all the public endpoints. So the Docker file is pretty straightforward.
+26:55
+It's just explaining how we actually run the application. Now the thing that we're missing though is all of the instructions for deploying the application.
+27:02
+We know how to run it When we want to deploy an app, we need to do things like set up the database. We may need to do some database migration
+27:09
+as there's some other steps, and that's where the ACORN file comes in. Now, before I write that ACORN
+27:14
+file, I'm just going to create a new file inside of my site and this is going to be DB Dash script dot S-H.
+27:21
+Now this is going to be a simple script that we're going to use whenever we start running our application so that we migrate the database
+27:28
+and ensure that everything is set up. So I'm just going to paste this in here again, you can copy it from the link in the description.
+27:33
+We're running the Python three managed API make migrations and then we're migrating just that if we make any changes to the database,
+27:40
+that will automatically be applied. And when we do a new deployment, the database that we're connecting to will have those tables created.
+27:47
+So this is a script that will run and I'll show you how we'll end up running that. Okay, so now we have our Docker file, we have our database script,
+27:53
+and we're going to go outside of this core directory here. We're going to make a new file and we're going to call this the ACORN file like this.
+28:01
+Now, for the ACORN file to be a little bit more useful to us, we're going to go into the extensions here and be as code
+28:06
+and we're going to install the ACORN extension. It just gives us some syntax highlighting for this ACORN file.
+28:11
+So go ahead and do that. And now I'm going to paste in the ACORN file and quickly walk you through it. Now, this can seem a little bit overwhelming,
+28:18
+but I promise you that if you read through the documentation, it's not overly complex. And there is all kinds of examples
+28:24
+in the ACORN docs for creating your own ACORN files. This is just one for Django. Okay, so what are we doing here?
+28:31
+Well, inside of the ACORN file, we're essentially specifying everything we need to be able to deploy this application.
+28:36
+So we have some services, we have some jobs, we have the containers that we need to run and we have the images that we're using.
+28:43
+So we start with some arguments. And the one argument that we need is the Django database name, which is what we use when we actually create the database
+28:50
+with whatever database server service sorry we choose to use. So we're calling this Django DB.
+28:55
+We then have a service we're going to use now for our Django app. We need to have a database. This database can be many different types.
+29:02
+It could be Postgres, it could be MongoDB. In this case, we're going to use the Maria DB or Maria DB or whatever you want to call this.
+29:08
+What we do is just specify that for this database we are going to have the argument of Django database name, which is simply Django DB
+29:16
+and we're using this image to essentially create a database for us. So that's a service that's going to be a part of our deployed application.
+29:23
+We then have a job. Now what the job will do is initialize the database for us. So we've called this a DB init.
+29:30
+We're going to build images that app does container build, which we specify down here. So don't worry about that.
+29:36
+We have an environment inside of the environment. We're using some environment variables or actually creating environment variables that come from this service.
+29:45
+So whenever we connect to a database where we need a username, password, address, port and database name,
+29:50
+sort of specifying what all of these are as accessible variable names that we can use within our code, which we'll actually do in just a second.
+29:57
+We're consuming the database. We have an entry point. We're using this script, the bin bash, and then the command that we want to run.
+30:03
+Is this. What this does is make our database script file executable and then it executes the database script file.
+30:09
+So we actually go and apply the migrations to our new database that we're connecting to. We then have a container.
+30:15
+This is the container that runs our application. The job is what runs beforehand to set everything up.
+30:21
+Then what we do is we build the image that we specify down here, which is inside of our Docker file.
+30:26
+This describes how to run the application. We make sure we publish FTP on Port 8000.
+30:32
+We make sure we depend on this job. So this job needs to finish before we start running this container
+30:37
+and then we consume the database service that we specified up here. We have some arguments for being in dev mode,
+30:43
+like the directories that we're going to be using, and then again we specify the variables that we need in our environment for this application to run properly.
+30:51
+Down here, we just specify the container. So where they're located, essentially where the Docker file is, I know it seems a bit complicated, but trust me,
+30:58
+if you've ever worked with Docker before you start doing deployment, you'll see how easy this is to actually write out.
+31:03
+Okay, so now that we have the ACORN file, there's a few last adjustments we need to make, and then I'm going to show you how we run it.
+31:09
+So from my site, we're going to go into requirements, start text, and we're just going to add a package that we need.
+31:15
+When we start working with a MySQL database, we're going to say, my Siebel clients like this, which will allow us to work with the Maria maria.
+31:22
+DB Okay, now that we have that, what we're going to do is we're gonna go into my site, we're going to go to Settings dot PY, and we're going to make a few adjustments
+31:30
+to allow this to actually be deployed because right now this is just for development on our local machine and we just need to adjust a few things so it works in a deployed environment.
+31:38
+So first of all, we're going to go to a cloud hosts and we're just going to add an exclamation or an Asterix here which lets us run this on any host.
+31:46
+The reason we want that is so that we're able to run this on the ACORN host, which you're going to see in a second.
+31:51
+We're now going to make a variable here, which is Caesar F underscore and this is going to be trusted, underscore origins,
+32:00
+and this is going to store the trusted origins for when we submit our forms. So we're going to have CDP, Colon, slash, slash.
+32:07
+Then there's going to be Asterix dot on dash, ACORN, like that IO, We're then going to copy this
+32:15
+and we are going to paste it and just change this to HTTPS. Now we just need this so that when we're submitting the forms from the API site,
+32:23
+we don't get any CCR issues. So we're just allowing all of the ACORN origins because that's where we're deploying it to.
+32:30
+Last thing we need to do is we need to import OWS from the top here so we can access some environment variables and we're going to change
+32:37
+our database configuration here so that we end up using the database that is created for us by the ACORN file for our deployment.
+32:45
+So what we'll do is we'll go down to databases and I'm just going to copy this in again. You can copy it from the link in the description.
+32:52
+We're going to change default to be equal to this. Now, what we've done is we've specified that the engine we want to use is the back
+32:59
+end of my SQL engine. This is different than SQL eight three engine we were using before.
+33:04
+We then want to connect to the Maria DB database so we have the name user password, host import, which all come from the environment variables
+33:12
+which are specified inside of the ACORN file. So basic idea is ACORN file will spin up a database for us
+33:18
+and then we want to make sure we use the environment variables that allow us to connect to that specific database.
+33:24
+So that's why we need to modify that inside of our Python API or our Django API.
+33:29
+Okay. That's all of the setup required. Now that we have that finished, what we need to do is simply run the ACORN file
+33:36
+or run the ACORN image or build the ACORN image, whatever you want to call it. Now, in order to do that, we first need to install the ACORN CLI,
+33:42
+which is pretty straightforward. Let me get the command for you. All right. So I just have this page open which shows you how to install the acorn.
+33:48
+Seelye And go to dark start ACORN dot IO slash install. We can brew install this if we're on Mac or Linux, which is what I'm going to do.
+33:56
+So I'm going to copy that command or you can use Schoop. This is a tool that you need to install on Windows.
+34:01
+Okay, So I'm just going to go into my command prompt here and I'm going to paste in this command. I already have ACORN installed, so this should be fairly fast.
+34:10
+And for you guys it should install the ACORN clock. Now we simply run the command ACORN log in.
+34:16
+When we do that, it will log us into our ACORN account. Again, you can just use GitHub, do this. It's completely free.
+34:21
+And once we're logged in, which I already am, what we can do is run our ACORN file. Now, to do that, we're going to seed into the root directory here.
+34:30
+So notice we have our ACORN file and then we have my site. And now what we're going to do is simply type acorn dev and then dot.
+34:37
+Now when I do that, it's going to start running the ACORN image for me and it will actually give us a deployed version of our app.
+34:43
+And then I'll show you how we can share this. So let's hit enter. We're going to give this a second to spin up. You're going to see that it's creates a database for us.
+34:50
+It gets a public URL, it exposes the port, just runs through everything, which is really, really nice.
+34:55
+And then we can access the deployed URL, which you'll see in a minute. All right. So you can see now that actually ends up
+35:01
+giving us an end point because this was deployed successfully. So I can click on this, open it up, and now you'll see that we have our API in.
+35:09
+If I go here to slash blog post, we're able to view the API view, but now this time it's on a publicly deployed HTTPS
+35:17
+URL endpoint, which can be quite useful, especially in deployment. Now the way that I ran this is using something known as dev mode.
+35:23
+Dev mode will give you some file synchronization and it just really quickly spins this up for you
+35:29
+so you can start using it and you don't have to actually go to the ACORN website. However, what I want to show you now is how you would actually share this
+Sharing The Deployment
+35:35
+with someone else. So what you can do is simply create an ACORN image. You can publish that image, and then you can just give someone the URL
+35:42
+to that image and now they can create the same instance of your application. Pretty much instantly.
+35:48
+They can mess around with it, they can break it, they can change it. And it doesn't affect your deployment because every time you deploy
+35:54
+the ACORN image, you get a new deployment, which is quite cool. So let me show that to you and then we'll explain more about how it works.
+36:00
+All right. So I just shut this down by having control C and now we're just going to run a command that allows us to actually kind of tag
+36:07
+this image and upload it to a registry so other people can use it and you can share it. Now, to do this, we first need to log in to a registry.
+36:14
+Now, the one most of us are familiar with is the Docker ones. That's what we're going to sign into. We're going to say ACORN log in and then index dot Docker
+36:22
+dot I, now I'm already signed in. But in your case, just sign into it. And this allows you now to have a place where you can publish your different images.
+36:28
+There's a bunch of other registries as well, but this is one that I'm sure most of you are probably going to want to use. Now, what we're going to do is simply build the image.
+36:36
+We're going to say ACORN, build dash T, which stands for the tag name, and then we're going to do the name of the registry which is indexed, Docker Dot IO slash.
+36:45
+This is going to be your username on the registry in this case minus tech with Tim zero.
+36:50
+And then you're going to give the name to your image. So I'm going to say Django tutorial YouTube like that.
+36:56
+Okay, I'm going to go ahead and run that. It's going to build an ACORN image for us. Once the ACORN image is built, we can then push it to the registry
+37:03
+and we can really easily share it with other people. All right. So This has been built. Now that it's built, what I want to do is push this.
+37:09
+So I'm just going to change the command so that rather than having ACORN build, we simply say ACORN push.
+37:15
+And then it's just the same name of the image we just created. When I do that, it will push it to the registry
+37:21
+and then we can simply take this name and we can create a URL that allows other people to deploy this image.
+37:27
+Really, really cool. It's just like a docker image. Except in this case, it specifies the entire deployment of the application,
+37:34
+which makes it really easy to share and deploy without interfering with your actual code. So you can see that this finished.
+37:40
+So I'm just going to copy the name of what it is that we deployed there, what we push. Sorry.
+37:45
+And now we can simply go to the ACORN websites. Let me just load this up here. So I just simply went to ACORN audio and then I pressed log in.
+37:54
+It brought me into my dashboard here. And what I can do is click on my username. I can click on Shared acorns and then you can see that
+38:01
+it shows me actually all of the stats for different ACORN that I have shared. What I'm going to do is just paste in the image, which is this.
+38:08
+And notice it gives me a link that I can share with people. So now I can copy that link. This will actually be what's in the description. By the way.
+38:14
+And now you can simply paste that link into your browser. When you do that, it's going to bring you to the ACORN platform.
+38:21
+It's going to show you the ACORN image so we can view the source file of the ACORN file if we want.
+38:27
+We can pick where we want to deploy to. So what project or what folder we can just press on deploy and it's going to deploy a new instance for us.
+38:35
+So this is exactly what you guys will be able to do. Whatever you just saw pretty much in my terminal is going to happen exactly for you in your own ACORN account
+38:42
+and you're going to get a running instance here that allows you to mess around with it. Now, it's worth noting that these are not going to be deployed persistently.
+38:49
+They are going to be in kind of a container that will die after a few hours. You can extend that time and you can still use ACORN to deploy persistently,
+38:58
+but it's a little bit of a different process and not something that I'm going to get into in this video. All right. So the ACORN has finished provisioning here and you can see that it is running.
+39:06
+What I can do now is I can simply click on this button and it's going to bring me now to a URL. This is different than the one that we had before where this is deployed now.
+39:14
+Same thing I can go to slash blog post. I now have a new instance of the API here that I can mess around with
+39:20
+and do whatever I want with it. So there you go. That's pretty much it for deploying with ACORN. I think this is really cool, especially because in a development environment
+39:28
+it makes it really easy to share this with other people. I now don't need to spin up a virtual private server.
+39:33
+I don't need to go do all this Linux config. I just write a Docker file like I normally would. I write an ACORN file.
+39:39
+I now have the entire deployment of the application described. I can just send this to my boss, I can send this to a coworker
+39:46
+and they can spin up their own version. They can have it a live for as long as they want. They can mess with it, they can break it and it doesn't affect me.
+39:52
+And I don't have to constantly change things around or fix things that they're breaking. Anyways, guys, that's going to wrap up this video.
+39:59
+As a reminder, all of this code will be available from the link in the description. If you want to deploy your own version of this API, you can click the ACORN link
+40:06
+that I have below. I look forward to seeing you in another video.
+
+
+

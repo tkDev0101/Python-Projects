@@ -1,0 +1,227 @@
+Celery: A Beginner's Guide
+	By: tk myende
+
+
+============================================================================================
+Celery Architecture
+
+1. Application: The Python application defines and sends tasks to the queue.
+2. Message Broker: Acts as a middleman, managing the task queue (e.g., Redis, RabbitMQ).
+3. Worker: Processes tasks from the queue.
+4. Result Backend: Stores task results (e.g., Redis, SQL databases).
+
+
+----------------------------------------------------------------------------------------------
+How Celery Works
+
+1. Tasks are defined as Python functions and decorated with @app.task.
+2. When triggered, tasks are sent to the Message Broker.
+3. Celery workers monitor the broker, fetch tasks, and execute them.
+4. Results can be stored in a backend for retrieval later.
+
+
+----------------------------------------------------------------------------------------------
+Key Components of Celery
+
+0. Django Application:
+ . The Python project that defines tasks and sends them to Celery.
+
+1. Tasks:
+ . Defined as Python functions.
+ . Decorated with @app.task.
+
+2. Message Broker:
+ . Handles the task queue.
+ . Examples: Redis, RabbitMQ.
+ . Manages communication between application and workers.
+ . It queues tasks and ensures they’re delivered to workers.
+
+3. Workers:
+ . Executes the tasks.
+ . Scalable horizontally by adding more workers.
+
+4. Result Backend:
+ . Stores task results for later retrieval.
+ . Examples: Redis, SQLite, PostgreSQL.
+
+
+
+----------------------------------------------------------------------------------------------
+Setting up Celery in a Django project
+
+1. Install Dependencies: 
+• pip install celery[redis]  django-celery-results
+
+2. Configure Celery in Django: 
+ - Create a celery.py File: 
+• In the same directory as your settings.py file.
+ - Update _init_.py:
+• In the same directory as your celery.py file, edit the _init_.py file.
+ - Configure Celery Settings:
+• In settings.py, add the Celery-related configurations.
+
+3. Define Tasks: 
+ - In your Django apps, create a file called tasks.py.
+
+4. Set Up Django to Store Task Results: 
+ - To store task results in the database, you'll need to configure django-celery-results:
+
+5. Start the Celery Worker: 
+- Run the Celery worker to start processing tasks:
+• celery -A myproject worker --loglevel=info
+
+6. Trigger a Task: 
+ - Call the Celery task from your Django application. For eg., in a view.
+
+
+7. Verify Everything Works: 
+
+1. Start your Redis server:
+• redis-server
+
+2. Start the Celery worker:
+• celery -A your_project_name worker --loglevel=info
+
+3. Run your Django development server:
+• python manage.py runserver
+
+4. Visit the endpoint where you trigger the task (e.g., /test-celery/) and check the worker logs to see if the task was executed.
+
+
+----------------------------------------------------------------------------------------------
+ Setting Up Celery
+
+
+1. Install Dependencies - Celery and a Broker
+• pip install celery[redis]
+
+2. Define a Celery App
+ - In your project, create a file called tasks.py
+ - create a Celery app and define a simple task
+
+3. Run A Celery worker to process tasks:
+• celery -A tasks worker --loglevel=info
+
+4. Execute a Task:
+ - In your Python shell, trigger the task
+
+
+----------------------------------------------------------------------------------------------
+Integrating Celery with Django
+
+
+1. Install Celery in your Django project:
+• pip install django-celery-beat
+
+
+
+2. Configure Celery in settings.py
+• 
+
+3. Create a celery.py file in your project directory:
+• 
+
+4. Define tasks in your app’s tasks.py.
+• 
+
+
+-----------------------------------------------
+
+1: Install Dependencies
+• pip install celery[redis] django-celery-results
+
+
+2: Create a Celery App
+ - In your Django project directory, create a file named celery.py
+ - In the same directory, create an __init__.py file:
+
+
+3: Configure Celery in settings.py
+ - CELERY_BROKER_URL: Points to your Redis server.
+ - CELERY_RESULT_BACKEND: Uses your Django database to store task results.
+
+
+4: Define a Task
+ - In your Django app, create a tasks.py file:
+
+5: Start the Celery Worker
+Run the Celery worker to start processing tasks:
+• celery -A myproject worker --loglevel=info
+
+6: Call a Task
+ - Use the task in your Django views:
+
+
+
+
+-----------------------------------------------
+1: Install Dependencies
+• pip install celery[redis] django-celery-results
+
+2: Configure Celery
+Create a celery.py in your project directory (Update settings.py)
+
+3: Define Django Tasks
+Create tasks.py in your Django app:
+Trigger the task:
+
+
+----------------------------------------------------------------------------------------------
+Common Commands
+
+
+Start a Worker:
+• celery -A my_project worker --loglevel=info
+
+Start Celery Beat (for scheduled tasks):
+• celery -A my_project beat --loglevel=info
+
+Start Scheduler (for periodic tasks):
+• celery -A tasks beat --loglevel=info
+
+Restart Workers After Code Changes:
+• celery -A my_project worker --pool=solo --loglevel=info
+
+Monitor Tasks:
+• celery -A tasks flower
+
+
+
+
+
+----------------------------------------------------------------------------------------------
+Advanced Features
+1. Scheduling Tasks
+• Use Celery Beat for periodic tasks (e.g., daily or hourly).
+
+2. Error Handling
+• Celery automatically retries failed tasks:
+
+3. Monitoring Tasks
+• Install Flower for real-time monitoring:
+
+
+• 
+
+
+
+
+-----------------------------------------------
+
+
+
+-----------------------------------------------
+
+
+
+-----------------------------------------------
+
+
+
+
+----------------------------------------------------------------------------------------------
+
+
+
+
+

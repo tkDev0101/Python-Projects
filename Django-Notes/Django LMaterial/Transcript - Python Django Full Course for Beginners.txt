@@ -1,0 +1,3772 @@
+Transcript - Python Django Full Course for Beginners | Complete All-in-One Tutorial | 3 Hours
+	Dave Gray
+
+Intro
+0:01
+[Music] hello and welcome to three hours ofs
+0:06
+Django tutorials and instruction this video is made up of 12 tutorials that build upon each other much like the
+0:13
+chapters of a book throughout the lessons in this video I will mention links being available in the description
+0:19
+below I've compiled all of these links into one GitHub resource that you will find in the description hi I'm Dave gray
+0:27
+and I'm the creator of these Django tutorials you can subscribe to my YouTube channel for more tutorials like
+0:32
+this one you can also follow me on X and if you're feeling generous and want some extras you can even join my patreon
+Chapter 1: Start Here
+0:40
+let's get started learning D Jango with chapter one today we're starting to learn Jango a python web framework and
+0:46
+I'm starting at D jango.com this is the homepage for the
+0:51
+Django project and it has great documentation I'll provide a link to this in the course repository so what is
+0:58
+D Jango well on the web page it says Jango makes it easier to build better websites or web apps more quickly and
+1:06
+with less code it is a web framework and after you learn the framework that is
+1:11
+definitely true a framework abstracts some things you would have to build otherwise and so you can get started
+1:18
+faster but when you first learn a framework it's a little more tedious because you have to learn how to use
+1:24
+that framework and that's what we'll do so in the future you can also build better web apps more quickly with Django
+1:30
+let's scroll down just a little bit and it says meet Django here it says Django is a highlevel python web framework that
+1:37
+encourages rapid development and clean pragmatic design it's built by experienced developers so that will help
+1:44
+us get started ridiculously fast with any project as they say because they've
+1:49
+already mapped out a lot of this work for us it's also secure exceedingly
+1:55
+scalable it has lots of great features built in as well and we'll get to some of those as we start learning D Jango
+2:02
+now let's talk about prerequisites if you haven't learned python yet that's a good place to start this is not a python
+2:09
+for beginners course but D Jango is a python framework for the web so you
+2:16
+should probably learn some of the basics of python before starting this D Jango
+2:21
+course and I do have a python for beginners course on my YouTube channel
+2:26
+I'll be using visual studio code as the code editor for this series and you can get it at code dovisual
+2:32
+studio.com if you don't have it if you want to use it of course you could use another code editor of your preference
+2:39
+but I will be using visual studio code also you're going to need Python and so if you don't have that installed or just
+2:46
+want to update the version you do have installed you could download it and install it here from python.org and you
+2:53
+can see once we're here there is a downloads page and the current version is python 3.12 12.1 I'm in VSS code now
+3:02
+and I've created a new folder my folder is called lesson one you could name yours whatever you want to as we start
+3:08
+this series and after you create a folder and open it in vs code go ahead and open a terminal window by pressing
+3:15
+control and the back tick and now let's just verify the python installation now
+3:20
+I'm on windows so I'll type py but if you on Mac or Linux you might be typing
+3:25
+Python 3 to go ahead and execute python either way just so you know I'm on
+3:30
+Windows and I'll be typing py okay after that let's check our version by typing
+3:37
+d-h version I'll press enter you can see I have the latest as of the making of
+3:42
+this video python
+3:58
+3.12.18 in V if you haven't seen this before I Do cover it in my python for
+4:03
+beginners course so after we've typed out this let's go ahead and press enter we should now see a folder over here in
+4:10
+our file tree that is venv that would be our virtual environment but we haven't
+4:16
+started it yet now this is another difference between Mac and Linux so on
+4:22
+or not between Mac and Linux pardon me between Windows or Mac and Linux so what I want to type on Windows is source
+4:29
+space. venv SL scripts SL activate and
+4:36
+that would activate my virtual environment but on Macer Linux instead of scripts it is probably in bin SL
+4:45
+activate like that just so you know the difference once again so I'll type script SL activate press enter this has
+4:53
+now activated my virtual environment so if I press enter again you'll see theint
+4:59
+pareses dobv here so we know the virtual environment is activated now anytime we
+5:05
+want to deactivate that we just type deactivate if I could spell it correctly
+5:11
+deactivate and press enter and that would deactivate our virtual environment but we're going to need it right now as
+5:17
+we install other things we want to do that in the virtual environment for our project so now let's install Jango let's
+5:23
+do that by typing pi- M then pip install
+5:29
+and then D Jango with the capital D press enter and this should install D Jango in our project virtual
+5:38
+environment okay and after it's finished we also have a message here that says we could update pip from 23.2 point1 to
+5:47
+23.3 point2 so let's go ahead and do that you may have a different message if this is in the future but I'll type
+5:54
+p-m install and oh pip install excuse me pip
+6:00
+install now dash capital u is the same as two dashes and the word upgrade so
+6:05
+I'll just do that and then pip once again press enter that should update and
+6:11
+I should now have 23.3 point2 which would be the latest now with everything up to date let's verify our Django
+6:18
+installation so I'm going to type pi and that opens up the repple here for python so now that we're using python I can
+6:25
+just type import Django and after that I can type type print then Django
+6:34
+dogor version and then parentheses and then close out with another parenthesis
+6:40
+press enter and yes we have D Jango version 5.0.1 as of the making of this video now
+6:47
+I want to go ahead and quit the python reppel so I'll type quit I am having a hard time typing today quit with
+6:53
+parenthesis and now we're out of the reppel we're still in our virtual environment if I press enter you can
+6:59
+still see the virtual environment here with the parenthesis so now let's create our project with d Jango since we have
+7:05
+Django installed so I'm going to type django-admin then start project then we
+7:13
+need to name our project and I'll just call it my project and press enter this is going to create our D Jango project
+7:19
+for us and now we see a my project folder in the file tree after that let's go ahead and open it and we see another
+7:26
+folder inside with the same name that can be a little bit conf confusing but that's actually what should happen we
+7:32
+also see a manage.py file or py we will be using that to issue commands we won't
+7:39
+change anything in it but we will use it now inside of this my project folder we
+7:44
+see several other files as well and we will be working with some of those today
+7:49
+since we've now installed Django and created a project we can start the server and make sure that is working so
+7:55
+let's go ahead and do that here in the terminal window once again let's type pi well we need to go into this directory
+8:01
+first and remember we have two of these so we want to go into the top directory right now I'm in my lesson 01 folder so
+8:09
+I'm going to CD to go into the my project folder now I'm inside of that
+8:16
+top level my project folder from here I want to type pi and then I'm going to
+8:22
+type manage.py and now I'll issue my command which will be run server and we
+8:29
+can specify the port the default Port is 8,000 but if I wanted it on 801 I would
+8:35
+just type the port number afterwards but we could just let it go to the default which will be 8,000 so I'm going to
+8:41
+press enter it will start the server now we do have a message here about unapplied migrations and you will
+8:48
+probably see that too we won't be doing that today but just so you know that's nothing wrong just means we haven't got
+8:54
+there yet and we will cover that right now the server is running and we can see it's running at
+9:00
+http1 127.0.0.1 which is the same as Local Host that means your computer and
+9:07
+then app Port 8000 so let's go to the browser we're back in the browser let's open a new tab and after we do that
+9:14
+let's open up local host and let's go to 8,000 press enter and you should have
+9:20
+the install worked successfully congratulations from Django with the little rocket here just like I do that's
+9:27
+our server and it's serving a default page p and it says you're seeing this page because debug equals true is in
+9:34
+your settings file and you have not configured any URLs yet but we will be configuring our own URLs this is just
+9:40
+what you see from the initial installation now we're back in vs code and in the file tree you should also
+9:46
+notice that you now have a pach directory over here and that's nothing to worry about that just gets added and
+9:53
+also this db. sqlite3 file those were added since we've created our project
+9:59
+and started the server and nothing to worry about once again we will eventually get to those the pie cach
+10:05
+actually just helps serve some things for our project faster but it's nothing we need to be concerned about now let's
+10:12
+stop our server I'm going to click over here in the terminal and press contrl C and that stops the server from there I
+10:19
+want to go ahead and click on the urls.py file that we have here inside of
+10:25
+the my project folder and we'll scroll down to where we see the URL patterns
+10:30
+here so we have a list and inside of it we see one pattern already that has path
+10:36
+with the admin SL and then admin. site. URLs we're going to add to this let's
+10:42
+start by adding a path for the homepage and so this will start out with path and now we'll just have an empty string here
+10:49
+so two single quotes and then a comma now we're not going to put the next half
+10:54
+yet but we will we will create a view for that but right now let's just put a comma and move on to the next one so
+11:00
+I'll put another path and I want to put in an about page route so it will be about Slash a lot like we see for the
+11:08
+admin with the Slash and I'll put a comma there as well and then let's go ahead and put a comma afterwards also so
+11:14
+with that much there let's go ahead and save the file we will come back to this
+11:20
+to finish it but now we need to create a views file so in the same directory here where we have our urls.py let's create a
+11:27
+new file let's name this views.py now inside of this we're going
+11:33
+to have an import so we'll say from Django
+11:38
+HTTP we will import the HTTP response now after we import that
+11:45
+we can create a function for our route so we'll name this one homepage because
+11:51
+it's going to our homepage it's going to receive a request for the homepage now
+11:56
+this is a function so then underneath we're indented and here we're going to let's not comment that out we'll return
+12:03
+and we'll have HTTP response now I'm going to response with something or respond with something very simle here
+12:10
+like hello world that's kind of to be expected in a intro tutorial right after
+12:16
+we say hello world let's go ahead and add something else like I'm home that
+12:21
+works so that's just a simple HTTP response to a request for the homepage
+12:27
+and that's what we should see when we go to our homepage once we hook all of this together let's put in another one for
+12:34
+about so we'll request the about page now these don't have to be named
+12:39
+homepage or about but it just kind of makes sense to match them up to what we are actually uh providing that is
+12:47
+requested as well so we'll we'll link all of this together in the next page here in just a second but right now
+12:52
+we'll say def about for our function and then I'm going to return once again an
+12:58
+HTT P response and now here I'm going to say my about page just keep it simple so
+13:05
+we have our two responses when we expect to get the homepage or the about page
+13:11
+requested so now let's go back to the URLs page and we can link all of this
+13:17
+together and we're going to do that once again with an import we need to import those views first so I'll say from dot
+13:24
+which means the folder that we are in we then import View views that we just
+13:30
+created now that we have those views imported we can use those with the paths here so I'm going to say
+13:37
+views. homepage and that links to that homepage function that we created right
+13:43
+here now after that let's go to the about and here I'm going to say
+13:48
+views. about and so now we've linked those functions to our routes here in
+13:54
+our URL patterns so when we get a request for the home page it will call
+14:00
+that function for the homepage and when we get a request for the about page it will call that function for the about
+14:06
+page so now let's once again open a terminal window with control in the back tick and from here let's start our
+14:12
+server I'll Arrow up so we can see the same command it's Pi then we call the
+14:17
+manage.py file that we have over here and then we call the command from it run server and again you could choose a
+14:24
+different port by specifying it like 801 all once again go to the fall which is
+14:30
+8,000 so after I enter this we once again see this warning that you can ignore about migrating and then it says
+14:37
+it's running at Port 8000 and again that's at Local Host let's go to our
+14:42
+browser and check this out now currently we still have the page that we saw before so we need to refresh this to see
+14:49
+the new page refresh and we get a very small hello world I'm home I can zoom
+14:55
+this in this a lot bigger here I'm at 5 500% now and you can read that very well
+15:02
+let's go ahead and check out the about page while we're here so 8,000 SL about
+15:07
+press enter and we get my about page now these are pretty boring and I really had
+15:12
+to zoom them in so we want to go ahead and do more than just send a couple of text messages like we currently did with
+15:19
+the HTTP response let's create some HTML templates and make this look just a
+15:25
+little bit better for our first lesson okay back in vs code we need to create a
+15:31
+templates directory now so we can have some HTML templates instead of just sending text so what I want to do is go
+15:38
+to the file tree I'm going to click the manage.py file just so I know I'm on
+15:44
+that same level and here I'm going to click a new directory icon and now I'll
+15:49
+type templates so if we close this inner my project directory we should see
+15:56
+templates directly underneath that now now here I want to create a couple of HTML files I'm going to create
+16:03
+home.html and here I'll type an exclamation mark which is an image shortcut and I'll press tab that gives
+16:10
+me a quick skeleton of an HTML page and that's all I need right now going to switch the name document in the title
+16:17
+home inside of the body I'm going to put an H1 and put the word home in there as well and I'm going to have a paragraph
+16:25
+that says check out my about page but I'm going to change the word about here
+16:31
+to a hyperlink so I need the anchor tag with an href inside of here I'll put a
+16:37
+slash and then about close that out and put the word about so that links to our
+16:43
+about page control s to save that file now contrl a to select everything in the
+16:49
+file contrl C to copy everything now I'm going to just create another new HTML
+16:56
+file here call it about. HTML and I'm going to contrl V to paste all
+17:01
+of that in I'll double click home and then I'm going to press contrl D to
+17:06
+select the next instance of home going to change that word to about now in the
+17:13
+link here in our anchor tag the word about needs to be deleted because we're just going to go to the slash which is
+17:19
+our root or homepage if you will and we'll change the word about to home so
+17:25
+it says check out my homepage contrl s to say that file and we're finished with
+17:30
+the HTML files now let's open the second my project folder look inside of here to
+17:37
+the settings.py file we need to scroll down if you start at the top here to scroll
+17:44
+all the way down to where it says templates then inside of this list for
+17:49
+templates we need to go to where it says dur in all caps stands for directory
+17:55
+This Is Us telling D Jango where our template are so we put in single quotes
+18:01
+going to type the word templates here that refers to our templates directory contrl s to save that change and that's
+18:07
+the only change we need for the settings.py file right now after that let's go back to the
+18:15
+views.py file now I'm going to comment out some of the code here I want to
+18:20
+leave it in here because we used it earlier in the tutorial and Others May of course download the code and need to
+18:27
+see these lines as well so I'm just going to use the hashtag to comment out that import and both return lines here
+18:35
+we're going to change these but I want to leave this in just to refer to earlier in the tutorial so now the
+18:41
+import we need starts with from then we'll have Django do shortcuts after
+18:47
+that we'll say import render and then we're going to return render on each of
+18:52
+these lines so I'll start a new line here and I didn't need that quote either let's come down return render the first
+19:01
+thing we pass into render is the request after the request we're going to render
+19:07
+our HTML template so here I'll say home.html we don't need to do anything
+19:12
+else d Jango now knows where this template is because we linked it in the settings I'm going to copy this line for
+19:19
+the return render contrl C come down here into our about function paste it
+19:25
+once again change home to about so now I'm referring to that about template go
+19:31
+ahead and contrl S to save this let's open a terminal once again with control and the back tick I still have it
+19:37
+running right now but just to make sure let's contrl C to quit and then let's go ahead and restart it with pi manage.py
+19:45
+run server we'll press enter now we know it's restarted and let's bring the
+19:50
+browser up to see if we can see our changes right now we still have the old page here that says my about page we can
+19:57
+hit back we still have the old hello world I'm home but let's refresh and see
+20:02
+if we get the changes yes we do so we now have an H1 check out my about page
+20:08
+and it looks like it links to the about page let's click that it does we're now on the about page and it has a link to
+20:14
+the homepage so our HTML templates are working as expected back in vs code
+20:19
+let's go ahead and contrl C to stop the server close the terminal and now we want to create a static folder for some
+20:27
+CSS and JavaScript some static assets for our project so to do that we want it
+20:33
+on the same level as this templates directory to make sure you're on that same level you could click the manage.py
+20:39
+file here in the file tree if you want to from there I'm going to click new folder once again here I'm going to call
+20:45
+this folder static because they are static assets that will go inside then I'm going to create a new directory
+20:52
+inside of static I'm going to call it CSS now inside of CSS I'll create a file
+20:59
+call this style. CSS now I hope you're familiar with CSS if you're not I do
+21:06
+have a CSS course on my YouTube channel as well here I'm going to start with a
+21:11
+simple reset we're not going to add a lot of styles here but I'll reset as I usually do so part uh margin and padding
+21:20
+both at zero after that box sizing to border box that is my simple reset after
+21:27
+that let's make a change to the body so we definitely know the CSS is taking hold we'll do a Min height here of 100
+21:36
+VH after that let's set the display to grid and then we're going to place
+21:43
+content Center so everything will be in the center of the page set the font size
+21:48
+to three Ram so it's big but not too big background color let's switch these
+21:54
+around so let's go with black and then let's set the color the text to white
+22:00
+smoke after that we'll just change our H1 and paragraph just a little bit so
+22:06
+both of those and let's say text align going to be Center that's all the CSS we
+22:15
+need and we can apply this to both of our HTML templates and to do that we need to go to the settings.py file again
+22:22
+that is inside of that second my project folder at the very top of the file we need to add One Import and that is
+22:29
+import OS after we make that import we'll scroll down to almost the bottom of the file now we can see we have a
+22:36
+static URL here but we need to add something underneath this so here in all
+22:41
+caps we'll say static files uncore dur
+22:47
+from there we'll put in an equals and we'll create a list now let's refer to that import so os. path. jooin then
+22:56
+inside of here we'll refer to the base directory that's already defined above in this file for us and then we'll say
+23:04
+static and this is referring to the static directory that we created over here so we're telling D Jango where this
+23:10
+folder is for our static assets so let's go ahead and control s to save those
+23:15
+changes again to the settings file and now we need to go back to our HTML templates and add our stylesheet in and
+23:22
+we can do that with a d Jango templating engine it's very cool how it works so
+23:27
+I'll show you in the homepage and we'll go right underneath the dock type definition here and let's put in a curly
+23:34
+brace and then a percent sign say load and then space static another space and
+23:41
+another percent sign and then the closing curly brace so we have loaded in static asset now and now we can use that
+23:49
+and we're going to use that when we link to the H or to the CSS and that is a
+23:54
+link element I can scroll down or arrow down here and say link CSS I get some
+24:00
+Auto completion it says it's a stylesheet it's already linking to style.css but that's not what I want to
+24:07
+do here in D Jango I to link specifically to the file that I have
+24:12
+told D Jango that we have and so I'm going to use that templating engine again a curly bracket opening and
+24:19
+closing and then a percent sign and then the word static and then in single
+24:25
+quotes here I'll say CSS SL
+24:31
+style.css so now I've used the templating engine but I need to put in that closing percent as well so this is
+24:39
+what it looks like when we're using the templating engine we're starting with these curly brackets and of course
+24:45
+having the percent signs as well this should link our stylesheet to this page
+24:51
+so let's check this out we'll need to again open the terminal start the server
+24:57
+after we start the server let's go back take a look at our homepage let's refresh and see if the changes apply yes
+25:05
+they do so we have a big home and it says check out my about page we haven't applied the CSS to the about page yet so
+25:11
+when we go there it still is without those Styles so I'm going to apply that
+25:17
+in the GitHub repository for this lesson but I'll leave this one for you to apply because it's just the same thing we did
+25:24
+to the homepage and once again back in vs code let's link some Java jaas script as well so you can see it works the same
+25:30
+way I'm going to click on the static directory going to click to create a new directory make this one JS now inside of
+25:38
+the JS directory I'll create a new file and this will just be main.js ins of here I'll just put a
+25:46
+console.log and say this is Js from your
+25:52
+about page and we should see this message in the console if we link the JavaScript correctly to the about page
+26:00
+so now in the about. HTML and this is where you're going to link the stylesheet and you can check my
+26:06
+repository to see if you did it the same way that I did but now we need to link
+26:11
+the JavaScript as well so again at the top which you would need for the CSS anyway we're going to start with load
+26:19
+static and we're using that templating engine so we have the curly brackets and the percentages now after the title here
+26:26
+I'm going to put a script tag so I typed script and I'm just going to choose the source here from the list so we could
+26:33
+specify a source this is where we'll use that templating engine but I also want to point out we should put defer right
+26:41
+here as an extra attribute for the script tag so this will wait until all
+26:46
+of the page is loaded and then it loads the script is what defer essentially does now here we'll put in the curly
+26:53
+bracket percent say static just like we did before and now our link so
+27:00
+JS main.js again the closing percent there
+27:05
+as well so let's save this change I left the server running let's see if it
+27:10
+applies our changes when we go back to about reload the page now I'll press
+27:16
+control shift and the letter i to open up our Dev tools over here and see the
+27:22
+console and we have our console message this is Js from your about page hey guys
+27:28
+I hope you're enjoying the video you may be surprised to learn that three out of every four viewers nearly 75% of all
+27:34
+people who watch my channel aren't subscribed so I just wanted to take a quick second and remind you to hit that
+27:39
+subscribe button it really helps me out and if you really like my videos you can get exclusive content and support my
+27:45
+channel even more by joining my patreon at patreon.com davay thanks for your
+27:51
+consideration and now back to the video I've got VSS code open and we are in
+Chapter 2: Apps & Templates
+27:57
+lesson two and the source code for today's tutorial starts where the previous lesson ended and there's a link
+28:03
+in the description that provides the code for each lesson let's start by opening up our terminal with control and
+28:09
+the back tick in VSS code and now let's go ahead and start our virtual envirment
+28:14
+I'm going to type source and then I'm on windows so I type venv scripts if you're on Mac or Linux
+28:21
+you would want to type bin instead of scripts after that let's type slash and
+28:27
+then activate press enter it should start the virtual environment and if you press enter again you should see that venv in
+28:36
+parenthesis as well now after this we need to CD into our my project directory
+28:41
+so CD and then just my project at the command line press enter now we're in
+28:47
+that my project directory I'm going to go ahead and close the terminal window after that before we get started on
+28:54
+anything else I want to highlight a vs code extension you should probably add so I'm going to click the extensions
+29:00
+icon over here after that I'm going to type Jango and it will bring up the
+29:06
+Django vs code extension once you go ahead and install this you can see I
+29:11
+already have it installed once you install this then it will identify some of the files in your Django project and
+29:18
+of course have the color coding that you expect to see in your code and visual studio code now if we combine this with
+29:25
+another extension that I use DS code D ions then you'll see some of the icons
+29:32
+that you see in my file tree so you might want to use this extension as well and your files will have the same little
+29:38
+icons in the file tree that mine do I'll close this out go back to the file tree
+29:44
+let me open up the my project directory over here and we see some files like our
+29:49
+manage.py file that we have over here has the python icon next to it you'll
+29:54
+see things like that when you use the BS code icons extension so today we want to talk about apps in D
+30:00
+Jango now previously we created ajango project now we're going to create a Django app apps should be modular in
+30:08
+other words we might have different parts of a larger project broken into apps or applications if you will So
+30:15
+today we're going to create an app for posts but we might also have an app for users or anything else like tasks or
+30:23
+shopping cart anything you would have in a larger project you can break out out into those separate features and they're
+30:30
+modular so what I mean by modular is you might be able to take one of those apps
+30:35
+from a d Jango project and put it in a different Django project so you're breaking those out into separate logic
+30:42
+separate files separate functions that should work independently let's create our new app once again open the terminal
+30:49
+window with control in the back tick from there I'm going to type Pi you might type python instead of Pi if you
+30:57
+are on Mac or Linux from there I want manage.py so we're going to call something from that manage.py file after
+31:04
+that I want start app all one word and then we need to name it I'm going to
+31:09
+name this app posts and press enter this should create a new app in our Django
+31:15
+project and if we look over here I'll close the terminal again we now have a post directory inside of the top level
+31:23
+my project directory so let's open this up we can see inside files of have already been created including a views
+31:30
+file which we had to create in the last lesson now it's already here for us so
+31:36
+let's look at the views file I'll click on it in the file tree we can see the import is already at the top from Django
+31:41
+shortcuts import render we also had to do that in the last lesson now it's already here for us so let's create a
+31:48
+function I'm going to say Def and I'm going to call this postscore list and of course it's going
+31:54
+to receive request and from there down below we'll say return render and then
+32:02
+the first thing you always put in render is the request after that we don't have
+32:07
+what we need to put here next I'll just put the single quotes and we'll come back and put in what we're going to put
+32:13
+as far as what is rendered in return so now before we go any further we need to tell our python project about the new
+32:20
+app that we added to the project so to do that we need to go to the settings file that we were in in the previous
+32:25
+lesson you remember that's inside of the my project directory that we have over here that is inside of the top level my
+32:33
+project directory so let's open this up click settings now we're in the settings.py file and let's scroll down
+32:40
+to installed apps and at the bottom of the list let's just add posts in single
+32:46
+quotes and save the file so now we have told the app or we've told the project
+32:51
+if you will about our new app called post so we can close the settings file
+32:56
+now inside of our new post directory let's go ahead and create another new
+33:01
+directory and let's name this one templates so we already had a templates directory at the top level that we
+33:08
+created in the last lesson but this directory for templates is specific to our posts app now inside of this
+33:15
+templates directory let's create another directory named posts so now this is
+33:21
+specifically templates for posts that we have inside of our post app we're creating a name space if you will we're
+33:29
+naming this specifically for post so it's easy to identify in our code now
+33:35
+after that let's go ahead and add a new file inside of the post directory and
+33:40
+notice the little dj over here for D Jango it assumes right away that I'm going to create an HTML template and
+33:47
+this is how it identifies it and that's exactly what I'm going to do let's call this
+33:53
+postscore list. HTML now I want to type an image short short cut here with an
+33:58
+exclamation mark to get the skeleton for our page just like we did for the HTML pages in The Last lesson but notice my
+34:05
+image short cut is not working let's fix this for our now D Jango HTML files as
+34:11
+identified by that D Jango extension we installed so to do that I'm going to delete this exclamation mark temporarily
+34:18
+let's press control comma to open the settings in vs code from here let's type emit that's
+34:25
+Emme now once we get to the imit settings let's scroll down until we see
+34:30
+emit include languages this is what we need let's click add item here let's
+34:36
+type D Jango dhtml and then tab over and for Value
+34:42
+put in HTML now we'll click okay and we should be good to go let's close the
+34:47
+settings now inside of our new postscore list. HTML file I can type in
+34:53
+exclamation mark and we get the imit auto completion once again so I'll press tab that gives us a skeleton for our
+34:59
+HTML page and now I'm just going to change document here in the title to posts list and I want just a capital l
+35:07
+there after that I'll put an H1 here in the body and I'll put posts list inside
+35:13
+of that as well contrl s to save and we're finished with our post list template for now now you may have
+35:20
+noticed there's one file that's missing inside of our new posts app and that is the urls.py we have one that we prev L
+35:28
+looked at inside of the my project directory so let's click that again to look at it and of course it's got
+35:33
+comments up here that were originally created by Jango when we created our project let's copy all of this except
+35:40
+this from Django do contrib import admin we don't need that so let's copy this from line 18 all the way down to 25 then
+35:48
+contrl C I guess I should say highlight from 18 to 25 then copy with contrl C
+35:54
+now let's go back to our post directory over here we could click click on views once again but now we want a new file so
+36:01
+I'll click the new file icon I want urls.py let's just paste into this
+36:07
+urls.py file and from here we can go ahead and delete that admin line so
+36:12
+we'll remove that let's go ahead and remove the about line as well because we're just going to use this line that
+36:18
+has I need to close out that list once again with a bracket but we're just going to have this path that goes to
+36:24
+this empty string just like we went to the homepage except now we're already in the posts path so we don't need to say
+36:31
+posts here once again that's already understood as far as Django is concerned
+36:36
+so we're going to go to views and then we'll have our DOT and then we'll say posts list and this will know where to
+36:43
+go because in the previous lesson in the settings we already told it we were going to look for templates in the
+36:49
+templates directory and that didn't apply to just that first templates directory we created it applies to all
+36:55
+of the templates directories through throughout the whole project so it knows to look in our new templates directory
+37:02
+for this post list template as well now remember we never completed the views
+37:07
+file so let's go back to views pi and this is where we'll specify posts a little bit more directly like you would
+37:13
+think so we've got the request and now we need to say posts SL postore list.
+37:22
+HTML oh and my bad here this should also be posts list it should be posts /
+37:28
+postscore list neither one is missing an S at the end so let's save that file and
+37:33
+now in our new app we have created our post list template and of course put that inside of a templates directory and
+37:41
+once we're in the templates directory we're telling D Jango to look in the post directory and then for the Post
+37:47
+list template but then we also created the URLs file and it has the pattern here for our post list that is our view
+37:56
+now from there we need to go back and register our URLs that we create in this
+38:01
+new urls.py file inside of the main URLs file that we had from the previous
+38:08
+lesson over here so to do that now we need one more import so besides path coming from Django URLs we need to put a
+38:15
+comma there and also import include and now we can use include in the path
+38:21
+where're about to create below so let's start that as well I'll enter and then say path and then we're going to go to
+38:28
+posts slash and then of course single quote comma and then we'll have include
+38:35
+and now we're going to have posts. URLs if I could spell URLs correctly oh and
+38:41
+thank goodness V code is telling me I've got an error here because I didn't put single quotes around post. URLs and it
+38:48
+does need to be inside of those quotes so now what we're telling uh Jango is
+38:54
+that we want to look inside of our posts app and and look at the URLs file inside
+38:59
+of that post application that we've created inside of our project okay let's save that file with controls and after
+39:06
+that we're ready to start our server so control in the back tick to once again open up a terminal window from here we
+39:12
+want to type pi manage.py and then run
+39:18
+server press enter and from here of course we get the migration warning again like we did in the previous
+39:24
+tutorial we will get there we just haven't covered that yet don't worry about that we can press control and
+39:30
+click on the 127.0.0.1 uh colon 8000 which is the port the
+39:38
+127.0.0.1 is the same as typing in Local Host which you could also do but I'm
+39:43
+going to control click here to launch this in the browser and I'll open the browser so we can see it here is our
+39:50
+homepage that we had from the last lesson as well and that means our server is running and it's serving this web
+39:56
+page at the Local Host Port 8000 up above here so from there we can click
+40:02
+the about page and we also see that but we can also change the word about now to
+40:08
+posts and we should see our post list template and we do now notice we didn't
+40:14
+apply any CSS to our post list template yet and there are other things we can do now we briefly learned about applying
+40:21
+static files like CSS and JavaScript in the previous lesson so now we actually
+40:27
+used uh templates to do that but now let's learn a little bit more about templates and you can see how powerful
+40:33
+they are as we apply a nav bar and some different styles to all three of these
+40:39
+Pages we're back in vs code the first thing I'm going to do is scroll down and go to our static directory open up the
+40:45
+CSS directory click the style.css page we didn't have a whole lot in here and
+40:51
+we won't have much more in here after this lesson but I am going to change it a little just going to select it all and
+40:56
+paste in my new CSS where you can see I've added just a little bit more I've got some here for the nav element that
+41:02
+we're going to add I've also got a main element now and then I've got a little bit of styling for a link and you can
+41:09
+get all of this from the code repository for this lesson I'm not going to go over the individual CSS here but now if I go
+41:17
+to our top level templates directory that we have in our project we still have the home and about Pages let's
+41:23
+click on home here and let's change a few things as a matter of fact we could change quite a bit and before I do that
+41:30
+I should actually create the template we're going to use for all of the pages so let me do that before we change
+41:36
+anything in home let's create a new file and we'll call this layout. HTML and
+41:43
+inside the layout I want a skeleton again so I'll type the exclamation mark for imit and get a page skeleton but now
+41:51
+we need to put in some blocks and if you remember from the previous lesson because we did this to load the CSS and
+41:57
+JavaScript we start at the top here underneath the dock type definition and we'll have curly brackets and a
+42:04
+percentage sign and then I'm going to say load static and of course that closes out with another percent and
+42:11
+curly bracket so now that we're loading these static assets we could link to those and let's just grab that out of
+42:18
+the home file here so I don't have to retype now we only had the CSS in the home let's go to about and now we'll
+42:24
+grab the link for the stylesheet will also grab the script tag crl C to copy
+42:30
+those come back here to the layout and I'll just put them underneath the title
+42:36
+so now we have the link and it will be completed with the CSS stylesheet we
+42:41
+have the script it will be completed with the main.js file I'm going to change this document title though so
+42:48
+let's press enter here so we have the opening title and then the closing title tag and now we need to define a block so
+42:56
+this will start with early brackets again percentage signs and then I'll say block and I'm going to call this block
+43:02
+the title now we also need to say where we're closing or ending the block so I'll put another curly bracket percent
+43:10
+and we'll say end block now in between we could put in what we want to have
+43:16
+here but it will be replaced from our other templates when we have something so I'll show how that works but I'll
+43:23
+start out with just what I want as default if nothing replaces this block so I'll put in Jango app and that's just
+43:31
+a generic but if I don't provide a title in any of the other Pages that's what we'll be here and now let's scroll down
+43:37
+to the page and we're going to have two sections here a nav then besides the nav
+43:43
+we're also going to have a main section so inside of the main section let's
+43:49
+create a block here let's call this content then we'll of course end
+43:56
+that block as well we don't have to put in anything for a default so I could just leave this empty and that's what
+44:01
+I'll do here so we'll end that block as well but content can be added there to
+44:07
+this template now that we've labeled it as content and now for the nav I'm just going to create something here that
+44:13
+won't be added specifically by any template this will just be a nav bar
+44:18
+that gets added to every page so I'm going to say a hre set this equal to
+44:24
+slash so this would be the home and let do the Windows key and period I'm not
+44:29
+sure what it is on Mac off the top of my head I can type home and it brings up the icons here I've got the icon I want
+44:38
+I can close this out now let's put a little pipe symbol here to separate these as well and we'll come to the next
+44:45
+line I'm just going to highlight this first one now shift alt and the down arrow and now I've got three separate
+44:51
+ones so we can change these the next one is going to about let change this to
+44:58
+again Windows key and I'm going to do happy face and finally let's change this
+45:04
+one to a newspaper look for it would be our posts so I'll say news there we go and of course I want to
+45:11
+get rid of that last pipe so now I have three links that go to the Navar and they're all just little Emoji links and
+45:17
+with that I've completed a simple layout template for this application so now
+45:22
+let's go back to the other pages and I said application actually there could be several apps or applications in ajango
+45:29
+project so this is the top level so I've created a simple layout for the project
+45:34
+pages so now let me go to the home.html and now we can make some
+45:39
+changes here I'm going to highlight the H1 and the paragraph here that we have inside of the body and I'll just contrl
+45:46
+C to copy those and then I'm going to select everything else and just hit backspace to remove it I want to start
+45:53
+out at the top with extends and then then I need to put single quotes and
+45:58
+I'll say my layout. HTML and another single quote so I'm extending that
+46:04
+template that we created the layout. HTML and now in this page I'm going to replace some of the content that we
+46:11
+created in blocks inside of layout. HTML so now going to say block title and I'll
+46:19
+put what I want to replace the Jango app with and here I'm just going to say home
+46:24
+then after that press enter we need to close out this block as well so once
+46:30
+again end block after that let's create our content so now we'll have block
+46:38
+content and under there I'm going to paste in what I had copied before so I've got the H1 and the paragraph
+46:46
+element and then down below I'm going to say end block as well that's now all we
+46:53
+need for our homepage because we are adding content where we had the blocks in the layout. HTML file and then it
+47:01
+uses that template because it extended the layout. HTML so now I'm going to do
+47:07
+contr a to copy everything we added to our home.html and contrl C to copy
+47:13
+actually control a to select go to the about. HTML again and I'm going to just
+47:19
+click above everything we currently have in there and paste in the new information we created for home now if I
+47:26
+scroll down I'm going to take the about in the H1 and the paragraph and copy
+47:33
+those and replace the content we had above then I'm also going to change home
+47:39
+up here in the title to about now I can delete everything we previously had in
+47:44
+this file and we should be finished with our about page although I do kind of want to format this with an indent I
+47:50
+just think it looks better overall and now let's contrl a to highlight all of this again contrl C to copy and one more
+47:58
+page let's go to our posts list that we have inside of our posts app we created and then the templates directory post
+48:05
+directory post list and let's do this one more time so I'll paste this in
+48:10
+above then I'll just change the about to posts list and Below I'm going to get
+48:17
+rid of the paragraph all together because we don't need it there and then we should just have posts list in an H1
+48:25
+on the page and I'll delete delete everything that was previously in the page so this would be our post list now
+48:33
+and we're using that layout template once again okay let's open the terminal window with control in the back tick we
+48:39
+have the server running but just to make sure we get the new information let's control C to close it we can Arrow back
+48:45
+up to get that run server command press enter should start the server once again
+48:50
+now let's go to the browser and here's the about page that we are on I'm going to hold down the shift key and refresh
+48:56
+to hopefully get the new page and that's what we get so look we now have our Navar across the top with the three
+49:04
+different icons to navigate we could also go back to the homepage with the link we have here you can see I did
+49:10
+change the Styles a little bit let's go to the Post page and when I click there it says home so I've got something
+49:16
+routed wrong or something I changed let me go back and look in vs code and it
+49:21
+could be in simply in that navbar layout and yes I didn't add posts here inside
+49:28
+of that template so let's see if this picks this up or if I need to do a complete restart of the server well
+49:34
+let's go back to Chrome and I'm going to hold down the shift key and refresh once again hopefully now this would go to
+49:40
+post yes I can see it's going to so there is our post list here is our about
+49:46
+page and here is our homepage and the links on these Pages the about and home should also work so now you can see the
+49:54
+power of templates and we're going to use those a lot more as we set up our
+49:59
+data and then we pull that data into templates and that creates some very
+50:04
+powerful Pages where we can bring in all of that data use one template but yet
+50:10
+generate say many post Pages or many user profiles or different things like that all to come in future lessons the
+Chapter 3: Models & Migrations
+50:18
+source code for today's tutorial starts where the previous lesson ended and there's a link in the description that provides the code for each lesson I've
+50:25
+got vs code open you can see I've got a lesson three folder over here now and let's go ahead and open a terminal
+50:31
+window and like we do at the beginning of every lesson let's go ahead and start our virtual environment so I'll type
+50:37
+Source then venv SL scripts this would be a lower
+50:42
+case bin if you're on Mac or Linux and after that I want activate I'll press
+50:48
+enter and now you can see the venv in parenthesis so let's go ahead and CD
+50:54
+into my project so now we're in the directory that we need to be in I'm going to close the terminal for now
+51:01
+let's open the my project directory here in the file tree and then from there let's open the post directory and let's
+51:07
+go to the models.py file now we can create models with our python code that
+51:13
+they model data and each type of data is going to have a table in the database
+51:18
+and what happens when we create the python code and their classes by the way the models then they get migrated and
+51:25
+become table in the database so the migration takes our python code and
+51:30
+turns it into a database table so for example we might have users and we'll have posts and so those would be two
+51:38
+separate tables in our database so we need to start out by creating our model in Python and we're in the models.py
+51:44
+file right now let's start on line four in our models.py file and I'll type class host and then we pass in models.
+51:53
+model with a capital M that's important and then a colon after that we start to Define our model
+51:59
+and so here's what we want in our post model we want a title field we want a body field and then let's have a slug
+52:07
+field now a slug would be the defining part of the URL for the post so we might
+52:13
+have rain.com slost SL and then you would see the slug
+52:18
+that is typically how we refer to that it's part of the URL and it identifies the post or article if you will then a
+52:25
+date as to when it was created now we need to set all of these equal to something so let's go ahead and set the
+52:32
+title equal to models do character field and now this character field is going to
+52:39
+accept a maxcore length let's set that equal to 75 characters now let's quickly look at
+52:46
+the Django docs in the Django docs you can see that we've got a model field reference title here so this page is
+52:53
+going to show all the different field types that we can have and as I scroll down first it has field options here
+52:59
+under the field reference that we see on the right but then as I scroll down we'll find the field types and you can
+53:05
+see that I used the character field so let me click on that and we'll get the details and here you can see the details
+53:11
+of this character field and it accepts a max length so anytime you need a field
+53:17
+and you can explore this page I'll link to it in the description you can look up the different types available to you and
+53:22
+of course you can use that do notation vs code to pull up the menu and look at any name that ends with the word field
+53:29
+as well as it should be in this list okay we're back in VSS code now let's set the body equal not minus but equal
+53:36
+to models. textfield and put parentheses we won't pass anything in there now there is a
+53:43
+difference between the character field and the text field and you could look this up in the docs but the text field is going to relate to a text area form
+53:51
+input which is different and that's something else about the fields that we choose here they relate to form form
+53:56
+inputs when we go ahead and look at these in our website so that's important as well we're not just defining our
+54:03
+database we're also thinking about how we're going to accept that data in a form now slug is going to equal models.
+54:12
+slug field and we won't pass anything into it either but then date is going to
+54:17
+equal models. dat time field and here we do pass something in I need autocore now
+54:25
+uncore add equals true and that means a
+54:30
+Tim stamp is going to be added or a date time stamp every time the user adds
+54:36
+another post so all the user needs to provide is the title body and Slug and the database will automatically add the
+54:43
+date time stamp to go along with that so now we've completed our model let's save the file let's go ahead and open up a
+54:50
+terminal window with control in the back tick and from here like we've done in previous lessons let's start the server
+54:55
+so I'm going to type Pi if you're on Mac or Linux you want to type python then
+55:00
+manage.py and then run server and when I enter we'll see that same error slw
+55:07
+warning message that we've seen in previous lessons that says you have 18 unapplied migrations and so that is
+55:15
+because D Jango comes with some of its own built-in models as well and we need to apply those migrations also so let's
+55:22
+do that first I'll press contrl C to get back out of the server and now to go
+55:28
+ahead and apply these migrations we need to type pi and I'm on the wrong Keys
+55:33
+again Pi there we go manage. pi and then migrate and now let's press enter once
+55:40
+we do that you can see it applied all of those migrations from the built-in models that D Jango provided but this
+55:47
+did not apply our post migration we need to make that migration first before it
+55:52
+can be applied so let's once again type Pi then manage. pi and then we type make
+56:01
+migrations all one word no space there and press enter and you'll see that it
+56:06
+creates a migration for our post model that we created and it tells us where this migration is and we can look at
+56:12
+that in just a moment but it's uh posts SL migrations and then it has a number
+56:18
+001 because Jango is going to keep track of these migrations then when we create
+56:23
+another one let's say we change something about our post model we would need to make another migration at that point when we do that it's going to
+56:31
+compare the migrations it's going to know what it's already created in the database and it's only going to take the
+56:36
+actions that it needs to based on reconciling what has already happened with the changes we have made so now
+56:43
+that we've created this migration we can also apply it but before we apply it let me close the terminal and let's look at
+56:49
+it we've got the migrations folder over here here is the migration file and you can see inside the file it wants to
+56:56
+create this model the database so if we create a migration in the future it's
+57:02
+not going to create the model again it will have already done so but this first time it needs to do that and we can see
+57:07
+the different fields that we added as well so that's the migration let's go ahead now apply it to the database by
+57:14
+sending that migrate command so we'll say Pi manage. Pi and then just type
+57:20
+migrate press enter and now we get the messages back that it has applied the
+57:26
+migrations it says applying post. _ initial and okay so now that is
+57:33
+available in our database the source code for today's tutorial starts where the previous
+Chapter 4: Django ORM
+57:38
+lesson ended and there's a link in the description that provides the code for each lesson we've got VSS code open
+57:44
+let's go ahead and open a terminal window once again and let's start our virtual environment with Source now we
+57:50
+want to type vv/ scripts bin if you're on Mac or Linux after that activate we'll press
+57:58
+enter and that should start our virtual environment I can press enter again to make sure we have the venv in
+58:04
+parenthesis and we do with that said let's go ahead and talk about the topic
+58:10
+for today but we're not going to close the terminal window right away so the topic is the Django om and it's a little
+58:16
+easier to explore that om in the shell and we're going to do that in the terminal which is why I leave that open
+58:23
+but also what is an OM it's object relational mapping it's kind of the
+58:28
+intermediary between our python code and our database so we can execute something
+58:34
+in our python code and then it goes ahead and carries out that action on the database so we have mapped what we are
+58:42
+doing from our model to our actual database and that om kind of carries out
+58:47
+the commands between the two so now let's go ahead and get started with that going to do that by typing Pi python if
+58:54
+you're on Mac or Linux after that manage.py and then shell and press enter
+59:00
+and I got ahead of myself we need to actually CD into the my project folder first and I should do that at the
+59:07
+beginning of every lesson right after starting the uh environment so now we're in the my project folder going to Arrow
+59:14
+up and see if I can do that Pi manage.py shell once again now we have the interactive console like we expect and
+59:21
+so to work with our post model in this interactive console shell we actually need to import that that as well so we
+59:27
+can say from and then we'll say posts. models and I need to type models
+59:33
+correctly and then we will import post with the capital P which is our post model now once we've imported that we
+59:40
+can create a new instance so I'm going to say p equals post and put the
+59:45
+parentheses after that and then press enter so now we have a new instance of
+59:51
+our post model so if I type P see what we get back it says it is a post object
+59:56
+the none means we haven't saved any post yet to our database so there is no post
+1:00:04
+model no post object at this point based on the post model saved in our database
+1:00:09
+so that's all that the none means so from here let's go ahead and assign a title so we'll say p. tile
+1:00:16
+equals my first post with an exclamation mark and then end that with a quote and
+1:00:22
+press enter so now we have applied that title and now we should save this to our database so we'll just say p Dove and
+1:00:30
+put parenthesis once again and I'll press enter and now that is saved to the database so you can see how easy working
+1:00:37
+with the OM is in Django and now that we've saved that let's retrieve all the
+1:00:42
+posts that we have in our database which at this point it's only one but we can confirm that by typing post doobs doall
+1:00:51
+and parenthesis I'll press enter and it returns a query set back and you can see
+1:00:56
+it says we have one post object now in our database instead of none we have a one in the parentheses here but that
+1:01:03
+post object is kind of generic and if we had more posts in there it would be nice to be able to tell the difference
+1:01:08
+between the posts as well so we can do that first we need to exit this interactive shell though so I'll type
+1:01:14
+exit and parentheses now that we've exited the Shell let's go ahead and close the terminal window let's open my
+1:01:21
+project over here in the file tree from there let's go into the post directory where we created our posts app and let's
+1:01:27
+go to the models.py file and we want to add a method to our post class now a
+1:01:33
+method is like a function except it's part of a class so underneath we'll make sure we're indented so it applies to
+1:01:40
+this post class let's go ahead and start and I'll type Def and then a space two
+1:01:45
+underscores St and you can see Visual Studio code wants to help us so I can just press Tab and it's going to apply
+1:01:52
+most of what we need so we've got twocor St 2 underscores parentheses the word
+1:01:58
+self and then a colon return self Dot and they put name here but what we
+1:02:03
+really need is self. tile based on our model above so now we want to return the
+1:02:09
+title instead of just a generic phrase post object so let's save this change to
+1:02:15
+our model now this isn't changing the data in our model so we don't need to
+1:02:20
+create another migration and send this to the database this is just a method here that we can call on the model so no
+1:02:27
+migration is necessary so now let's open up a terminal window once again and we need to start back where we were from
+1:02:34
+the beginning as far as the shell is concerned so here I'm going to type Pi
+1:02:39
+manage.py shell to get back into that interactive shell and now I need to
+1:02:45
+import the post model again so I'll say from posts. models and then we'll say import
+1:02:53
+and post with a capital P so now now we've imported the post model once again
+1:02:58
+let's create another new instance so I'll say p equals post and parenthesis
+1:03:04
+so that's a new instance let's create a second uh post title here so I'll say
+1:03:10
+this is my second post after we've done that let's save
+1:03:16
+this post as well so now we should have two posts in our database let's go ahead
+1:03:21
+and check that by using the post model and then saying objects. all and parentheses afterwards I'll press enter
+1:03:28
+And now when we get that query set in return you can see instead of saying post object it says post my first post
+1:03:34
+and post my second post based on those titles that are inside of our posts so
+1:03:40
+you've learned a little bit about interacting with the omm that is built into D Jango now in the next lesson
+1:03:46
+we're going to work with the Django admin where we can add more posts and you'll see how all of this can work
+1:03:52
+inside of our web app but for now don't forget to exit this interactive model by typing exit with parentheses and
+1:03:59
+pressing enter the source code for today's tutorial starts where the previous lesson ended and there's a link
+Chapter 5: Django Admin
+1:04:05
+in the description that provides the code for each lesson I've got VSS code open let's go ahead and open a terminal
+1:04:11
+window with control and the back tick from there let's start our virtual environment and I'm going to do that by
+1:04:16
+typing source and then venv SL scripts once again bin if you're on Mac or Linux
+1:04:24
+and after that we want activate go ahead and press enter we can press enter one more time to verify that
+1:04:30
+we have the venv in parentheses and now we're ready to CD into the my project
+1:04:37
+that we have created today we're talking about the D Jango admin feature and it provid some features actually that we
+1:04:43
+would have to build otherwise and they're very useful features so let's check all of that out and we'll start by
+1:04:48
+closing the terminal window then let's open the my project folder and then inside of the my project folder we have
+1:04:55
+add another my project folder let's open that up and then go down to the Views
+1:05:01
+and when oh not the views I'm sorry the urls.py and once we're in there let's
+1:05:06
+scroll down and let's look at the URL patterns remember this admin path was
+1:05:11
+already in here for us we're going to use this today so I just wanted to draw your attention to it's already in here
+1:05:18
+so we don't need to add anything extra for it now let's go ahead and open the terminal window again and let's start
+1:05:23
+the server by typing pi or python if you're on Mac or Linux there we want manage.py and then run server press
+1:05:32
+enter we should get the server running and now let's open up the browser okay I've got the browser open and here's our
+1:05:38
+project from the last lesson now note I have added a little bit of new CSS so if you want to apply the same changes I did
+1:05:45
+you might grab that CSS for this lesson from the GitHub repo and apply it to your project as well it's just a couple
+1:05:52
+of changes I'm not really going to go over any of that okay from there we need to go ahead and add SL admin to our
+1:05:59
+Local Host 8000 that's in the URL so SL admin press enter and now we have the
+1:06:05
+login to D Jango Administration but we haven't created a username or password
+1:06:10
+yet let's go back to vs code and do just that okay I'm back in vs code I'm going to press contrl C to exit the server and
+1:06:18
+now we want to create a super user and that would be a user that can access the
+1:06:23
+admin panel we can do that by typing pi and then manage.py as we do for so many
+1:06:28
+things and then we want to type create super user all one word now let's press
+1:06:34
+enter from here it's going to ask us several questions and you may have a default name for your PC Mac or Linux it
+1:06:41
+says mine is PC but I don't want to use that name I'm going to enter in Dave as my username press enter there I'm not
+1:06:49
+going to enter in my email address and that's not required after that a password now there are some require here
+1:06:56
+but it doesn't tell us in advance like if I just type test I'll have to enter it again and after I enter it again it
+1:07:02
+tells me Ah that's too short it must contain at least eight characters it's also too common so now I'm going to say
+1:07:10
+no I don't want to bypass the password validation I want to go ahead and use
+1:07:16
+the password validation so it's going to ask me this again now I'll type test
+1:07:23
+test press enter have it enter that again and it says well now I've got
+1:07:28
+eight characters but it's still too common so we need to think of something different so I'm just going to type Dave
+1:07:35
+test let's see if that works of course I have to say no again here so Dave test
+1:07:41
+that worked so far let's try it again and yes that's just fine so it's not a
+1:07:46
+mix of numbers and letters or anything like that it just can't be too common of a word and it must be at least eight
+1:07:53
+characters so now I've created my super user Dave and I have a password let's start the server once again with pi
+1:08:00
+manage.py run server press enter now that the server's up and running again
+1:08:05
+let's go back and log in and we're back in Chrome at the admin panel I'm going to type Dave and then I'm going to type
+1:08:11
+my password press enter and yes we're logged in this is the Django admin panel
+1:08:17
+you can see it says Django administration at the top also says welcome Dave hey that's nice we can view
+1:08:23
+our site so if we wanted to go back to to our main site we could change our password we could log out and there's
+1:08:29
+light and dark mode here that we can toggle as well and by the way let going go ahead and click this you see this one
+1:08:34
+that's half and half I think that means system preference so the next click goes to light mode and then the next back to
+1:08:41
+dark so I'm just going to leave it on dark and from there we've got groups and users well we haven't created any group
+1:08:47
+that's of course for some user management as well where we could group users but we do have a user let's go
+1:08:53
+ahead and click and look at this and for users we've got Dave in here that's me
+1:08:59
+and let's scroll over you can see staff status has a check mark and that means I'm a super user that can actually
+1:09:05
+access this admin panel we could have other users that couldn't access the Django admin panel at all and so besides
+1:09:12
+just managing users which is very nice we can also use this admin panel as a CMS which means content management
+1:09:19
+system but right now we don't have anything in here we were creating posts we don't see any of those let's go back
+1:09:25
+to vs code and set it up so we do see the post inside the admin panel and we're back in vs code I'm going to close
+1:09:32
+this terminal window let's also collapse the my project directory here in the file tree and look inside of the post
+1:09:38
+directory for our post app that we created and now I want to go to the admin.py file that we have right here
+1:09:45
+and it says register your models here so if we want to see any model we've created inside the admin dashboard we
+1:09:52
+need to add it here in this file so let's do that here on line four I'm going to type
+1:09:58
+admin. site. register and then we need to import our post model so here at the
+1:10:05
+top I want from. models spell models correctly and then I
+1:10:11
+want import post our post model that we had created before and then we need to
+1:10:17
+pass in the post to this register here so let's save this now let's open the
+1:10:22
+terminal once again and it looks like it restarted let's go ahead and check our website I'm back in the Django admin
+1:10:29
+panel let's refresh and see if we see anything new yes we do we see our posts
+1:10:34
+here so let's click on posts and see what we've got if you remember we created a first post and a second Post
+1:10:41
+in the OM lesson so that's what we have here we see both of those and of course
+1:10:46
+there's other fields besides the title in the model so if we click on this like my first post we can see those as well
+1:10:52
+here's the title the body and the SL plug and if you remember there's also a date but we're adding that date by
+1:10:59
+default it's nothing the user would edit or that we would edit as an admin so
+1:11:04
+we're not going to see that here either but we have a body and we have a slug let's go ahead and update this first
+1:11:10
+post and we'll say I have added my first
+1:11:15
+post and for slug we'll say first- poost if you remember the slug is what we would see at the end of the URL let's
+1:11:23
+let's delete this for a second I want to show you just something here for this if I try to save this without one of these
+1:11:29
+items now it says we have an error so now in this admin panel all of these are
+1:11:35
+required if we edit or if we add something new so I'm going to say first- poost for the slug save now everything
+1:11:43
+is good it says the post my first post was changed successfully notice we also have an add post button up here too
+1:11:50
+where we could add another post let's do that so we'll add a post and I'll say my
+1:11:56
+elusive third post I almost didn't make this post
+1:12:04
+that's why it's elusive right and we'll say third- poost or the slug let's go
+1:12:10
+ahead and save that and now we have my elusive third Post in the list as well
+1:12:15
+so you can see how we can manage content in the Django admin panel as well as managing users now let's go back to VSS
+1:12:22
+code and display these posts back in VSS code once again let's close this terminal window and now let's leave this
+1:12:28
+post directory open here in the file tree and we want to go to the views.py
+1:12:34
+file and here we need to import our model once again so at the top we're going to say from. models import post
+1:12:44
+now that we have the post we want to pass this so the template we render can actually use that post data so first
+1:12:51
+let's just get all of the posts because it's going to render each post post with a template so to do that let's say post
+1:12:59
+equals let's actually make this plural because their post now it's going to equal poost doobs doall remember we
+1:13:07
+learned this from working with the OM then we can put the parentheses there and that's going to get all of the
+1:13:13
+objects for us but now with our render statement we need to add a third param we have the request and then we have
+1:13:21
+postpost list. HTML for the file but now we actually need to pass this post data
+1:13:27
+so this is actually a dictionary here a python dictionary we have curly braces
+1:13:33
+and I'm going to say posts and then after that it's going to be the posts data and I can press alt Z so that wraps
+1:13:40
+down and we just see it all here without scrolling but we've just added this extra pram to our render call right here
+1:13:48
+and that's all we need to do so we're bringing in the post model we're getting all of the posts then we're passing that
+1:13:55
+data onto the template so we can use it in our post list template so now still inside of our post directory here in the
+1:14:02
+file tree let's open up the templates directory and then remember we had another post directory and inside of
+1:14:07
+that is our post list template and we were extending that layout so we had the nav bar at the top already so we were
+1:14:14
+already bringing in just a little bit of data here inside of this template but it was static data just things we had
+1:14:21
+already typed in so it says post list and then we had an H1 with post post list matter of fact let's change this
+1:14:27
+just to post in both of those in the title and the H1 after this we can bring
+1:14:32
+in a lot more data and we can write some semantic HTML as well so I'm going to start off by surrounding everything in a
+1:14:40
+section element and here I automatically got the closing one so I'll just cut that with crl X paste with contrl V
+1:14:49
+after that I'm going to add a for Loop underneath the post so how do we do that well we already have the post data being
+1:14:56
+passed by render so we have curly braces and percents just like we saw with the
+1:15:02
+block content and the end block as well and then of course block title here's
+1:15:07
+block content so we named these earlier and then here we're going to have our
+1:15:13
+for Loop so I'm going to say for post in posts now this is our normal type of
+1:15:20
+template tag and we can write python code there but we're also going to bring in data and you you see it has a
+1:15:26
+different type of tag what I'm going to do first before I forget to is end the for loop with end four now in between
+1:15:34
+I'm going to use an article tag which is semantic HTML it's saying the type of
+1:15:40
+data we're putting in here could be syndicated in a way or it could actually be posted and reposted so we're going to
+1:15:46
+have more than one article on the post list page and that's essentially what the article tag is saying so from there
+1:15:52
+I'm going to have an H2 that's going to have the title and then I'm going to go
+1:15:58
+ahead and add another paragraph here and then after this paragraph I want one
+1:16:04
+more paragraph So what we're going to do is put in the title the date and then we'll put in the body of the post as
+1:16:11
+well so let's start off with this article that has the H2 each one is
+1:16:17
+actually going to have the H2 and let's put in the title and this has the different type of tag here so two curly
+1:16:23
+braces and we'll say post . tile and two more curly braces so remember we're
+1:16:29
+going through all of the post data so for post and post so then inside of the loop I'm referring to post here I say
+1:16:36
+post. tile now this is going to be very similar for the other fields so I'm just
+1:16:41
+going to highlight that contrl c to copy click in here contrl V to paste V to
+1:16:47
+paste now I'm going to say date because after the title I want the date of the post then I'm going to say body so we're
+1:16:55
+bringing in all of that data also on the article itself I want to add a class and
+1:17:01
+I want to set that equal to post as well just because we may want to style the
+1:17:06
+posts later with a post class now let's hit control in the back tick just to make sure our server is running it is so
+1:17:12
+let's go to Chrome and check out our post list I'm back in Chrome right where we left off at the admin panel looking
+1:17:19
+at our post so now let's click view site and it brings up our site and I can click the news paper icon here to go to
+1:17:26
+the Post list and there's our post so we've got my first post my second post and my elusive third post and you can
+1:17:32
+see we've also got the date and the first post and the third post both have
+1:17:37
+a body as well let's go ahead and do something here though we've got the first post this is the oldest one at the
+1:17:44
+top what if we want the newest one at the top let's make that change quickly in vs code I'm back in vs code let's go
+1:17:50
+to the views.py inside of our post directory now let's close the terminal so we can
+1:17:56
+see everything and when we get all of the posts it says post. objects. all we
+1:18:01
+can add something here so let's say dot and then order uncore bu and then inside
+1:18:06
+of these parentheses we're going to put in date that's the name of the field that we want to order by so that's
+1:18:12
+really all we need to do and we're back in Chrome Let me refresh the page and no change let's go back to the code and
+1:18:19
+let's sort this actually or order this in a descending way I didn't think to do
+1:18:24
+that before so it's actually still has the same first post at the top but if we put a minus sign in front of the word
+1:18:32
+date I think we're going to get what we want with the newest at the top let's go back and check it out and refresh and
+1:18:39
+yes my elusive third post is now at the top so what we wanted to do was order
+1:18:44
+Buy in a descending way and we had to put that negative in there that minus sign to switch the sort order from
+1:18:52
+ascending to descending so now we're displaying these posts I hope you've learned more about the Django admin
+1:18:59
+dashboard and how it can help you manage content as well as users we've added more information to our web app and it's
+1:19:06
+just getting interesting in this Django series The Source Code for today's tutorial starts where the previous
+Chapter 6: Pages, URLs & Slugs
+1:19:12
+lesson ended and there's a link in the description that provides the code for each lesson I've got Visual Studio code
+1:19:17
+open let's open a terminal window by pressing control in the back tick from there we want to start our virtual
+1:19:23
+environment so I'm going to type source then venv SL scripts you would want to type
+1:19:29
+bin all lowercase if you're on Mac or Linux then activate press enter I can
+1:19:34
+press enter again and we should see that venv in parenthesis now let's go ahead and CD into the my project directory and
+1:19:43
+we're where we need to be now before we dive into today's lesson we need to go ahead and add the rest of the data to
+1:19:49
+the posts we created in the previous lesson so let's do that by starting our server and going to the Django admin so
+1:19:55
+I'm going to type Pi then I want manage.py and then run server press
+1:20:02
+enter it should start our server on Port 8000 here on Local Host I'll press control and then click this address and
+1:20:09
+then I'm going to open up Chrome so we can see our project there it is let me go ahead and type slash admin here at
+1:20:17
+the end and this should bring up the login screen if you haven't saved your username and password into Chrome you
+1:20:23
+may need to enter that if you remember I typed Dave and then I think my password was Dave test but we can go ahead and
+1:20:30
+log in now now that we're logged in here in the Django admin let's go to posts
+1:20:35
+and let's see what posts are still missing some data we've got titles for all the posts of course but then here if
+1:20:41
+we look at the first post you can see I've added this data you may not have I've got a body here that says I've
+1:20:47
+added my first post and then we've got a first post slug let me change that to
+1:20:52
+my- first- post and this is what a slug is we'll see this at the end of the URL
+1:20:59
+when we go to this post page and today we're creating these post pages so let me save that and now let me go to my
+1:21:05
+second post here you can see it's missing a body and a slug so I'll just type another
+1:21:12
+post for the body and then for the slug I'll keep my same pattern so I'll say my
+1:21:18
+and then second- poost save that one now let's go to my elusive third post and
+1:21:24
+you can see it has everything here but I'm going to edit this and put my at the beginning of the slug also so it just
+1:21:31
+matches the others and now we've got that data so you want to make sure you have a body and a slug for each post
+1:21:38
+that you have right now because we're going to use that today as we create these pages and we're back in vs code
+1:21:44
+now you can see here in the terminal window it logged everything we did in the Django admin here as the requests
+1:21:50
+came into the server I'm going to go ahead and close the terminal but leave the server running now let's open the my
+1:21:55
+project directory from there we want to go to the posts app directory and there we want to go to the urls.py file now
+1:22:03
+previously we created this URL pattern here to view our post list and it calls this post list function in the views but
+1:22:10
+we didn't add a name so we can add this third Pam here to the path and we want
+1:22:15
+to provide a name for this link so I'm going to put a comma here and then I'm going to have name equals and I'm going
+1:22:21
+to put posts so now you might wonder why do we we add a name to this URL and how
+1:22:27
+do we use it well let's go ahead and do that we'll go to the top level templates
+1:22:32
+directory here so not in the post directory and we want to come down to
+1:22:37
+templates now inside of templates we have a layout. HTML so let's open that
+1:22:43
+up and inside of the layout we're going to SL poost this is just a traditional
+1:22:48
+HTML link but instead of this we can gain some uh value by adding a named
+1:22:55
+link here inside of D Jango and this will allow us to pass params and things like that which we'll learn about later
+1:23:02
+let's go ahead and change this though we're going to delete the SL posts here and instead we're going to use part of
+1:23:08
+our template language so we'll start with a curly brace and of course we've got the ending curly brace then we put a
+1:23:13
+par parentheses sign and then or not parenthesis what am I saying a percentage sign and then another
+1:23:20
+percentage sign so that's what we wrap our value in now inside of this link to use the named URL we'll say URL and then
+1:23:29
+inside of single quotes because we have double quotes on the outside we'll say posts so now we're referring to that
+1:23:36
+name we gave in the URLs file here where we have name equals posts this is what
+1:23:42
+we're referring to in our layout file inside of this template language we're saying hey this is a URL and we want the
+1:23:47
+URL that we named posts so let's save these changes and yes we've saved the
+1:23:54
+change in the urls.py as well now let's quickly go back to Chrome and now we can
+1:24:00
+click view site to get out of our Jango admin screen now we're back on our site let's make sure this link is working and
+1:24:06
+if you remember this little newspaper emoji goes to our post list and that's what we were changing inside of that
+1:24:14
+layout. HTML was our navigation up here so let's click this and yes it still
+1:24:19
+works so we're now using that named URL as we navigate to the post list
+1:24:24
+so now as you may guess we want to create URLs for each of our posts so we can navigate to the individual post
+1:24:31
+pages but before we do that let's go to the Django docs and in the Django docs here we go I am on a page that shows
+1:24:38
+path converters and I'm going to use a path converter I'll link to this in the video description but what I want to
+1:24:44
+highlight here are just some of the path converters you can use cuz I'm only going to use one today but there's others you can read about here in the
+1:24:50
+docs like string and integer but I'm going to use slug because we're working
+1:24:56
+with our post Slug and slug matches any slug string consisting of asky letters
+1:25:02
+or numbers plus The Hyphen which I call a dash and underscore characters so for
+1:25:07
+example building- your- first Django Das site so that's a longer slug but that's
+1:25:14
+that's typical there and the search engines can actually read that as well so you want to make something like that
+1:25:20
+legible it's often your post title for example and you're just putting hyphens in between all lowercase as well so now
+1:25:27
+with that here in the docs and remember I'll link to that in the description let's go back and apply this to our
+1:25:33
+application back in vs code I'm going to close this layout template for now that has our navigation menu we want to be
+1:25:40
+back in the urls.py file so I'm going to click here on line five and then use shift alt and the down arrow and just
+1:25:47
+copy that line down now let's make some changes so the path converter we just talked about we use those in side of the
+1:25:55
+less than greater than symbols and we're going to use the slug path converter but
+1:26:01
+then we're also going to receive a Pam and that's what we need to provide here and that Pam is also going to be named
+1:26:07
+slug in our case so I'm also going to put slug right here and that will apply
+1:26:12
+that path converter to the slug data we get so the path converters here on the left represented by Slug and the pram
+1:26:19
+we're receiving is here on the right also represented by slug in this case now after that we have views and we have
+1:26:25
+our post list function again now we haven't created the function to create the post page yet or route to it but
+1:26:31
+here we're going to go ahead and list it so I'll just say postscore page and as a matter of fact
+1:26:38
+we could switch that to post page because we're only going to be working with one post at that point so we just
+1:26:44
+need to remember to create that exact same name when we go to our views file and then the name over here let's go
+1:26:50
+ahead and just name this page so it's totally different than our other named URL now with those changes we can go
+1:26:57
+ahead and save if you look at your app right now probably have an error because this doesn't exist so now we need to go
+1:27:03
+to the Views and create the postore page function okay let's click on the
+1:27:08
+views.py file here just underneath our urls.py and inside of this file we need
+1:27:13
+to create a new function for our post page so we'll say Def and we want postore page this is also going to
+1:27:21
+receive the request and it's going to receive that slug pram that we talked about now inside of this function for
+1:27:29
+now we're just going to Echo what it receives that Slug and to do that we'll need to import something here at the top
+1:27:35
+first so I'm going to say from Django HTTP and I want import
+1:27:42
+HTTP response and there it is in our list so we're going to use that HTTP response and we'll do that right here
+1:27:49
+when we return our echoed slugs we'll say return HTT P response and let's just
+1:27:56
+pass in the slug so that will let us confirm that this is working before we add some more details and maybe a post
+1:28:03
+page template to this function like we did up here with the post list now we really can't check if this is working
+1:28:09
+yet because we haven't created those links in our post list to pass the slug Pam so right now we can't check this
+1:28:16
+until we do that so let's go up inside of our posts app here to the templates
+1:28:21
+directory in the posts app and then let's go to the postore list. HTML where
+1:28:27
+we can use that and now inside of the template I'm going to scroll down what we want to do is take our H2 where the
+1:28:33
+post title is and put a link inside of there so I'm going to put this on separate lines as it's going to extend a
+1:28:40
+little further so we'll have the H2 wrapped around everything and then we're going to have our anchor with the hre so
+1:28:47
+we'll say href and for now I'll just put empty quotes so I can close this out and
+1:28:53
+I want to have the closing anchor afterwards so/ a there I'll indent the
+1:28:58
+post title as well but now let's use our template language and our named URL once again inside of this hre so we'll have
+1:29:06
+our curly brackets our percentage signs and then here we're going to say URL and
+1:29:11
+we're using the URL named page that we created but we're still missing our slug so how do we pass the slug along with
+1:29:19
+this URL well right here we can just put slug equals and then notice how we're
+1:29:24
+getting the other information from our post like post. dat and post. body but we have a slug for each post as well so
+1:29:31
+we'll say post. slug right here and that will pass that slug value for the post
+1:29:37
+to our function then in views and it should receive that here so now that this looks like we want it let's go
+1:29:44
+ahead and check it out in Chrome and I'm back in Chrome let's go to our application and if I haven't done
+1:29:49
+anything wrong this should work let's go ahead and refresh the post list and now you can see they've changed colors
+1:29:55
+because of the little bit of CSS I have here so we have links for each post
+1:30:00
+let's see if this works when I click on my first post and yes it's really small up here because I didn't apply a
+1:30:06
+template or any CSS but I'll go ahead and zoom in you can see it says my first
+1:30:12
+post now I'll Zoom back out because we don't want a 500% there but you can see that Echo from the HTTP response is
+1:30:20
+working so it will work for any of those pages and it's pulling the slug so as I click on my second post if you look at
+1:30:27
+the URL here which I can't really Zoom for you but it has at the end of the URL we have posts slm my second post and if
+1:30:35
+we go to the first one it's my first post and so on so that should all match okay we're back in vs code now something
+1:30:42
+I want to point out is we've got a very generic name here for page and right now we just have our posts app over here and
+1:30:49
+so we're using page there and we know it's inside of the posts app but what if our applications expanded or our whole D
+1:30:57
+Jango project expanded and we had more apps not just posts we couldn't just
+1:31:02
+overlap with that same name page so we kind of need to designate that hey this page this named URL we've created is
+1:31:10
+inside of our post application in the larger Django project and that way we
+1:31:15
+could name something else page maybe inside of a user's app or something similar and it would be designated
+1:31:22
+inside of that app so we need a way to do that that and we can let's just go back to the urls.py here and above the
+1:31:27
+URLs patterns URL patterns I should say let's put appcore name and here I'm
+1:31:34
+going to say equals and I'll put posts so now we've designated that these URL
+1:31:41
+patterns are inside of the post app but now when we link to those instead of
+1:31:46
+just using the name we also want to designate hey it's the posts page or the
+1:31:52
+posts and in this I guess I should have named this one list let's go ahead and do that let's rename this one list for
+1:31:59
+example so it makes more sense posts list then we'd have a post page so let's
+1:32:05
+go ahead now save this and let's change those links we've created so if you remember we created one inside of the
+1:32:11
+layout and now I've changed the name so this would be list but to go ahead and
+1:32:17
+use that name space we also want to say posts colon list and so now it's going
+1:32:23
+to specific specifically refer to the named URL list that's inside of the posts app and now I'll go ahead and
+1:32:29
+close the layout after we save that let's go to the Post list as well because we have this other named URL
+1:32:35
+here and here we want to say this is posts colon page so now specifically the
+1:32:40
+named URL page inside of the posts app and save that also now we should just
+1:32:46
+verify this is working so let's once again go back to the application let's click on the homepage and now from here
+1:32:53
+we could go back to the post list and yes it's still working as expected and if we click on one of the posts that's
+1:33:00
+also still working as expected always good to check your links after you make changes like that back in VSS code now
+1:33:06
+let's go ahead and make a change here to our views because we're using this HTTP response but we really want to use a
+1:33:13
+page template and not just Echo the slug we actually want to present a post page okay let's start by deleting our import
+1:33:20
+of the HTTP response we won't be using that anymore and that of course will
+1:33:26
+eliminate this line inside of our post page function as well instead I'm going to copy what we have up here under post
+1:33:32
+list on lines 8 and N with crl C come down to line 13 and contrl V to paste
+1:33:39
+now I'm just going to change some of what I have here here we were getting all the posts and really we just want
+1:33:45
+one post and we're still going to use post doobs but we're not going to use
+1:33:50
+all now we're going to use doget and then inside of the git we're going to
+1:33:56
+pass slug equals Slug and that will get the one post that we have that matches
+1:34:03
+the slug that we are receiving here in the function from here it's a similar
+1:34:08
+render where we pass in the request and we have posts then we're going to have slash and now we need to determine what
+1:34:15
+we want to name our template and I'm going to name that postcore page so get rid of the S no more plural the
+1:34:22
+underscore page. HTML and once again instead of posts I'm passing the post
+1:34:29
+now so we'll need to create this template right now this would be an error again if you looked at the application because our postore page.
+1:34:36
+HTML template doesn't exist but this did update the post page function like we
+1:34:41
+need it so now let's create that template okay I'm going to click on the postore list inside of our posts app and
+1:34:48
+inside of the templates directory and then the post directory and here is the postore list template now I just want to
+1:34:55
+click new file I'm going to create postore page. HTML press enter I've got
+1:35:02
+a blank file but I want to go back to the post list this is going to be very similar so for me it's easier to just
+1:35:08
+copy everything with contrl a then contrl C actually select everything with
+1:35:14
+crol a then contrl C to copy everything now back to the post page and control V
+1:35:20
+to paste it all in and now I'll decide what I want to be different well one thing I know is this is a page dedicated
+1:35:27
+to a specific post so I want the post title to actually be the title of the
+1:35:32
+page so up here in our title block I'm going to highlight posts on line four
+1:35:37
+and paste in what I have for my template Title Here that we were also using Below
+1:35:42
+in the H2 on the post list now for this H1 here this is also going to be the
+1:35:49
+title of the page so instead of post there I'm going to paste in the title here here now we don't have posts to
+1:35:55
+Loop through anymore so I'm going to get rid of the for Loop and after that I can
+1:36:01
+really get rid of the article that we have wrapped around everything because we have this parent section and I'm
+1:36:08
+going to use this section now let me go ahead and indent the section tag here
+1:36:14
+and then indent the H1 that looks better to me now we can get rid of this H2 alog
+1:36:19
+together because we're using the H1 for the Post title and we don't need to link anything from here then we can just get
+1:36:25
+rid of the extra lines and we're going to use the post date and post body now you could decide do you want the date to
+1:36:31
+show up before or after the post body for example on the page but right now
+1:36:37
+let's just keep it really simple so this is our post page where we're showing the title in an H1 and we've got a paragraph
+1:36:43
+that shows the date another paragraph that shows the body and for the title of the page that shows up in the tab of the
+1:36:51
+browser this will also be the post title here so let's go ahead and save and notice we're still extending the layout
+1:36:58
+so we'll still have our navigation from that layout template at the top of each post page and now we're back in Chrome
+1:37:05
+let's check these links out and see if our post pages are working as expected I'll click on my first post and now
+1:37:12
+instead of getting that echo of just the slug on a blank page we're actually getting a post page now we don't have a
+1:37:18
+whole lot of content but we have my first post in the H1 then we have the date for the post and then we have the
+1:37:25
+body of the post and if we go back to our list we should see that for the second and third post as well so I'll go
+1:37:32
+back again there's the third post so this all works as we want it to and the others are still linking so we've used
+1:37:38
+slugs today we've used named URLs and we created a template that we can use for
+1:37:44
+each of our posts to have its own individual page as we navigate through our application one final note today
+1:37:51
+guys and this goes back into our layout template and it's really nothing specific to D Jango it's just something
+1:37:57
+that's bothering me so I want to go ahead and add this and that is we're using emojis here now they're not actual
+1:38:05
+images where we would provide an image tag and an ALT tag but screen readers and accessibility sometimes struggle
+1:38:12
+with Emojis or what we mean by emojis now home or house might be translated
+1:38:17
+correctly by a screen reader it's going to get Unicode characters I just want to show how you can update this so if you
+1:38:24
+do use emojis in your page like I am in this nav menu it's actually accessible
+1:38:29
+so to do that let's wrap this in a span element and here after this we'll say
+1:38:35
+SLS span and now we want to add a roll so let's say roll equals now this is
+1:38:42
+image because these emojis aren't really images so we have to assign the roll but
+1:38:47
+from there we also need a label so we can use ARA Das label and here I can put
+1:38:55
+home inside of that so this will help with accessibility when you use emojis
+1:39:00
+like we are in this example project now I'll allow you to go ahead and add the other two spans I'll do that as well so
+1:39:07
+you'll see it in GitHub with my source code but go ahead and add spans with the Roll image and the ARA label that you
+1:39:14
+think is appropriate for each Emoji the source code for today's tutorial starts where the previous
+Chapter 7: Upload Images
+1:39:20
+lesson ended and there's a link in the description that provides the code for each lesson I've got VSS code open let's
+1:39:26
+open a terminal window with control and the back tick from here I'm going to type source.
+1:39:32
+venv V there we go SL scripts slash
+1:39:37
+activate to activate our virtual environment and we can confirm that's going with the venv in parenthesis and
+1:39:45
+after that let's go ahead and CD into the my project directory and now we're ready to start
+1:39:51
+we want to add images to project today so I'm going to close the terminal window and I'm going to go ahead and
+1:39:58
+display the my project directory here on the left and then open the my project directory that's nested inside of that
+1:40:05
+from there we want to go to the settings.py file and let's go ahead and scroll down to where we were in a
+1:40:11
+previous lesson where we defined a static path it's all the way here at the bottom if I remember correctly yep we
+1:40:17
+have a static URL and a static files directory we need to add to that and
+1:40:23
+what we need to add is the media URL so mediacore URL and this is saying where
+1:40:31
+we're going to find images so here we'll say equals and then we want to put in a
+1:40:36
+directory and this is going to be the media directory so I'm going to put in media slash just like we have above here
+1:40:44
+with static slash then underneath that we also need to put in a
+1:40:49
+mediacore root now this is saying where that directory is going to be so here
+1:40:56
+we'll say equals then we have to put in just a little bit more so we'll say os. path and then after path we put join
+1:41:05
+going to pass in the basore dur for directory so that means our top level my
+1:41:11
+project directory here and after that we can put a comma and then I want to put
+1:41:16
+in single quotes and just put in media so we're naming our media directory here that we named over here now we haven't
+1:41:23
+cre created that media directory it will get created on its own when we upload an image so let's just save these two
+1:41:29
+changes to our settings file and now we need to go to the file underneath it that is urls.py okay in urls.py I want
+1:41:37
+to scroll down once again to where I can see the URL patterns that we have defined here we need to have a couple of
+1:41:43
+imports and then we're going to add to our patterns so for the Imports I'm going to say from Django
+1:41:51
+do Co f for config do url. static then I want to import static
+1:42:00
+and don't feel bad if you can't memorize these I don't either so then I have from
+1:42:06
+Django config again just comp and then I want not another dot but import settings
+1:42:14
+and those are the settings that we just defined so after you have those two Imports then underneath URL patterns we
+1:42:20
+can add to them so here I'm going to say URL patterns and I need to spell that
+1:42:26
+correctly then plus equals and after that I want to use static that we imported that's a function then inside
+1:42:33
+of static I'm going to use the settings that we imported and then say dot mediacore URL so here we're referring to
+1:42:41
+that media URL that we just defined in the settings then I want to put a comma and now put in a named pram here
+1:42:50
+documentor root and then we'll set this equal to
+1:42:55
+settings. mediacore root and that's the one we just defined as well I'm also going to press alt Z because this is a
+1:43:02
+long line and this will just get it to wrap down the next line so we can see everything on the screen all at once so
+1:43:09
+now we've imported these two lines here at the top we have static and settings and then we used both of those as we
+1:43:15
+added to our URL patterns we're essentially telling our app where it can
+1:43:20
+find our images now we're ready to close our my project directory and open the post directory that we have here and
+1:43:27
+let's go to the models.py file but before we make any change to our model
+1:43:32
+we need to install something so this is where it's important that we've started our virtual environment so we're putting
+1:43:38
+all of our dependencies in that environment so I've been doing that at the beginning of every lesson because you never know when you might need to
+1:43:44
+add something that's what we're going to do now so make sure you've started that virtual environment first like we did at the beginning of the lesson then open
+1:43:51
+the terminal window again we need to say pip and I just want lowercase here pip
+1:43:57
+install and then we want pillow it's going to help us here as we use images
+1:44:02
+we're installing pillow to our project looks like it's good now it says I could also upgrade pip if I want to I'll do
+1:44:09
+that later but we've added pillow so now we're going to make a change to our model and we won't have a problem with
+1:44:16
+what I'm going to do is add something here to the post and I'm going to call it Banner so we can add a banner to all
+1:44:22
+of our posts in the application we set this equal to models and after that we
+1:44:28
+want to put in image field and we couldn't do that without pillow or at least we couldn't do it without getting
+1:44:34
+an error then we're going to put default and I want to set this to a default image in case I don't upload one for the
+1:44:40
+post so I'm going to call this allb back.png and we'll need to provide that
+1:44:46
+as well after that I want to set blank equal to true and that just means we're
+1:44:54
+not requiring an image so if we don't provide one it's okay so let's save the
+1:44:59
+change to our model and after that if you remember from the previous lessons when we were working with a model we
+1:45:05
+needed to make a migration if we changed our model and then of course apply that migration to the database I'm going to
+1:45:11
+type clear just to clear out the console here and now let's type those commands so we'll type pi and remember I'm on
+1:45:17
+Windows if you're on Mac or Linux you might need to type python but I type pi and I want man . py and then I want to
+1:45:25
+type make migrations press enter looks like everything went as plan so we've
+1:45:32
+made the migration now let's apply it to our database so I'll type pi and then
+1:45:37
+manage.py then migrate and now it's applied that change to our database now
+1:45:44
+let's see these changes in place by running our server so I'll type pi and then manage.py and then run server press
+1:45:52
+enter and it should start the server on Port 8000 I can hold down the control key and click and there's our
+1:45:58
+application now let's go ahead and go to the admin panel so at the end I want to type slash slash if I can get my fingers
+1:46:06
+on the correct Keys slash admin there we go it's remembered my login and I hope you remember yours as well from previous
+1:46:13
+lessons let's go ahead and log in now we can see our users and our posts let's look at the posts once again and let's
+1:46:20
+look at my first post that I have here and you can see there is now a banner
+1:46:25
+area here along with everything else that we previously had for our post and it's got currently the fallback PNG that
+1:46:34
+we defined of course we haven't put that in our media file yet we don't even have a media folder but we will as soon as we
+1:46:41
+start adding some images so let's go ahead and do that I'm going to click choose file you can see I've got some
+1:46:47
+images ready to go here so I'm going to choose beach chair and add that to this post can save let's go to the second
+1:46:55
+post let's add one here too I'll choose water fun and let's save that now let's
+1:47:02
+just leave the third post here with the fallback so we can see what that's like and let's add one new post and I'll say
+1:47:10
+ready for vacation aren't we all after that I'm so ready for spring
+1:47:19
+break and then we'll say ready das4 - vacation for the slug and now let's
+1:47:26
+choose one more image and we'll say ready to go there we are let's save that
+1:47:31
+now we've added images to all of our posts except one and that one the third one should use the fallback as well so
+1:47:38
+now we can click view site and if we go to the site we're not going to see the
+1:47:43
+images yet but we do see the new post now why don't we see the images well we haven't added them to our template so
+1:47:49
+let's do that I'm back in vs code let's close the terminal window window we can leave the server running something else
+1:47:55
+we should check here before we make any changes to our template to add the image let's make sure that media directory was
+1:48:02
+created you can see mine right up here and it's got the three images now so we didn't create that on our own D Jango
+1:48:08
+created it as we added images notice we don't have the fallback yet so I'm going to pull my folder up here grab this
+1:48:15
+fallback image and drag it right over here as well so there's our fallback image that should be applied to that
+1:48:20
+third post also but now I want to go to the templates directory and then my post page template and right here we can add
+1:48:28
+that image so above the H1 so let's put it at the very top here we'll put in our
+1:48:34
+image element and it should have a source and we can set that equal to of
+1:48:39
+course quotes and then we can use our templating language here with the two curly braces on each side and then we
+1:48:46
+can just say post. banner. URL we need that extra URL there
+1:48:52
+we can also make this um I would say accessible as well as we noted in the
+1:48:57
+last lesson I want to think about accessibility as we go so anytime I provide an image I also want some alt
+1:49:04
+text let's put in the quotes here let's put in our two curly braces let's make
+1:49:09
+the alt text the post title as well because we should kind of have an image description that goes with the title or
+1:49:16
+the theme of the post shouldn't we so after that we're pretty much ready to call it we can put a slash and then the
+1:49:24
+greater than sign to close out the tag but one other thing I'd like to do is maybe put in just a little bit of image
+1:49:30
+styling or this image could be really big on the page so here I want to put in a class set this equal to Banner and
+1:49:38
+then we can add just a little bit of CSS to our CSS file and if you remember where that is it's in our static
+1:49:45
+directory come down here go into inside the CSS open up the style.css and at the
+1:49:51
+very bottom I'm just going to put a banner class and it will be very simple I want
+1:49:57
+a display set to block for the image then I want a width set to 100% but then
+1:50:04
+I also want a Max width say no larger than 800 pixels that's should still be a
+1:50:10
+pretty good siiz Banner okay with those changes in place let's open up the terminal we can see that the server's
+1:50:15
+still running now let's go back to Chrome I'll pull that up quickly and here inside of chrome we should be able
+1:50:22
+to refresh refesh the page and then see our Banner for post and there it is now
+1:50:28
+we should see the banners for the other post as well so here's the second post with our water fun now the third post
+1:50:34
+remember it has our fallback image and yes that worked out as well also and
+1:50:40
+then this final one should have the ready for vacation image we've learned a
+Chapter 8: Challenge
+1:50:45
+lot in the first six lessons of this Django series and today it's time for a student challenge in lesson two of the
+1:50:50
+series we learned about Django apps and we added a posts app to our Django project we also learned about templates
+1:50:58
+you may want to review that lesson before today's challenge today I want to challenge you to add a users app to our
+1:51:04
+Django project just like we did with the posts app you will also need to create one template and name it register. HTML
+1:51:12
+and you can see that's what I've got open on the web page right now and at the URL users register is where you
+1:51:21
+should find this so if you complete the challenge correctly you should also be able to navigate to users register and
+1:51:28
+see your register. HTML template it's always good to apply the skills you've learned but no worries if you get stuck
+1:51:35
+so if you don't want to see the solution you should pause the video now because the solution is coming up next I've got
+1:51:40
+VSS code open and I'm ready to go over the solution to today's challenge I hope you did well so let's start by opening a
+1:51:47
+terminal which is what we usually do of course then we type source. V n
+1:51:53
+v/ scripts SL activate and press enter to start our
+1:51:59
+virtual environment from there we also need to CD into the my project directory
+1:52:06
+and we're ready to get started with the code so before we close the terminal window we want to create our new app
+1:52:11
+called users we're already in the my project directory and we can open that over here in the file tree and here we
+1:52:17
+see the post directory that was created when we created the post app so we should see a a directory for users after
+1:52:24
+we create the users app let's do that by typing pi manage.py and then we want to
+1:52:30
+type start app and then the name of the app so users I'll press enter that
+1:52:37
+should get created and now we see a users directory over here in the file tree as well now we can go ahead and
+1:52:42
+close the terminal window for now and let's open up this my project directory this is the parent directory of course
+1:52:49
+for our project and it has the master settings we need to tell it about the
+1:52:54
+users app so let's go to the settings.py file and we should be able to scroll
+1:52:59
+down until we see installed apps and if you remember this is where we added
+1:53:04
+posts before so now we need to add users under installed apps and I'll put a
+1:53:10
+comma after that also and go ahead and save now let's close the my project directory in the file tree well not the
+1:53:17
+main one I guess the one underneath there we go let's open up the post directory
+1:53:23
+so we can get a look at this urls.py that we already have here because we want to create something like this in
+1:53:29
+the users directory that we just created for the users app so what I'm going to do is Click somewhere in the file and
+1:53:35
+control a to select all and then control C to copy all because I'm going to paste
+1:53:41
+this into the new file that I create and then just delete a few things and change a few things it'll go a little faster
+1:53:47
+that way so now I'm going to open this users directory notice there is no urls.py in here so we need to create
+1:53:53
+that file it's going to be urls.py now I'm going to paste in what
+1:54:00
+we gathered from the posts app and we can just change a couple of things the Imports are the same the app name is
+1:54:06
+going to be users not posts and then for patterns we're only going to have one
+1:54:12
+path here so I'll delete the one with the slug and now for this path we want
+1:54:17
+to go to a register location so this is going to be register slash and now let's
+1:54:23
+change the views. poost list to views. register View and let's change
+1:54:31
+the name here to register also now of course you didn't have to have this exact name this is what I'm naming we'll
+1:54:38
+just see if it all works the same as your solution and now we need to go back to the my project directory let's open
+1:54:44
+that back up and go back to the urls.py that is in the my project directory and
+1:54:50
+we'll scroll down to the URL pattern notice we included a path here for posts
+1:54:55
+in the URL patterns because again this is kind of the parent for all the other apps that we add to the project so it
+1:55:02
+needs to know about all of these so what I'm going to do is click on line 27 you see here it has the post URLs I'm just
+1:55:09
+going to press shift alt in the down arrow to copy that down now we want to do the same thing here for our users app
+1:55:17
+so I'm going to put users slash and here I'm going to have users . URLs you can
+1:55:24
+see I've got a little red text here at the top that's telling me something is wrong as well as a little red here to
+1:55:29
+the right what has happened is I forgot to put a comma after I copied that line down so after I do that everything's
+1:55:36
+good and we can save the file now let's close up that my project directory again because it gets a little long over here
+1:55:42
+and let's go back to the urls.py that we created and notice we referenced a view
+1:55:48
+here register view we haven't created that yet so we need to go to our views.py file and create this function
+1:55:55
+that we mentioned here which is register view so let's click on views.py now
+1:56:00
+notice D Jango has already imported render at the top so we can just create our view function underneath the comment
+1:56:06
+that says create your views here so we'll start off with Def and then we named it register uncore View and then
+1:56:14
+it's going to receive request and then inside of this function we return and then we want render and
+1:56:22
+then we have the request is the first Pam after that we're going to have users
+1:56:28
+SL register. HTML now we haven't created that register. HTML template yet but we
+1:56:35
+will okay let's save these changes in the views.py file and now I'm going to highlight users the users directory here
+1:56:42
+in the file tree just so I know I'm creating the directory where I want to I'm going to click new directory up here
+1:56:48
+at the top then I'm going to create a templates directory then inside of
+1:56:54
+templates I'm going to create another directory named users once again and this is following the same pattern that
+1:57:00
+we did for posts so if I open up posts we see templates if I open up templates see posts and then we have our templates
+1:57:08
+I'm doing the same thing here we've got users templates users and then in this users directory is where I'm going to
+1:57:15
+put our register template so this is register. HTML now once again to make
+1:57:20
+things go a little quicker I'm going to open up that post directory and look at our post page template here it's
+1:57:26
+extending the layout that we've previously created so it pulls that in along with that static formatting like
+1:57:33
+our CSS and then it has the layout of the page so once again I'm going to click in the file contrl a to select all
+1:57:40
+contrl C to copy all of that now I'll close up the post directory and come
+1:57:46
+down to our register. HTML and control V is what pastes all of that in now here
+1:57:52
+I'm just going to change a few things so the title I'm going to delete out of here and I'm just going to type in
+1:57:59
+register a user and then of course we don't have all of the things that we see
+1:58:04
+down here in the content block either so I could just delete all of this for now because all you saw on my example page
+1:58:10
+was an H1 that also said register a new user close out that H1 and save our
+1:58:18
+template okay hopefully we don't have any mistakes I'm going to open the terminal back up then I'm going to type
+1:58:24
+pi and then manage.py and run server and this should start our server on Port
+1:58:31
+8000 so far so good I'll I'll hold down the control key and then click this URL
+1:58:37
+to launch this in the browser now I'll pull this up and we're looking at our
+1:58:43
+homepage this is what I expected to see first now after this let's see if we can go to the slash users SL register slash
+1:58:54
+page press enter and we have register a new user so everything worked as
+1:58:59
+expected this is fairly large though so let's make one change going to come back in here and we're going to go to our
+1:59:06
+static directory that we have top level here it is let's go to the CSS and make
+1:59:13
+a quick change let's make the H1 just a little smaller maybe the same size as
+1:59:18
+the H2 so I'm just going to put H1 comma H2 save our CSS now they'll be the same
+1:59:25
+size which is fine we just need that semantic difference if we don't mind them being the same size so I'm going to
+1:59:31
+hold down the shift key because sometimes if you just refresh you might get the same static content you had
+1:59:37
+before but if I hold down shift and refresh it should serve a new page and now register a new user is smaller I can
+1:59:44
+click these other links and everything else still looks good too so very nice now I don't have a link to that register
+1:59:51
+a new user yet but I can use the back button and get all the way back there so I hope you completed this Challenge and
+1:59:58
+I hope my solution helped you through any sticking points the source code for today's tutorial starts where the
+Chapter 9: User Registration
+2:00:04
+previous lesson ended and there's a link in the description that provides the code for each lesson I've got VSS code
+2:00:09
+open let's open a terminal window and as always we need to start our virtual environment so I'm going to type Source
+2:00:15
+then venv SL scripts SL activate and
+2:00:21
+press enter after that virtual environment's installed we need to CD into the my project directory and we're
+2:00:29
+ready to begin let's close the terminal window and open the my project folder in
+2:00:34
+the file tree and after that we need to open up our users app and let's scroll down to the
+2:00:40
+views.py file now in this file we've got an import we need to add at the top so
+2:00:46
+we can add in our user registration form and as I've said before I don't memorize
+2:00:51
+all of these so it doesn't hurt to look at the docs or take notes as well so we're going to say from D Jango do
+2:00:59
+contrib doo. forms and what we're doing is importing a form Jango already
+2:01:06
+provides a lot of the authentication that we need to add and that's a nice
+2:01:11
+addition to D Jango that's something that would take us a long time to create otherwise so from this we are going to
+2:01:17
+import the user creation form now after
+2:01:22
+we have that imported we need to create the form in our register view function so we'll say form equals user creation
+2:01:31
+form and we'll call that with the parenthesis after now finally in the return here where we call the render
+2:01:38
+function we need to pass in that third parameter that we have seen before this is an object so here we're going to have
+2:01:46
+form and then a colon and we're going to pass in the form that is created now I'm going to press alt Z so that wraps down
+2:01:53
+so you can see everything here on the screen and from here we just want to save our changes for now we're going to
+2:02:00
+come back and make more changes but this is going to create the form and pass it
+2:02:05
+to our register template now we haven't created uh anything else except an H1
+2:02:11
+from the last lesson on the register. HTML template but we're going to add more to it now so let's go back to the
+2:02:18
+file tree and open up the templates directory and then look at our register. HTML template so now we're passing that
+2:02:25
+form we just created in the view function to this template and we need to add a few other things to this template
+2:02:33
+so we can use that form and so we still need to add a form tag in our HTML and
+2:02:40
+this action is going to submit to the same form page and it's going to be at users SL register slash let's add a
+2:02:49
+couple of more uh attributes here to our form tag as well so we also want to say
+2:02:55
+what method and we are submitting this form with the post method and then I'm
+2:03:01
+going to need to press alt Z to wrap everything down again because this will get to be a longer line but I'm going to
+2:03:06
+put in a class just for some CSS that I'm providing today for this form so D
+2:03:12
+Jango is unopinionated about the CSS you can supply your own to the form and I've
+2:03:19
+done that in advance again this is not a CSS tutorial so you can grab that CSS out of the file for this lesson and
+2:03:26
+remember that's in the static directory where that CSS is created that we've been using on all of our templates so
+2:03:33
+here I created a class that is form-i Das validation and so that will
+2:03:41
+be referenced in the CSS now I'm going to press alt Z so that wraps down and then inside the form we're going to need
+2:03:47
+to add a couple of things as well so here is where we're going to provide that form that we created in the
+2:03:54
+function so two curly brackets and then form now after that we also need a
+2:04:00
+submit button and if there's only one button in a form it defaults to type submit so we don't have to declare the
+2:04:07
+type I'm just going to put a button and then I'm going to say submit on the button and by default this will be the
+2:04:15
+button that submits the form now we're not quite finished with our form yet either and that's because D Jango also
+2:04:21
+provides some security through a csrf token and that stands for cross-site
+2:04:26
+request forgery so it's ensuring that this form is being submitted from our
+2:04:31
+site and not from something pretending to be our site and to do that we have to
+2:04:37
+include that csrf token and we can do that I'm just going to start typing
+2:04:42
+csrf and you can see it comes up in my menu so I'll press Tab and it adds it but it's using our same templating
+2:04:49
+language here that has the curly brackets and percent so you see that csrf token if we did not include this in
+2:04:56
+our form D Jango would throw an error so let's save these changes and now let's open up a terminal window once again and
+2:05:03
+let's go ahead and start our project just to make sure the form is working as expected so far it's not going to save a
+2:05:09
+user we just want to make sure we're not getting any errors so we'll type Pi manage. Pi and then run server press
+2:05:17
+enter it should start at our local host that is 1 12 27 0.0.1 and then Port
+2:05:24
+8,000 so I'm going to hold down the control button and click that and once
+2:05:29
+it starts I can pull it up in Chrome here is our site and everything's running as expected so far now let's
+2:05:35
+make sure we have that same registration page that we had from the previous tutorial so that should be at
+2:05:42
+userregister and here it is and I have a
+2:05:47
+button that's not formatted I didn't expect that but everything else kind of looks like I expect it to it looks like
+2:05:53
+I need to add just a little more CSS as well and I'll add that before we move on
+2:05:58
+to the next part but right now we see some of this we get the username we see what's required here and then we have
+2:06:04
+the input for the username we have the password we have the password confirmation and of course I don't want
+2:06:09
+my button to extend all the way across the screen so I will fix that let me go ahead and put in a new user here and
+2:06:17
+again it's not going to save the user but I'll just say Fred and here I'll say chips 1 2 3 4 chips 1 2 3 4 and press
+2:06:27
+enter and yes no errors and we stayed on this form page because it submits to the
+2:06:32
+same page so everything's working as expected so far except this little bit of extra CSS I'm going to add to fix
+2:06:39
+this and I'm back in vs code I just need to apply the class to the button that I forgot to apply to fix that button with
+2:06:47
+the CSS so the class equals form-submit and now next time we see that button it
+2:06:53
+should be a more normal size but now we need to add the code that will actually
+2:06:58
+save the user after we submit the form and it requires some conditional logic so let's go back to our views.py inside
+2:07:06
+of the users app and this is where we can apply that conditional logic now we need one more import at the top so
+2:07:12
+besides render here coming from Django shortcuts let's put a comma we also need the redirect function because if we
+2:07:20
+successfully save save a user then we're going to redirect back to the post list so now inside of our register view
+2:07:26
+function we'll start our conditional logic with an if statement we can say if
+2:07:32
+request. method equals host and this needs to be all caps specifically here
+2:07:39
+so inside of this if the request method is post and that means the form has been
+2:07:44
+submitted remember we're submitting that with a post request the post method back
+2:07:50
+to this same address so this function will handle this request and if it is a
+2:07:55
+post method then we're going to say form equals user creation form like we did
+2:08:01
+before but now we're going to pass in the request. poost information that we
+2:08:06
+receive and notice that also needs to be a capital dopost there so now the form
+2:08:12
+has been submitted with information and it will validate the form and if the
+2:08:18
+form is valid we want to save the user so let's hand that with a nested if
+2:08:23
+statement here so inside of our if statement we have another if statement we say if form.
+2:08:30
+isore valid which is a function that will return true or false so if it is true then we're going to say
+2:08:37
+form. saave and that saves the new user so if the form checks out it saves and
+2:08:44
+then after that we need to redirect so we want to return our redirect and now
+2:08:50
+we're re going to redirect to the posts app and we're going to use the named URL
+2:08:56
+list so we see the post list this is a lot like we used the slug previously so
+2:09:01
+we're using the name of the app and then the named URL reference inside of that
+2:09:07
+app so we go to the Post list and this is what happens if the form is submitted
+2:09:13
+and it is valid so if the form is submitted and it is a post method and
+2:09:18
+that's what should happen then we're inside of this if statement so there's two possibilities here either the form
+2:09:24
+is valid or it is not either way the form validation is going to check here
+2:09:30
+so it's creating this user form with form validation for example say I tried to create another user with the name
+2:09:36
+Dave it would tell me a user already exists with that so that's an example where it would have validation but the
+2:09:43
+form would not be valid and so if that happens we need to come down here below
+2:09:50
+and there's other two other possibilities one was the possibility we already had which was the else if it's
+2:09:57
+not submitted through a post typically a get request like when we would first visit the form then we would just create
+2:10:04
+the empty form so that should be the else if it's not the post method and
+2:10:09
+then the other possibility is we don't have a valid form so then it's just going to skip this else because it all
+2:10:15
+already was inside of this first if here and then it will just go to this return and it will return the form form with
+2:10:22
+that validation saying hey there's already a user with this name likewise
+2:10:27
+if it was just requested as an empty form here it's also going to return the form and we'll just see that empty form
+2:10:34
+so the three different possibilities I hope you follow along with that logical
+2:10:40
+uh flow of information here conditional logic so now with these changes in place let's save this once again and pull our
+2:10:47
+form back up we should let's check our terminal to make sure that server is still running mine is and I hope yours
+2:10:54
+is if not go ahead and start your server again now let's go back and look at our form once again I'm going to hold down
+2:11:00
+the shift key and refresh and there our submit button is correct now let's go
+2:11:06
+ahead and submit a user just to create a new user so let's call this user Tony
+2:11:13
+and I'll make his password chips 1 2 3 4 chips 1 2 3 4 it should pass all of that
+2:11:20
+uh requ requirements that we see there I'll press enter submit submitted
+2:11:26
+created the new user and took us straight to the post list so that redirect also worked so now I once again
+2:11:33
+want to go back to the users register now let me try to create a user with my
+2:11:40
+name because I know I'm already saved in there so I've got Dave and here I'll just put in a password that I know won't
+2:11:46
+pass the validation for the password either like test now let me submit and we can see
+2:11:52
+this validation comes back so here was another possibility we submitted the form but the form was not valid and
+2:11:59
+through the CSS I added you can see that clearly the error is here so a user with
+2:12:04
+that name already exists then also what was not correct about the password so we
+2:12:10
+have to have those things and of course we've seen the third possibility already and that's when we first load the form
+2:12:16
+before we filled it out that git request just gives us the empty form so we've seen all three of the possibilities
+2:12:23
+through that conditional logic now let's also go to the admin if you remember your admin login from previous lessons
+2:12:30
+and here we want to just verify that our new user Tony is in our database so I'm going to enter in my username and
+2:12:36
+password here which believe was Dave test this example so now I'm here in the
+2:12:43
+admin window and I go to users and here's Tony he's not an admin himself
+2:12:50
+I'm just looking at the users I'm an admin so you can see that staff status with the green check mark here versus
+2:12:56
+the red check over here but Tony has been added as a user to our Django application now the only other thing I'd
+2:13:03
+like to do before we finish our user registration today is go ahead and add a link to that in our navbar so let's go
+2:13:09
+back to vs code I'm back in vs code right now let's go ahead and collapse the users app because that's not where
+2:13:15
+our Navar is our Navar is in the templates for my project and then ins
+2:13:21
+side of the layout. HTML that we are including then in all of the other
+2:13:26
+templates so we have that nav bar at the top and as we scroll down here we see the nav and I've got several things here
+2:13:33
+on the page it's interesting that I've got an extra space here we don't really need that so I'm going to remove that
+2:13:39
+line there and format this over like I want it to be but after that I'm just going to highlight the last one here
+2:13:46
+which was the link to the post list then do shift alt in the down arrow and it copy I it down now I'll put an extra
+2:13:53
+space here and that little pipe symbol so we have another pipe between and let's change the Emoji here so instead
+2:14:01
+of a newspaper let's put in maybe a rocket because we are launching a new
+2:14:06
+account that makes sense to me okay the URL here once again we're using the name
+2:14:12
+of the app and then the named URL reference so here this is users and if I
+2:14:20
+remember correctly here this is registration I believe it might be
+2:14:26
+register so let's double check that and we can go back into our users app look
+2:14:31
+at the urls.py it's users oh it's not registration it's just register so let's
+2:14:38
+make sure we put that in there correctly users and register should be the link that would
+2:14:45
+work for our URL the only other thing I want to add that I'm not seeing here as I change the ra label for this to
+2:14:55
+user registration is I want to add a title for each of these so as we Mouse
+2:15:00
+over you can actually see a tool tip I'll add one here let you add the rest but in the source code with the course
+2:15:07
+resources they will all be added so all you want to do is add a title attribute and put in the same thing you
+2:15:13
+essentially have for the Rea label but that way when we put our Mouse over the
+2:15:19
+icon it will actually pop up the little tool tip so users can also see the text
+2:15:24
+of what the icon is if they're unsure okay let's go back now and look at our application in Chrome and make sure we
+2:15:32
+have an updated navb bar and the link is working so I'm going to hold down the shift key and click refresh there is our
+2:15:39
+rocket let me Mouse over the home where I added the tool tip there you can see it pops up a little tool tip that says
+2:15:45
+home so I'm going to add those others after the tutorial remember that will be in the course links you can do the same
+2:15:51
+with that title attribute now let's click the rocket and make sure our link works and yes so that takes us directly
+2:15:58
+to our user registration page the source code for today's tutorial starts where
+Chapter 10: User Login & Auth
+2:16:03
+the previous lesson ended and there's a link in the description that provides the code for each lesson I've got VSS
+2:16:09
+code open let's open a terminal window and as always let's type source.
+2:16:16
+vv/ scripts activate to activate our virtual environment we can press enter
+2:16:22
+and yes see that's in parenthesis it's good to go now we need to CD into the my
+2:16:28
+project folder and now that we're in there we're ready to begin now before we close the terminal window let's go ahead
+2:16:34
+and start the project in the browser or start the server and then open the browser so I'm going to type pi and
+2:16:41
+manage.py and then I want to type run server press enter and it should start
+2:16:47
+it on Local Host Port 8000 here we see it I'm going to press control and then
+2:16:52
+click that address should open it in Chrome for me and there's the project
+2:16:58
+now last time we created a user registration page and our rocket emoji is linked to that so let me click that
+2:17:04
+and we can view this registration page now our login page today is going to be very similar let's go back to vs code
+2:17:12
+and add another Emoji up here for the login page okay I'm back in vs code I'm going to close the terminal window just
+2:17:18
+leave the server running and then I'm going to go to the temp templates directory and then the layout. HTML
+2:17:24
+template that is where we have that little menu at the top and if I scroll down we can see the different links here
+2:17:30
+I'm going to press alt Z just to make sure everything is wrapping so we can see it all here on the screen now after
+2:17:36
+I do that I want to highlight the last one which is user registration then I'm
+2:17:41
+going to press shift alt and the down arrow and it just copies that down now
+2:17:47
+after user registration I want to space over and leave a little pipe symbol so I'm dividing the emojis in the menu
+2:17:53
+leave a space after that as well and now instead of users register here we're
+2:17:58
+going to go to users login of course we haven't created this link yet so we'll
+2:18:04
+need to do that in our application but we're just adding this to the nav menu to begin with and then we're going to
+2:18:11
+highlight the word registration here and then I can press control D and it'll highlight the next one also then when I
+2:18:18
+type it will change both at once and I'll just switch set to user login and
+2:18:23
+now we want to change the rocket emoji too because we don't want two rocket emojis I'm going to press the Windows
+2:18:29
+key and the period now you might not be on windows so you may have another way of bringing up emojis or you don't have
+2:18:35
+to use emojis if you don't want to that's just what I'm doing so here I'm going to type something like sign in and
+2:18:42
+see what it gives me no that's not right let's look for a lock ah there we go so
+2:18:48
+here is a pad lock and I think it has a little quill from a pin that kind of indicates a sign in as well so that's
+2:18:54
+what I'm going to use I'll save that much and now let's get started on the rest of the app for a user login as you
+2:19:00
+might expect we need to go into our users application here so I'll close up templates open up users here in the file
+2:19:07
+tree let's go down to the urls.py file now again very similar to the register
+2:19:12
+view so I'm going to click on the line that we have our path here and then I'm going to press shift alt and the down
+2:19:18
+arrow to copy that down and I'll just make some changes to this line so I'm going to call this login and as a matter
+2:19:26
+of fact I can press contrl D again and then contr D again and highlight all
+2:19:31
+three of the words register in that same line that we copied down and change those to login because that's what I
+2:19:37
+want I want the login path I want the views. linore view function that we're
+2:19:44
+going to call and then the URL is a named URL and it's also going to be login now let's go to to the views.py
+2:19:52
+file that we have just underneath urls.py and we need to add that function and I'm also going to press alt Z here
+2:19:58
+just in case something is going off the screen no it looks okay so now we want to come down underneath this function
+2:20:05
+press enter a couple of times and I'll say Def and then I want loginor View and
+2:20:11
+it's also going to receive the request just like our register viw function did so much like the register function this
+2:20:17
+could be a g or a post request now the request is requesting the form before it
+2:20:23
+is filled out the post request is when the form is submitted so we can put some of that logic in right now just like we
+2:20:30
+see above for the register view function so I'll say if request.
+2:20:35
+method equals post and we want all caps there now inside of this we're going to
+2:20:42
+use a different form so at the top here where we have import user creation form
+2:20:48
+this is going to come from the same place this is already the the off form so we'll just put a comma I want to put
+2:20:54
+a capital A and maybe I had all caps lock on there we go authentication form
+2:20:59
+you can see the auto completion here so I'll just press tab we're going to use this authentication form so with that
+2:21:06
+import let me scroll for some room now and after the if request. method equals
+2:21:11
+post I'm not going to put anything on that line immediately I'm going to do the else first because the else would be
+2:21:17
+the get request and that's where the form is requested so now let's say form
+2:21:23
+equals authentication form and we'll call that now that looks a lot like what we did with the user creation form above
+2:21:30
+and it's the same type of logic as well so we can also follow that up with the return of the form so let's copy this
+2:21:37
+line here on line 13 with contrl c and now go down to our last line and then
+2:21:44
+we'll press return to go underneath it but then we don't want this to be part of the else block so you want to
+2:21:49
+backspace to go back over now contrl V will paste that line back in and we're
+2:21:55
+rendering once again and we're going to pass in the request now this will be a different path here though not users
+2:22:02
+register this will be the login. HTML and of course the form that is being
+2:22:07
+passed is a different form this is the authentication form and you can see VSS code says we have a problem because we
+2:22:13
+didn't put anything in the first part of the if block so we'll change this but just right now I want to go ahead and
+2:22:20
+and return a redirect and we're going to redirect to the users colon login so
+2:22:29
+that's essentially our login form as well so this will just send us back to an empty form even if we submit the form
+2:22:36
+right now and now we need to create our login form so let's go to the templates that we have here in the users app and
+2:22:42
+then inside of templates we have users folder and then the register template so
+2:22:47
+let's click on that and this will be almost identical so I'm just going to click here somewhere in the file then
+2:22:54
+contrl a to select all and then contrl C to copy everything now I'm going to
+2:23:00
+create a new file over here right beside register and we'll call this login. HTML
+2:23:07
+so now I'm going to contrl V to paste everything in and we'll just change a couple of things again we want the same
+2:23:14
+extends with the layout we want the same block title but we want to change the
+2:23:19
+title and that's the same title that's in the H1 so once again as I select register a new user press contrl D now
+2:23:27
+it's selected both and I can just say user login and so that's a nice change
+2:23:34
+we're going to use this same form with validation CSS class that I applied here
+2:23:40
+for the register form as well alt Z once again to get this to wrap down now the
+2:23:46
+action is going to change this is not going to users SL register anymore this this is going to users SL login so
+2:23:53
+that's what we'll use there we still need the token it will still be a post or a method post here for the form and
+2:24:01
+the submit button can stay the same too so those are the only changes we need and now we can just save the file with
+2:24:07
+the form in place let's go back to our views.py file and add a couple more
+2:24:12
+things so now that we have that let's look at this return redirect because that's not what we're going to keep here
+2:24:19
+we're going to put in a form equals authentication form and call the
+2:24:26
+parenthesis after it as well but now it needs to receive something as notice up here in our register view the user
+2:24:32
+creation form received the request. poost but I'm going to Mouse over this authentication form function it's a
+2:24:38
+little different so notice it receives a request and then possibly ARs and then
+2:24:45
+quars if you haven't heard of quars that stands for keyword arguments notice this
+2:24:50
+sentence right here the request parameter is set for custom off use by subclasses and the form data comes in
+2:24:58
+via the standard data quar so it's a keyword argument and so we need to
+2:25:03
+specify that data keyword here as well so we can't just pass in the request.
+2:25:09
+poost we need to say data equals request. post and now notice we had the
+2:25:17
+if form is valid above in our register view function we're going to use that
+2:25:22
+same logic as well so I'm going to copy that and I'll scroll here just a little bit because this applies the validation
+2:25:29
+where we set the form equal to the authentication form and pass in the data so now we can check to see if the form
+2:25:36
+is valid as well now I'm going to temporarily leave a step out I'll just mark this with a comment and say log in
+2:25:43
+here and then after that I'm going to go ahead and return and use a redirect and
+2:25:50
+we do the same thing we did up here as a matter of fact I could have just copied this line so the line that we didn't use
+2:25:56
+is the form. saave because we're going to use something different here to log the user in but we are going to redirect
+2:26:03
+to our post list and I'm just noticing my indentation here is off and VSS code
+2:26:09
+is telling me that there that looks better so once again save that change so we've got enough logic here right now to
+2:26:15
+load the form also submit the form and get some validation although it won't log in and then if we do at least pass
+2:26:24
+the login test the validation we would be redirected to the post list however
+2:26:29
+if we don't pass the test we would be sent back and given the validation messages so let's pull this up in Chrome
+2:26:37
+and check it out now I need to refresh the page now we've got our icon for the
+2:26:42
+login I'll click that and here's the login so I'm going to type something that I know won't work of course this
+2:26:50
+already fulfilled the get request by loading the form so now this would be the validation check and I'll say Dave
+2:26:57
+and this would be something like test 1 2 3 4 which is not my password submit
+2:27:03
+and yes we get some validation back here it says please enter a correct username and password note that both Fields may
+2:27:10
+be case sensitive and thankfully it is not telling us what is wrong or which one we don't need to give any hints to
+2:27:16
+anybody that isn't or shouldn't be logging in so fortunately we should know
+2:27:23
+our password and then it doesn't need to tell us which field was wrong so my password I think was Dave test if I
+2:27:30
+remember right so now when I submit yes it takes me to the Post list now I'm not logged in yet we haven't added that
+2:27:37
+logic but everything we've added so far is working as expected and I'm back in vs code let's scroll to the top we have
+2:27:44
+one more import to add so we can say from D Jango and as I mentioned before I
+2:27:49
+don't have these memorized either it's uh it takes quite a bit of work to memorize each one of them so from D
+2:27:56
+Jango contrib.com
+2:28:20
+I'm going to pass in the request first and after that we need the user so to
+2:28:25
+get the user since we've already verified the form is valid we can call
+2:28:32
+form. Gore user of course we need to put parentheses after that like any method
+2:28:39
+and then it's going to return the user so you could actually set a user variable above with form. user but you
+2:28:47
+don't need to because you can just call it right here as you pass in the pram and it will
+2:28:52
+return the user so the login needs the request and the user value now it would
+2:28:57
+also be nice if we logged in users as they registered so once they've registered they should be logged in and
+2:29:03
+not have to take an extra step what we can do that too let's just scroll back up here and use that same login function
+2:29:10
+notice the form save that we were calling to save the new user it actually Returns the user value also so here we
+2:29:18
+can say login and we can pass in the request and have a comma and then we can
+2:29:23
+just put form save in there where below we had form. getet user this will also
+2:29:30
+return a user value so now let's save these changes and test it all back out in Chrome I'll pull up the browser
+2:29:37
+window and now we should go to the sign in well first of all before we go to
+2:29:42
+sign in actually let's go to the admin so you can verify that I am not signed in I have an admin user but it wants me
+2:29:49
+to log in so I am not signed in so I'll just back out of this and let's go ahead
+2:29:55
+and I'll sign in my user first so Dave and then Dave
+2:30:01
+test now I'm at the post list and now say I go to the admin it shouldn't ask
+2:30:08
+me to log in and yes so our signin page works as expected as well so that's good
+2:30:15
+what if we let let me go ahead and log out here again and then we'll up our
+2:30:21
+app and now what if we register a new user and see if they get logged in so
+2:30:27
+I'm going to say gy and I'm not sure what to put here let's say rocket one
+2:30:33
+two 3 4 submit and we got taken to the post
+2:30:40
+list so I think we're logged in as well but Jim is not an admin user we can't
+2:30:45
+create an admin user from our registration page so if I go to the admin page
+2:30:50
+page he says well this is nice we get a message it says you are authenticated as
+2:30:56
+Jim but you're not authorized to access this page because we know he's not an admin user so I'll log in as Dave here
+2:31:05
+Dave test once again a log in and now we can probably verify that Jim is in the
+2:31:11
+users table yes and we'd added Tony in the last lesson so we have Dave Jim and
+2:31:17
+Tony all in our users and everything is working as intended the source code for today's
+Chapter 11: Authorization
+2:31:23
+tutorial starts where the previous lessons ended and there's a link in the description that provides the code for
+2:31:28
+each lesson I've got VSS code open let's open a terminal window as we always do at the beginning of each lesson I'm
+2:31:35
+going to type Source thenb nv/ scripts SL activate press enter and
+2:31:43
+that should start our virtual environment now we want to CD into the my project directory and we're ready to
+2:31:49
+begin now we've already created a user registration and login process and today
+2:31:55
+we want to provide authorization that is protect pages from anyone that is not
+2:32:00
+logged in and of course to do that we need to create a log out so we can test users that are logged in and test users
+2:32:07
+that are logged out I'm going to close the terminal window let's open the my project directory here in the file tree
+2:32:13
+we want to go to users we'll scroll down here to urls.py here we want to add a
+2:32:19
+logout path as well so I'm just going to click here on line8 then press shift alt
+2:32:25
+and the down arrow and copy that down going to double click on log in and then
+2:32:30
+press contrl D to select login two more times and then I'm going to type log out
+2:32:37
+and it should change all three of those instances and now we have our log out path let's save this file and then go to
+2:32:44
+the views.py file that's right underneath in the file tree and now we need to create our logout view file
+2:32:49
+function but to start with we need to import log out at the top notice we're already importing log in as we did in a
+2:32:56
+previous lesson here on line three so right after that I'll just put a comma and also import log out on that same
+2:33:03
+line now I'm going to scroll down to the bottom where we can add this new log out function so I'll say def log outdore
+2:33:11
+View and it will also receive the request now here we also want to check
+2:33:17
+if this is a post method it would be really unusual ual to log out with a get request so we'll be submitting the log
+2:33:24
+out through a form so we can use the post method so here I want to say if
+2:33:29
+request. method equals poost as we have before
+2:33:35
+now we'll do something inside of this conditional I'm going to say log out and then I'm going to pass in the request
+2:33:42
+and then after that I want to redirect to the post list just like we did up here so after we have logged out I'll
+2:33:49
+just copy this line on line 21 and paste it in here on line 29 with that change
+2:33:55
+in place we're ready to add our logout form we want it to appear like a button in our navbar but it really needs to be
+2:34:02
+a form to send this post request that we have here so let's go ahead and go over
+2:34:07
+to our file tree once again and now the first thing I want to do is go to the static directory because I'm going to
+2:34:13
+add just a little bit more CSS to the style.css to style this form that we're
+2:34:19
+about to put in and of course you can use your own CSS Styles this is not a CSS tutorial I'm just pasting in some
+2:34:27
+basic Styles here for a logout class and a logout button so I'll save that just
+2:34:33
+to let you know the CSS has been updated in this tutorial for the specific
+2:34:38
+purpose now after that let's go into templates where we have not not that
+2:34:44
+templates I guess we're in the users one there we need the actual templates here
+2:34:49
+in the root directory so we have the layout. HTML that has our Navar I'm
+2:34:55
+going to scroll down to the bottom of the nav bar here I'm also going to press alt Z so this wraps down to each line
+2:35:02
+and we want another line here we'll put our form at the very end of the Navar so I'll put another pipe at the end of that
+2:35:10
+link that we had for the login and now we'll start here with a form element and
+2:35:16
+the class that we want to put on this is log out and the action is going to be
+2:35:22
+the URL that we set up for log out so this is going to use our templating language and now inside I'll have the
+2:35:29
+percent sign and now we'll say users and a colon and log out is that is what we
+2:35:35
+have named that URL and then after that we also need to put in what method this
+2:35:41
+will be so this method is going to equal the post method after we close that
+2:35:47
+we're going to have to close out our form also now inside the form as you remember the other forms we were
+2:35:52
+submitting we need that cross site uh request forgery token so I'm going to start typing C srf and there it comes up
+2:36:01
+I'll press Tab and it puts that in the form for me after that we still need our
+2:36:06
+button so I'll start with a button element and then it's going to have a class and here if I remember right I
+2:36:13
+made that class equal to log out-
+2:36:18
+button and after after that it's also going to have an ar- label because we're
+2:36:23
+going to use an emoji on the button instead of words so here I'll say this is a user log out we could also give it
+2:36:31
+a title attribute and so I'll say title equals and this would also be the user
+2:36:36
+log out and then we'll have whatever goes on the button itself and then we'll
+2:36:41
+close the button so on the button I'm going to put an emoji and being a log
+2:36:46
+out I just want to wave goodbye so I'm going to put the handwave and that's
+2:36:51
+okay because we've already used the ARA label to say what this means for screen readers and if we Mouse over the title
+2:36:58
+should help as well and with these changes in place let's save this file and we should be able to test out our
+2:37:05
+logout to make sure this much is working so let's open a terminal up once again and then I'm going to type pi manage.py
+2:37:12
+and run server that should start the uh web application running on Port 8000 I'm
+2:37:19
+going to press control and click that URL launch that in Chrome here's our
+2:37:24
+application okay let's see if we're logged in and we can do that right now by trying to go to the admin page so
+2:37:30
+I'll put slash admin press enter it says we need to log in so we know we're not
+2:37:36
+logged in at this point let's go ahead and log in now I am logged in let's go back to
+2:37:43
+view the site and everything looks okay here let's go ahead and click our log
+2:37:48
+out button it takes us to the post list as we expect so did we log out well for now at
+2:37:54
+least we need to go back and check the admin page once again to see if we're logged in no we are logged out so that
+2:38:01
+much is working and we're back in vs code let's go ahead and close the terminal window and now we need to
+2:38:08
+create a page that we want to protect in other words we need to be logged in to be authorized to view that page so I'm
+2:38:15
+going to close these uh pages that we have open here in vs code going to close the users app and the templates
+2:38:22
+directory as well and let's go to the Post directory scroll down and go to
+2:38:27
+urls.py in the URL patterns I want to put in another pattern to a page where
+2:38:33
+we would create a new post where we would allow users that are logged in to create a new post but we have to be
+2:38:40
+specific about where we put it here because of the slug if we put it underneath the slug this is going to
+2:38:46
+catch whatever we put first and assume it's a slug so we actually need to put this new line above the slug line so
+2:38:54
+shift alt and the down arrow to copy line seven down to line8 and now let's just change what we're going to put here
+2:39:00
+so I'm going to put in a path that is called new new there we go Dash post
+2:39:06
+slash and now here for the function this could be different we'll follow the same pattern that starts with posts so I'll
+2:39:14
+say postore new but then I'm going to name this once again new
+2:39:19
+new- host so the views here has a function that is following the naming
+2:39:25
+pattern of the other functions that starts with posts other than that I'm using new Dash poost and I've also given
+2:39:32
+the URL the name of new Dash poost here okay let's save this and now let's go to
+2:39:39
+views.py to create that new function as well I'm going to scroll a little bit
+2:39:44
+and then we'll start that with Def and then we had postore
+2:39:49
+new and this will also receive the request oh and I said post let's look at
+2:39:54
+these others I actually meant posts as I followed that pattern let's go back and double check that here so here it says
+2:40:01
+posts and that's what I want here we had post page so I guess we could name it either way if we were switching between
+2:40:08
+plural and singular and since it's a single post let's switch this to postore
+2:40:14
+new and I'll come back and just change this back to postcore New as we did for
+2:40:20
+the Post page function as well okay a simple function right here so we want to
+2:40:26
+return and render as we have in other functions and we'll pass in the request
+2:40:32
+and then we want posts SL postore new.
+2:40:38
+HTML so that is our template but we haven't created our template yet so with
+2:40:43
+that in mind let's save this file and now let's go to the templates here inside of the post app
+2:40:49
+and then inside of this post directory we see a couple of templates already so we want to create one more and call it
+2:40:55
+postore new so I'll create a new file and it is postore new. HTML now let's
+2:41:03
+just look at the post page that we have here a very simple page overall and
+2:41:08
+right now we're going to have an even simpler page for our post new just a start out so contrl a to select
+2:41:15
+everything contrl C to copy everything now I'll click into our new file and
+2:41:21
+contrl v as in Virginia to paste everything so here is our new page and
+2:41:28
+I'm just going to change a couple of things that we have here one is I'm going to delete everything inside of the
+2:41:35
+content block instead I'm just going to put an H1 and say new
+2:41:40
+post and then up here in the block title I'm essentially going to say the same
+2:41:46
+thing it's just new post page and now that I think about this page for just a moment just to keep the same styling if
+2:41:52
+we go back and look at this post page here we have a section our post list has
+2:41:57
+a section so let's just keep that same pattern as well so I'm going to put a section element back here just to be
+2:42:05
+consistent I'll copy this closing tag crl x contrl v to paste underneath I
+2:42:13
+save it does not Auto format so I'll just tab it over there we go and now I'm
+2:42:18
+finished with this template just for the time being and with that saved let's close the posts app directory over here
+2:42:24
+in the file tree and we're ready to go back to our templates where we have the layout because we need to add a link to
+2:42:32
+this new post page now this is going to be a link so let's just put it before
+2:42:37
+the form that has our log out so I'm going to copy this and then or not copy
+2:42:43
+I'm going to highlight and then I'm going to press shift alt and the down arrow and that will copy it down to the
+2:42:48
+next line so we can just change a couple of things here so our URL is going to go
+2:42:54
+to posts and then the exact page is going to be new Das poost I'm also going
+2:43:02
+to press alt Z once again so we can see everything on the page and now this says
+2:43:07
+user login so I can highlight that and then press contrl D to select the next
+2:43:12
+one as well and instead let's type new post and now we want a different Emoji
+2:43:18
+for for the new post so I'll delete that and once again you don't have to use emojis you can use anything you want so
+2:43:25
+I'm going to type new and there's an emoji that says new as well so that's what I'll use for our new post blank
+2:43:31
+Emoji but as this is right now anybody could still click this link and view
+2:43:36
+that new post page and we want to protect the page so now let's go to the
+2:43:42
+posts app and inside the posts app we want to go to the
+2:43:47
+views.py file now let's scroll up to the top of the file because we have another import here so I'm going to say from
+2:43:55
+Jango do contrib doo. decorators so we're going to use a
+2:44:02
+decorator on our function and we'll say import loginor required now to use a decorator
+2:44:09
+we put it directly above the function in this file so here we start with the at
+2:44:15
+symbol and then we'll have loginor required now we pass something here to
+2:44:22
+this login required function or decorator if you will so I'm going to say loginor URL equals and you can see
+2:44:31
+it wants to complete that for me then we're just going to send whoever needs to go there to the users SL login page
+2:44:40
+where we have our login page so what does this do exactly well this checks
+2:44:45
+when this function runs to see if the user is logged in in and if they're not logged in it redirects them to this
+2:44:53
+login URL that we have provided so with this much in place let's go back to Chrome and test everything out let's see
+2:45:00
+if we're currently logged in I don't think we are no we are not so that
+2:45:05
+should let us go back to our main site here I'll just delete the rest out of that URL we're back here on the main
+2:45:11
+page here is our icon or our Emoji to go to the new page so I'm going to click
+2:45:16
+that let's see if it redirects us to the login page it sure does so let me go
+2:45:22
+ahead and log in and now that I'm logged in it took me
+2:45:28
+to the Post list as we expected after we logged in but let's see if I can access that new post page and now I can access
+2:45:35
+it because I'm logged in so this also works as expected now let me go ahead and log out one more time here and
+2:45:43
+verify that I'm logged out when I click new yes I went back to the user login so now we're ready to continue there's one
+2:45:49
+more thing I want to highlight before we go back to VSS code I'm going to click the new Emoji one more time to try to go
+2:45:56
+to that page and when I get redirected to the login notice in the URL I now
+2:46:01
+have a Pam here called next because it's saying after I log in I likely want to
+2:46:07
+go back to that new post page that I tried to access but we know right now when I log in I get taken to the post
+2:46:14
+list well let's change this so if I tried to go to the new post page and I
+2:46:20
+was redirected to the login after I log in it should take me back to that new post page and I'm back in vs code once
+2:46:27
+again to avoid any confusion I'm going to close out of all the files that we currently have open and let's close the
+2:46:34
+post app as well as the templates directory here and now we're ready let's
+2:46:39
+go to the users app and then templates and then of course inside of users and
+2:46:45
+now let's go to the login. HTML template I'm going to scroll up just a little press alt Z so we can see everything on
+2:46:52
+the page but what we want to do is add something here underneath the form we're going to put a hidden input where we can
+2:46:59
+gather that next page value if it exists in the URL so let's start with our
+2:47:05
+templa language curly bracket print sign and then we'll say if
+2:47:11
+request dog. next because that is a git request
+2:47:17
+that shows that param in the URL so then we're getting the next Pam value from
+2:47:23
+that so if that exists is what we're checking right now then if after we check that this input will only be added
+2:47:31
+if it exists so then we'll say input will be a type equals hidden and then
+2:47:38
+after that let's give this a name equal to next and then let's set the
+2:47:44
+value and now we'll use two curly brackets and say request .g
+2:47:50
+get. next so whatever page that we were going to go to that it sets in that URL
+2:47:57
+now we have the value here and that's what we have in this input so it will get passed on when the form is submitted
+2:48:05
+if it exists and of course after we do this we need to end our if statement as
+2:48:11
+well I need lower case there and with that change in place we can save and
+2:48:16
+then we need to go to the views .p down here at the bottom still in the users
+2:48:22
+app and now we need to modify our login view function because the post request
+2:48:27
+might be sending in that next value as well right now when we log in no matter
+2:48:32
+what we get sent to the post list but we need to conditionally check and if we have that next value we want to go there
+2:48:39
+instead of the post list so let's add a little code between the login function
+2:48:44
+and the current return redirect that we have here I can say if
+2:48:49
+next in request. poost and then underneath that we'll
+2:48:56
+have return I need lowercase here return redirect now where do we want to go
+2:49:03
+instead of the post list well we want to go to wherever we were being sent I actually don't need quotes I want
+2:49:09
+request lowercase again request. post uppercase the get methods so I'm getting
+2:49:16
+the value of the field we named next in that form that hidden input so if that
+2:49:24
+existed in here I could change these to lowercase r two single quotes also just
+2:49:29
+a match so I know I've mixed them in there some I try to be consistent but here we go so if next in request. poost
+2:49:38
+then we're going to return whatever the value we had in that next field and remember we named that field next as
+2:49:45
+well and of course if that doesn't happen we need our l else here and then we need to tab this in to conform so if
+2:49:53
+next doesn't exist we're going to just log in and go to the Post list now let's check all of this out in Chrome once
+2:49:59
+again so I'll pull the browser back up and if I remember right we are logged out we're already on the user login page
+2:50:06
+actually and it has the next value up here so if I refresh that we should
+2:50:11
+still be good now let me go ahead and log in and see if we get redirected back to the new post page instead of getting
+2:50:19
+sent to the post list and yes we did That's great so now let me log out once
+2:50:25
+again and I'll just go to the homepage and sign in so I'm not going to the new
+2:50:30
+post page now after I log in I should be redirected to the post list instead of
+2:50:37
+the new post page and that's what happens as well so this also works as we
+2:50:42
+want it to now before we finish today one other thing we can do is conditionally show some of the options
+2:50:49
+in the nav bar right now we're showing everything so I'm signed out but I'm still showing the sign out link and I'm
+2:50:56
+also still showing the new post page even though I shouldn't be authorized to view that new post page so we should
+2:51:03
+only show these if we're signed in likewise the user registration and
+2:51:08
+signin should probably only show if we're logged out so let's make those changes I'm back in vs code let's close
+2:51:15
+these files and let's go ahead and close the user app over here we need to open
+2:51:21
+the templates directory once again go to the layout. HTML template where we have
+2:51:26
+our navbar now in templates we have access to the user object so we can
+2:51:32
+check that so before the new post and then our form that lets us log out let's
+2:51:37
+go ahead and put in a conditional check here and I'll start using the templating language once again with curly brackets
+2:51:44
+percent signs now I'll say if user so this is the user object that I can
+2:51:49
+access and then I can say do isore authenticated so we're just checking to
+2:51:55
+see if the user is logged in that's the only time that I want to show the new
+2:52:01
+post link and the uh link to log out so both of those emojis so I'll tab those
+2:52:07
+over now after that I can put an else here and then we'll say else and of
+2:52:14
+course have our print signs and curly brackets now we'll put whatever we want to do here if the user is not logged in
+2:52:22
+and then we'll have end if well what do we want to put if the user is not logged in that would be the user registration
+2:52:28
+and the user login so let's copy both of those starting line 26 down to 31 contrl
+2:52:36
+x to cut those we'll get rid of that empty line now I'm going to paste them here on line
+2:52:44
+35 and I want to get rid of this last pipe symbol here because now a login
+2:52:49
+will be the last thing to show in the list if we're not logged in all right let's go back to Chrome and make sure
+2:52:55
+it's all working I'll reload and yes so I'm not logged in so now I have the
+2:53:01
+login link and the user registration link here so let me go ahead and log in and we'll see if the nav bar changes got
+2:53:08
+Dave Dave test now I'm logged in those disappeared
+2:53:13
+and now we have the link to the new post page and the log out as well well so
+2:53:19
+everything is working as expected the source code for today's tutorial starts where the previous
+Chapter 12: Custom Forms
+2:53:25
+lesson ended and there's a link in the description that provides the code for each lesson we've got Visual Studio code
+2:53:31
+open let's go ahead and open a terminal window as we always do and then we'll type Source then
+2:53:37
+vv/ scripts activate press enter that should activate our virtual environment
+2:53:44
+now let's CD into the my project folder and we're ready ready to begin today we'll create a custom form that will add
+2:53:51
+new posts to our application so let's go ahead and close the terminal let's open the my project directory and the file
+2:53:57
+tree and then the post directory now inside this directory we could click on let's say views but we want to create a
+2:54:04
+new file so I'll click that icon and I'll name this forms.py so we're not creating this
+2:54:11
+completely from scratch because Jango does provide a little bit of information for us so let's start out with an import
+2:54:17
+and I'll say from Django import forms now after that we
+2:54:24
+also want to say from dot which means just in the folder that we're in we want to import models so this refers to the
+2:54:32
+models folder that we have over here in the file tree and you can see we have a post class so this is the model we will
+2:54:39
+be working with let's go back to forms.py now and come down a couple of lines so now let's create a new class
+2:54:45
+I'll say class and then we'll call this create post and now this receives
+2:54:51
+forms. model form and after that we'll put a colon
+2:54:58
+then we're going to have a nested class inside now this name is important we can't just make up whatever name we want
+2:55:03
+we need to call this meta with a capital M now inside this class we're going to say the model equals our
+2:55:10
+models. poost that's what we had in our models file over here so that's what
+2:55:16
+we're setting this model equal to and after that we'll say fields and now we
+2:55:22
+need to specify the fields that we want to inside of this list so let's look at our models and really we want the title
+2:55:29
+body Slug and the banner we don't need the date because that will be added automatically as we have Auto now add
+2:55:37
+true here also so we want those other four Fields so we'll put each one of
+2:55:42
+those in our list here so title then we had body then we had Slug and then we
+2:55:50
+had banner and I put an extra space here out of habit but I just want to be consistent so I'll remove that space and
+2:55:56
+that's all we need here to create our new form so now let's move on and we'll go to the
+2:56:02
+views.py inside of the post directory and now we'll have one additional import at the top so just under our last import
+2:56:09
+we'll say from Dot and then we will import forms so that's the file that we
+2:56:14
+had just created with our new form in it and now let's scroll down to our posts new function that we have here on line
+2:56:21
+18 and we'll just add to that so inside of the function on the first line we'll
+2:56:26
+say form equals forms. create post and we'll put the
+2:56:32
+parentheses after that to call it and now that we have the form we want to pass it to our render along with the
+2:56:38
+request and the path that we have here so in this final part of the function
+2:56:43
+that we call we'll put in form and of course this is going to be the form so
+2:56:49
+much like we had here above with post we're just doing the same thing with form inside of our post new and now this
+2:56:56
+is going to our postor new. HTML template that we see right here on line 20 now so let's go to the templates and
+2:57:03
+let's look at the template we had for postore new and right now we just have
+2:57:09
+an H1 so we need to add the form that will be now available to this template let's add a line below our H1 and we'll
+2:57:15
+start with the form element I want to put a class on this and we'll use the same class that we did on our user form
+2:57:22
+so it's form with validation and this refers to the CSS that we've created and
+2:57:27
+of course you can create your own CSS if you want to after that we're going to have an action and let's set this just
+2:57:33
+to empty right now and after that we're going to have a method we'll set this equal to post and then there's one more
+2:57:41
+thing I'll press alt Z to wrap this down and that is we might submit an image our Banner so we need to put e in C type
+2:57:49
+we'll set that equal to multiart SL form-data now this isn't specific to
+2:57:55
+Jango this is just something in HTML overall when you're sending something that's not just a typical form
+2:58:02
+submission with text so we're submitting an image this would be required in any form that we would do that with and
+2:58:09
+after that of course we want to have the closing form tag as well to close that out now let's talk about the action up
+2:58:15
+here and we can use our template so we can put put in a curly bracket a percent sign say it's a URL now we can refer to
+2:58:22
+posts and then we want to put new Das post because that's what we had
+2:58:28
+named that and then of course the closing percentage sign now let's go ahead and save this and just to see what
+2:58:34
+I'm talking about if we go down in the urls.py here you can see the name that we have for the named URL is new- poost
+2:58:42
+and the name of the app is post so we're going to post and then new Dash post
+2:58:48
+post so if we come back up to our template now we can see how we're referencing that in the URL it's posts
+2:58:54
+and then new- poost and now we need the contents of the form which it isn't much but we'll start off with our cross site
+2:59:01
+request forgery token so I'll start typing csrf and there it is I'll press
+2:59:06
+Tab and it adds it to the body here of the form or inside the form at least now
+2:59:11
+I can use our templating language again and pass in the form itself and that's what we were passing from our function
+2:59:19
+that we had before so now we're using the form here we also need a submit button so we can just make this a button
+2:59:25
+when there's only one button in a form it defaults to the type submit so there
+2:59:31
+is no confusion when we only have this one button so I can just put a button here but I also want to put a class on
+2:59:37
+this button and if I remember correctly it is the class form if I have my fingers on the right Keys form Das
+2:59:44
+submit and then I'm just going to put add post post on the button and close
+2:59:50
+this out and this will submit the form hey guys I hope you're enjoying the video you may be surprised to learn that
+2:59:55
+three out of every four viewers nearly 75% of all people who watch my channel aren't subscribed so I just wanted to
+3:00:02
+take a quick second and remind you to hit that subscribe button it really helps me out and if you really like my
+3:00:07
+videos you can get exclusive content and support my channel even more by joining my patreon at
+3:00:13
+patreon.com davay thanks for your consideration and now back to the the video now if we submit the form right
+3:00:19
+now we can't expect anything but let's at least see what it looks like so let's go ahead and open up our terminal window
+3:00:25
+once again and now we'll type pi manage.py and run server that should
+3:00:31
+start our application up there it is on IP address 127.0.0.1 which is the same
+3:00:38
+as Local Host and then it's Port 8000 I'll hold down control click there so
+3:00:43
+here we have our application it looks like I need to log in remember from the last lesson we can't even go to the new
+3:00:50
+post page or new post form now without logging in so I'm going to click the log
+3:00:55
+in type Dave and then I had Dave test I'm now logged in and now I see the
+3:01:01
+new icon up here the new Emoji I'll click that and here is our form so we've got the title The Body the slug and the
+3:01:09
+banner and then the add post button now one note here I did modify the CSS from
+3:01:16
+the last lesson just just to put a Max width on the form of about 600 pixels you can do whatever you want with your
+3:01:23
+CSS I'm just letting you know I made a small change if you had the code from the last lesson so if we put anything in
+3:01:30
+here right now it won't do anything but we just wanted to verify that the form did look as we expect it to and it
+3:01:36
+currently does back in VSS code let's go ahead and close the terminal window and now we want to scroll down to the
+3:01:42
+views.py file we're going to add some more logic to our postore new function
+3:01:47
+now as is we currently receive the empty form that we create and it is passed on
+3:01:53
+to the template right here so we need to handle this logic much like we did the user logic because this should be a post
+3:02:00
+request so we're first going to check for that so we'll say if
+3:02:05
+request. method equals with two equal signs and then Capital post so we're now
+3:02:11
+inside an if statement let's handle the else first because the else would be it's a get request and that gives us the
+3:02:17
+empty form that we start with so let's create an extra line and just say else and now this would create the form so
+3:02:24
+we'll just indent that so Python's good we still have a red squiggly here because we don't have anything up here
+3:02:29
+in the first part of the if but the else is a get request so then the form is
+3:02:35
+created and then the return with the render function will send that empty form when we first go to the page so now
+3:02:42
+what about the post method so let's handle that we'll start off with form is
+3:02:47
+is going to equal forms. create poost but now we're going to pass in the request. poost that we
+3:02:56
+receive we're also going to pass in request. files and that's something you
+3:03:01
+hadn't seen before but we are sending an image file so we also need that now and
+3:03:06
+now as you might remember from our logic with the users here we can validate what
+3:03:12
+was submitted against the model so we can say if form. is _ valid and we call
+3:03:19
+that function then we can do something if it is valid if it's not valid it's just going to come down here and return
+3:03:26
+the form and that form will have the validation essentially showing us what is wrong so if it is valid let me put a
+3:03:34
+hashtag here and I'll want to say save and we're not just going to save the new post we're actually going to assign a
+3:03:40
+user so I'll say save with user but then after that I'm going to return and we
+3:03:46
+could redirect any where we want to I'm going to redirect back to the posts and
+3:03:52
+then the named URL list so we looks like we need to import redirect up here at
+3:03:57
+the top and that comes after render on the same line so now we've got redirect
+3:04:03
+and yes that looks good so we've got this much and now we'll be able to submit the form actually get some
+3:04:09
+validation on it if it's not correct if it is correct it's not going to save anything but it will redirect us to the
+3:04:16
+post list so so I'm back in the browser now let's go ahead and refresh our form and let's do a test post now again it
+3:04:23
+will not save the post but if there is no error we will get redirected to the post list so I'm just going to say test
+3:04:31
+post this is a test post say test- poost
+3:04:37
+for the slug let's choose a file to add to this and I'm going to choose my ready
+3:04:42
+to go image and everything looks good here let's click add post and it looks like it went as expected so we see the
+3:04:50
+other posts we had in our list now at this point we're going to change our model because we want to assign a user
+3:04:57
+before we save the post and if you remember that takes a couple of steps it's also going to cause a problem with
+3:05:04
+these posts so let's go into our admin say admin slash now I'm logged in as the
+3:05:10
+admin user if you areen you need to remember your username and log in then log in and you'll then you'll see the
+3:05:16
+admin dashboard after you log in as an admin so now let's go to the posts and
+3:05:22
+let's click up here in the top uh check mark and it should select all the posts and then you can choose an action I'm
+3:05:28
+going to say delete selected posts it's going to delete all of the posts we had so I'll click go it'll ask me if I'm
+3:05:35
+sure I'll say yes now all those posts are gone if we go back to the site we
+3:05:40
+shouldn't see any posts on the post list back in vs code let's go to the models.py file in the post post
+3:05:47
+directory here we're going to want to add an author for our post and the author is going to be the user that's logged in so let's import the user we'll
+3:05:55
+say from Django if I could spell Django do contrib
+3:06:00
+doo. models we want to import user with a capital u after that we're going to
+3:06:07
+assign an author for our post so let's create an extra line here we'll say author equals this is going to make more
+3:06:14
+sense if you have worked with a relational data base before if not I'll
+3:06:19
+quickly try to explain how this works but you have more than one table in your database so here we have a user table
+3:06:27
+and we have a table that stores the posts and now these two tables will be related to each other because one user
+3:06:34
+could create many posts so it will need to link to that user every time he
+3:06:40
+creates or she creates a post so the author is going to be a foreign key in
+3:06:47
+the post table and if that doesn't make a whole lot of sense the more you learn
+3:06:53
+about databases it will but just for now know they're related and they are linked and we're going to call it a foreign key
+3:06:59
+so I have models do foreign key then I'm going to pass in the user and now I have
+3:07:07
+an onore delete that is required we'll set this equal to
+3:07:14
+models. Cascade there we see it at the top and and after that we'll say the default is equal to none now that
+3:07:22
+shouldn't happen because we're always going to have a logged in user or a new post can't be created but we can leave
+3:07:28
+that default in there anyway this on delete though is required and that's
+3:07:33
+telling the database how to handle uh your data If this relationship is
+3:07:39
+deleted and Cascade means okay if this user gets deleted out of the user table
+3:07:45
+it's going to delete all of their post posts out of the post table too so it doesn't have a broken relationship and
+3:07:51
+with this change we can save our model and now for a Min student challenge do you remember what we need to do after we
+3:07:58
+change our model there's a couple of steps we need to take before we can do anything else if you remember what that
+3:08:04
+is go ahead and pause the video and apply those changes okay I'm back and I
+3:08:10
+hope you did well here's what we need to do we need to make migration so I'm going to contrl C to exit the server so
+3:08:17
+it's not running now and now I'm going to say Pi manage. Pi and then make
+3:08:23
+migrations because anytime you change a model you then need to make migrations and migrate those changes to the
+3:08:29
+database so we'll go ahead and press enter here after make migrations now it's applied those now we'll say Pi
+3:08:37
+manage. Pi and then migrate now it will'll apply that migration and now we
+3:08:43
+can run our server so Pi manage.py run server and everything is back up and
+3:08:49
+running with the new changes okay I'm anxious to make some new posts and see the authors for those posts and to do
+3:08:56
+that let's close the terminal and let's apply how we're going to see those authors first in the post list so the
+3:09:03
+template in posts that is postore list let's come down to the line that has the
+3:09:08
+date and so now we'll have the title above and then we'll have the post date and after that I'm going to put buy then
+3:09:16
+I'll use a couple coup of curly brackets and I'll say post. author because we should now have an author field and
+3:09:23
+close that with a couple of curly brackets so we should see the date and then bu and then the author in the post
+3:09:29
+list so we can identify who wrote which post now I almost forgot but we need to
+3:09:35
+go back and let's apply what we have here in the function so we can actually
+3:09:40
+save the post with the user so now we can remove this comment that we have and let's start with new post
+3:09:47
+and this is going to equal our form. saave now we've seen this before but here's something you haven't seen yet
+3:09:54
+we'll say commit equals false and you need a capital f on that false as well
+3:10:00
+then after that we have an instance of our new post so then we'll say new post.
+3:10:06
+author and this is going to equal the request. user because the request has
+3:10:12
+the user that is logged in and then we're going to say new post
+3:10:17
+saave and that will save our new post with those changes let's go back to the browser I'm back in the browser and I'm
+3:10:24
+logged in as Dave so I'll click home just to make sure everything's working as expected now I'll click the new icon
+3:10:31
+and let's create our test post and this time it should save so we'll say test Post in the body as well test- poost for
+3:10:38
+the slug choose an image and I'll choose the beach chair and I'll click add post
+3:10:44
+and now we have our test Post in the post list and it gives the date and it says by Dave and there's the body we can
+3:10:50
+go to the page also hey it looks great let me sign out now and I'm going to
+3:10:56
+register a new user so I'll register here and I'm going to say this username
+3:11:01
+is Mike and then I'll say mic test for the password mic test submit okay now we
+3:11:10
+have our new user Mike let's create a new post from Mike so we'll call this
+3:11:15
+Mike's post Mike made a post Mike
+3:11:21
+dpost we'll choose let's not choose a file let's use the fallback remember we get a fallback if we don't choose an
+3:11:28
+image so we'll just not choose one this time add the post now we have a new post from Mike in our post list also and we
+3:11:34
+can see who wrote each Post in the post list I can click that and the fallback image did apply to Mike's post so
+3:11:42
+everything works as expected so congratulations you have a complete working blog app that you built with d
+3:11:48
+Jango and you have made it through the series now I do have one section left in this video where I want to make a couple
+3:11:54
+of updates and changes and we're back in vs code just a few updates and changes I
+3:11:59
+want to make specifically to the project settings file receiv received a little feedback while making this series and
+3:12:05
+there's a couple of changes that I provided that were actually kind of the old way of doing things although there's
+3:12:11
+nothing wrong with them and the application is working it's not broken I just want to give the updates so let's
+3:12:17
+go to the my project directory and the settings.py file these changes are also
+3:12:22
+going to help you deploy your application if you get ready to deploy it there's some changes you have to make
+3:12:28
+for static files for example so let's go through this I'm going to scroll down here online 12 we no longer need to
+3:12:35
+import OS so we can remove that which will cause us to make some other changes
+3:12:40
+as well let's scroll down a little further note here on line 25 it says debug equals true and this is a security
+3:12:47
+warning don't run with debug turned on in production so if you're going to deploy in other words let's make this
+3:12:55
+false this way we also need to specify allowed hosts now you may still run this
+3:13:00
+in your development environment on your Local Host so inside of here let's go ahead and put Local Host let's also put
+3:13:09
+in that IP address you've been seeing 127.0.0.1 which means the same thing as
+3:13:15
+Local Host so we've got both of those in the allowed host now now we can scroll
+3:13:21
+down way down to the bottom of the file where we had defined some things before and we had actually used that OS import
+3:13:28
+now you can see VSS code since we deleted that import has highlighted where we were using it so let's go ahead
+3:13:34
+and move our media URL I'll control X to cut that I'll put it right under the
+3:13:40
+static URL we're just kind of organizing the URLs together we have the static files directories and we're going to
+3:13:47
+change that here in just a second we also have this media root that we're going to change I'm going to contr X
+3:13:53
+that put it under these other two and above this I also want to create a
+3:13:59
+static underscore root now let's set the static root equal to basore directory
+3:14:06
+slash and let's call this folder we could name it whatever we want to I'll call it assets that seems to make sense
+3:14:13
+they're things that we are going to use now as you see I just used the base directory without the OS import here so
+3:14:20
+we can delete this os. path. jooin just use the base directory here delete the
+3:14:28
+comma but a slash delete the other parentheses and it works just like that
+3:14:33
+now so as you might guess we can do the same thing here inside of the static files directory so I'll delete all of
+3:14:40
+this and I'll delete the comma I'll put a slash and I'll delete that ending
+3:14:46
+parentheses as well and now to show how this new assets directory is going to work I'll delete a couple of these lines
+3:14:52
+while I'm here as well but let's open up a terminal window and now I can type clear so nothing else is there that's
+3:15:00
+confusing I want to type Pi manage. Pi and then collect stat o I need to spell
+3:15:07
+that right collect static and this is going to collect all of the static
+3:15:12
+assets and you'll notice it grabs a lot of the static assets for the Django admin area that we've been visiting as
+3:15:18
+well and it will put them all in that assets directory so I'm going to press enter let it collect all of that and now
+3:15:25
+we'll see that over here I close the terminal window we have this assets directory inside now there's an admin
+3:15:31
+folder and there's a lot of things here that we didn't create but they are static assets that D Jango provides then
+3:15:37
+it also grabbed our CSS and JS that we had provided okay let's save the changes
+3:15:43
+in our settings file and now let's go to the urls.py as well now I want to scroll down and
+3:15:49
+just under this last import we want to add one more import and it's going to be from Django do
+3:15:56
+views. static and not another dot after that just static then we say import
+3:16:03
+serve so we are importing the serve function here and this actually gets
+3:16:09
+used during development as well and that's okay it's just another way of doing things so we're going to make a
+3:16:14
+change here so we'll scroll down to our URL L patterns notice we have this URL patterns with the plus equals and it
+3:16:21
+sets our static files we can comment that out or you could delete it if you want to just comment it out so you can
+3:16:27
+refer to it that's fine too now we're also going to have another import here at the top I need to scroll back up
+3:16:33
+where we import path and include we also want to import reor path and re stands
+3:16:41
+for regular expression because we can use regular Expressions here in our patterns so now instead of the pattern
+3:16:47
+that we commented out here below I'm going to paste a couple in and you can see what they look like I'll press alt Z
+3:16:54
+as well so these are regular expression patterns here so we're defining a group
+3:17:00
+here's the one for media and here's the one for static if you're not familiar with regular Expressions there's really
+3:17:05
+a lot to learn there if you are sometimes they can still be confusing and I usually paste them into something
+3:17:11
+like chat GPT to say what exactly is this doing if I don't understand what
+3:17:17
+it's doing but here you can see it's matching the media path this one is matching the static path it's using that
+3:17:22
+serve function that we imported here then specifying the document route where we specified the settings and those
+3:17:29
+values that we just set in the settings file and finally the last fix I have is just from when we were working with the
+3:17:36
+users templates so I'll come down here into users and we'll go into the templates and use the login and here I
+3:17:44
+just specified the file path SL users SL login which we could really use our
+3:17:49
+templating language so we could say URL and it was users colon login and of
+3:17:55
+course another percent sign there and then it would be the same when we do that on register so I'll change this one
+3:18:03
+here as well so curly brace percent URL
+3:18:08
+users register a percent sign and ALT Z to wrap that down so I've
+3:18:15
+made those changes in we could of course verify those in the URLs that we had one named register and one named login so
+3:18:23
+here we made the correct name users login and users register of course in
+3:18:29
+the URLs we also see the app name is users once again guys congratulations on
+3:18:34
+completing the Django series you have a working blog application if you choose to deploy this application there are
+3:18:41
+different ways to do it and you can visit the various hosts for different instructions or Google because it's a
+3:18:47
+little different for each one so I didn't include that in this video but there are step-by-step instructions in
+3:18:54
+many different blogs and articles out there for deploying a d Jango application congratulations on
+3:19:00
+completing the D Jango for beginners tutorial series hey guys giving a quick shout out to my patrons holy coder is a
+3:19:08
+progress provider and lad is a member at the senior level also thank you to all
+3:19:13
+of the junior members you're all helping me reach my goal and if you haven't checked out my patreon it's got
+3:19:19
+exclusive content and early release content and it's not one of those patreons that doesn't get many posts I'm
+3:19:26
+active on there every week so please check it out if you haven't remember to keep striving for Progress over
+3:19:32
+Perfection and a little progress every day will go a very long way please give
+3:19:37
+this video a like if it's helped you and thank you for watching and subscribing you're helping my channel grow have a
+3:19:44
+great day and let's write more code together very soon

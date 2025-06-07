@@ -1,0 +1,2584 @@
+Transcript - Learn Django by Building an Online Marketplace – Python Tutorial for Beginners
+	freeCodeCamp.org
+
+
+Demo
+0:00
+learn d jeno by building a simple Online Marketplace jeno is a python framework
+0:06
+that makes it easier to build websites with python Stein with code from Stein
+0:11
+teaches this course Stein is a very experienced course creator the project
+0:16
+you develop in this course features authentication communication between users a dashboard for items form
+0:24
+handling and more in this tutorial I'm going to show you how to build an online marketplace where people can sell and
+0:30
+buy new and used items first I just want to show you a little demo of the project so you know what we are going to
+0:41
+build okay so here you can see the front page of the project we're building you have a simple menu with a few items you
+0:48
+can go to the inbox dashboard you can browse items and you can create a new one on the front page the six newest
+0:54
+items you'll be showing and at the bottom you can see the categories you'll also see how many it items that belongs
+1:01
+to each of the categories and if you go to for example new item you should be able to select
+1:07
+the category for the item fill out information like the name description price and add
+1:13
+image on the browse page you should be able to search in the title and the
+1:18
+description of the product and you can go to categories if you just want to see toys for examples and you can clear the
+1:26
+filters in the inbox you should see conversation that you have with other users and you can go into here and you
+1:34
+can talk directly to the owner of an item you can also go into an item here
+1:40
+and click contact seller if you want to do that on the dashboard you have your items here you can edit them and delete
+1:47
+them so if you go into one of these then you have two buttons here edit and delete and on edit page you can just
+1:54
+fill out information just like you did when you created it and you can set here if it was sold or
+Introduction
+2:02
+not I'm going to begin by installing and setting up everything we need and then build the project piece by piece I would
+2:09
+recommend that you know the basics of HTML before you start this course because I'm going to focus mainly
+2:16
+on Jango and a little bit of Tailwind okay let's get started building the
+Setting up
+2:24
+project so first I go to a command line and the first thing I want to do here is to set up an environment that Jango can
+2:31
+work in Python comes with a built-in virtual environment called van which I'm
+2:36
+going to use right now I'm inside a folder called puddle which is the name of our
+2:42
+project then to create the environment I just run the command python
+2:48
+3-m Ven and then the name which is just en EnV what this command does is that it
+2:53
+creates a virtual environment called EnV a virtual environment is an isolated
+2:58
+little environment on your computer where you can install python packages like Jango just for this
+3:05
+project this makes it really easy to maintain deploy and similar and now that we have the
+3:11
+environment created we can activate it by running Source EnV bin
+3:18
+activate and then we can see here that the name of the environment is prepended before the project
+3:25
+name and when it's activated we can install Jango by saying pip install
+3:31
+Jango this will now install the newest and stable version of Jango and a few dependencies that Jango
+3:38
+has great so the last step of this setup now is to create a Jango project and we
+3:44
+can do that by in Jango dadmin start project and then the name which is
+3:52
+puddle great so let's go into this CD puddle just to see what files we have
+3:58
+there so we have a manage.py and a pudle folder let me just go to visual studio
+4:05
+code which I like to use where I have open up this folder with environment and Jango
+4:11
+project so this manage.py file is sort of a script for running administrative
+4:17
+tasks like updating the database structure adding super users running the development server and
+4:24
+similar plus we have another folder here with the same name of the project
+4:30
+asgi dopy and wsgi Pi are entry points for the web server and you don't have to
+4:36
+think about these files at this moment these are when you're going to deploy a project to a live
+4:43
+server and then you have settings.py which is kind of like a global configuration for the whole
+4:50
+project here we have secret Keys installed apps and where templates are
+4:56
+located information about the database how we want the password to be structured and
+5:02
+similar and the last file is the url.py this is a file that can be thought of of
+5:08
+like a table of content for the whole project so this are will link the URL to
+5:14
+a specific view so I'm not going to explain these files more right now it's easier to do
+5:20
+that when we start using an m so you have some context okay let's go back to the
+5:26
+command line and then we can run the D Jango development server just to see that everything is okay and to run this
+5:33
+we just say python man P run server then you can see here that you
+5:38
+get the warning I will come back to this later right now we can just copy this address and go to browser I like to use
+5:47
+Google Chrome and then just paste it here then you can see here the install worked
+5:53
+successfully congratulations nice so now that you
+5:58
+have everything up and running we can create our first D Jango
+First app
+6:03
+app ajango app is a folder with some files it's used to separate the views
+6:09
+templates database models and similar for a specific part of a project for
+6:15
+example the pages like the homepage contact about and similar will each be stored in one Jango app but we will also
+6:23
+have one app for conversations and one app for items and so on but we'll come
+6:29
+back to this later right now I just want to focus on the front page so I want to
+6:34
+begin by creating a new Jango app called core and to do that I need to go back to the command line stop the web server and
+6:42
+then say python manage P see here that we use this file now is start app and
+6:49
+then core and this will now create a new folder with a few files so we can see
+6:57
+that we have it here uh we have the migrations which is information about the database this is
+7:03
+generated by Jango so you don't have to think about it right now admin.py is where we register the
+7:10
+database models to be used inside the jungle admin interface apps. piy is like a
+7:18
+configuration file but just for this specific app models.py is where we
+7:24
+Define database models like information about what we want to store for an it
+7:29
+them for example the title description price and similar test. p is where I can run
+7:36
+automated tests and similar for this app and views.py is where we Define views
+7:42
+for the app so it can be a bit hard to understand what all these files do but I
+7:47
+promise you that you will get a better understanding of them when we start using them and now that we have created this
+7:54
+app it's almost ready to be used we just need to tell Jango that app exists and
+7:59
+the we're going to use it so if you go back to settings.py you can see here
+8:04
+that we have a little segment called installed apps we have a few of these builtin apps here already and then at
+8:12
+the bottom we can add core and the functionality that comes from these
+8:17
+built-in apps is something that most Chango sites used at some point for example you have the admin interface
+8:23
+where you log in and can add the data to the project we have one for handling sessions one for handling authentication
+8:31
+and similar I'll come back to a few of these later in this video so since we now I
+8:38
+added core here Jango knows that this exist and it's going to be used so then
+8:44
+we can begin setting up the front page so if I just close this and find views.
+8:49
+pi we can create our first view So Def index then we pass in a parameter called
+8:57
+request this is information about the browser browser your IP address if it's a get or post request and
+9:04
+similar so this has to be put in on all views that we use and then we just want to render a
+9:12
+template very quickly by saying return render now we pass in the request
+9:17
+parameter so this will now be available inside the template and then the
+9:23
+template we're going to use which is core index.html and Save
+9:30
+so this is how simple a view can be and now that we have the view we can create
+9:36
+the template so inside the core folder create a new folder called templates
+9:42
+Jango will automatically look for a folder called templates inside all of the registered apps in the installed
+9:48
+apps section and then inside the template folder I want to create one more folder
+9:53
+called core this refers to the Core from The
+9:59
+View we just created so this folder so Jang automatically find this folder and
+10:05
+then it will find the core index file in here and then in here we can just create
+10:12
+a new file called index.html and this should look something like this so we add the doc
+10:19
+type HTML the HTML tag the head and then here
+10:25
+we can set up the meta charet charet you
+10:30
+tf-8 and then we can set up the viewport meta name view Port content this is so
+10:38
+that page can be mobile friendly with equals device D width and
+10:47
+initial D scale is 1.0 and then I want to include Tailwind
+10:55
+as a CS uh sorry as a CDN so script SRC
+11:02
+https CDN tailwind css.com and then we can just close this
+11:10
+tag right like that now we can add a title to the page title puddle close
+11:16
+this one title close the head create a body tag and then in here we can say div
+11:23
+close PX 6 py 6 get some space in here
+11:28
+and H1 the front page then we can oops
+11:34
+sorry close H1 close the div close the body and close the HTML and save so the
+11:43
+last step now is to add this to the urls.py file so if I just open up the folder
+11:49
+here again and find pudle urls.py then we can import The View we just created
+11:56
+so from core. views import index now we
+12:01
+can add it to the top of the URL patterns path set the path to be empty
+12:07
+since this is the front page and then we want to use the view called index and we
+12:12
+can set the name for this to be index and save so if I now go back
+12:20
+to here again I can run the server go back to Chrome and refresh and
+12:27
+now I'm at the front page and we can see here that I have space above and on the sides and this is now H1 from Tailwind
+12:36
+nice okay so now that we have all of this we can create a new page a page for the contact
+12:42
+information but let's begin by fixing up the front page a little bit first because right now all of this code is
+12:49
+inside index.html file I want to move most of the code into new file call based at HTML which the index. HTML file
+12:58
+should extend this way we can reuse the code for more templates throughout this project so
+13:04
+inside the same folder as index.html we can create a new file
+13:10
+called base. HTML great so here I can actually just
+13:16
+copy all of the code from the index.html copy this and paste it
+13:23
+here and then save this actually I can take this cut it out save and then in
+13:32
+index that HTML file to now extend the base file we can say
+13:38
+extends core base. HTML then below here I just paste this
+13:45
+title so now this will make sure that we extend the base. HTML file but the
+13:50
+content is missing so if I go to the browser and refresh the title is gone so
+13:56
+we need to introduce something called a code block so let's go back to base. HTML and add
+14:02
+it inside this div here so block
+14:07
+content and close it and block this will not help yet but if I copy this go back
+14:14
+to HTML index at HTML wrap it around the content
+14:20
+here then we make sure that everything we put in here will be rendered automatically in here by Jango so if I
+14:28
+now refresh you'll see that the title is gone but the content from here uh sorry
+14:36
+this doesn't have to be inside all of the templates nice so let's add one more
+14:42
+code block to the base. HTML file for the browser tab title so in here you can
+14:48
+say block title and then and block space and then we pipe it like
+14:56
+that so then on the index HTML file we create the same code block block
+15:04
+title and now we can say welcome here and block and then welcome will
+15:10
+automatically be put here in front of the pipe pedal so if I now refresh it
+15:16
+will say welcome puddle nice great so now we can continue to the
+15:22
+contact page let's begin with the view so in views. P we create a new view def
+15:28
+cont passing the request parameter return render request core contact. HTML and
+15:38
+save then we can create the template so let's just copy everything from
+15:44
+index.html create a new file where paste this and save it as contact. HTML in the
+15:50
+same folder then we can rename the title of the of the page to contact and then the
+15:58
+Conta SE page and then we need to add this to the
+16:04
+URLs also so let's begin by importing it contact and then part contact and
+16:11
+remember to end this with the slash that we pass in contact here have the name to
+16:17
+be contact and the name we put in here will make it easier to reference this
+16:24
+URL later in the project so if I now go to the browser just manually go to
+16:30
+contact then you will see that we are on the contact page perfect before we dive
+16:35
+deeper into Jango I just want to add a menu and a footer so let's go back again to base. HTML and add it there so base.
+16:45
+HTML and then above here add a new no close
+16:51
+py6 PX six Flex because we want items to be
+16:58
+next to each other justify Das between so that all space is put between the
+17:06
+logo and the links if you remember from the demo and then items Center so that the
+17:14
+links is on the same height as the logo and then we want the border on the bottom one pixel so border DB for Border
+17:24
+bottom and the color for the Border can be border D gray to 100 and then close the navigation bar
+17:33
+like that and then on the left side we want uh logo so a
+17:40
+hrf slash we add a clause to this text-
+17:45
+XL and we want the font to be semi Bol so font oops font semi
+17:52
+bolt puddle so let me save now go to the browser and see if this is correct
+17:59
+yes so now have a navigation bar here which is white with the border on the bottom and then the logo to the left
+18:05
+here nice and then I want some items on the
+18:10
+right side here so then I need to create a new div oops div
+18:18
+class space- X6 and this will automatically now add a
+18:25
+space between each of the items I put in here so first going to begin with the
+18:30
+new item link a hrf it's going just be empty for now close text-
+18:38
+XL oh sorry text LG font semi Bol and when we hover this I want this
+18:46
+to be gray so hover colon text- gray 500
+18:51
+new item so let me see if this looks good yes so now it's put here on the
+18:59
+right side and when I hover it it becomes gray nice so let me copy this to
+19:05
+make a browse link
+19:11
+browse and then I want to sign up a button and a login button so this looks
+19:16
+a little bit different you want to create a new element hrf can just be
+19:22
+empty for now close and this I want to have some padding so
+19:27
+px-6 and py3 text can also be LG and the font can
+19:33
+be semi bold just like up here but I want this to have a background so BG teal 500 this is a dark
+19:42
+green color and then I want to set the text to be white I want the corners for
+19:47
+the button to be rounded so I can add the rounded D XL and when we hover this I want the
+19:54
+background to be a little bit darker green so hover PG te
+20:00
+700 and then we add the title sign up if I make a copy of this we can do
+20:07
+the same thing for the login I said I want this to be gray 500 and gray 700
+20:15
+when we hover this now just replace the title with log in and save so if I go
+20:22
+back now refresh we have the new item browse and then these two with the hover
+20:27
+functionality great then I want a very simple footer
+20:33
+here as well so the nice thing is now that for but before I go there I just want to
+20:39
+show that this comes from the base of HTML file so if I go to front page the menu is there as well that's what's so
+20:47
+nice about extensions so let's go back to base. HTML and create the footer So
+20:53
+Below this div you can add footer oops footer
+21:00
+CLA py- 6 px-6 Flex justify between just like up
+21:08
+in the menu and we can set the B the background to be BG gray 800 this a dark
+21:15
+gray color we can close this and then in here on the left side I
+21:21
+want information about the project div close W-2
+21:28
+sl3 so this will take up 2/3 of the footer padding right can be set to 10
+21:35
+close this one and then in here I want the title so H3
+21:42
+class mb-5 font semi
+21:48
+bold and this going to be text Gray 400
+21:53
+about so we can save this now see what this look like refresh so we have have
+22:00
+the dark footer and then the title and then below here I want just a little bit
+22:05
+of random text some LM ipsum so P close text LG text Gray 500
+22:16
+L blah blah blah so just copy paste and close the
+22:24
+paragraph nice so then we have a little bit information about the project project here then on the right side I
+22:30
+want one more menu where we can link to the about page contact privacy terms of
+22:36
+use and similar so here we a div close W
+22:43
+1/3 this doesn't need any pading and then here we had just make a
+22:50
+copy of this title say menu instead and then I want to use a UL for
+22:57
+the menu so UL close space- y-2 so each of the elements in here have
+23:05
+some space between them close the URL and then l i a hrf can just be empty for
+23:12
+now close text LG text te 500 so it's a
+23:19
+green color and when we hover this I want this to be a little bit darker
+23:24
+green color so text teal 700 about close the link and close the
+23:32
+Ally so let's see what this looks like now then have the menu here nice so
+23:38
+let's add a few more elements here we this to
+23:44
+contact oops
+23:50
+privacy and then we have the terms as well terms of
+23:55
+use privacy policy to be correct nice so if I refresh now we have the
+24:01
+menu and everything we need so now I just want to activate this link
+24:08
+here and let me go back here and then I want to use uh code called URL and then
+24:16
+me just pass in contact and then Chango will automatically use this URL function
+24:23
+to find contact here and give us this URL so if
+24:28
+I refresh now click this one and I'm sent to the contact page
+24:33
+nice by the way if you want to learn even more jangle from me then check out my channel cod with Stein you can find a
+24:40
+link in the description below great now that we have the core app with a few pages it's time to start working on the
+24:47
+categories and the items and for this we need one more Jango
+Items
+24:53
+app so go to the command line and stop the web server then say pyth on manage
+24:59
+by start app item I want both of the categories and the item to be located in
+25:06
+this app so then we need to register this with d Jango so let's go back to
+25:13
+settings.py and add it in the list here save and we can close
+25:18
+this so I want to begin with the categories since this is the simplest database
+25:25
+model so if I just open up the brow browser here again find the item models.
+25:31
+Pi then we can create a new database model by saying close category PA in
+25:37
+models. model just so Jango knows what we are using and the categories should only
+25:43
+have one field which is the name so name equals models. Char
+25:49
+field and we need to set max length there we can set this to 255 so don't have any limitations so then when we
+25:57
+created a database model we need to update the database by going to the command line and say python manage P
+26:05
+make migrations so now you can see here that migrations for item we want to create a
+26:11
+new model called category and if I open up the migrations folder then we have a new file here then we can see here what
+26:19
+this is going to do so it's going to create a new table called category with the ID field and a name field
+26:28
+so now that we have done this we just need to tell Jango to actually execute this script and that's very easy we just
+26:35
+python managed by migrate so now you can see here that it created it down here the item. 001 and
+26:44
+also a few other database tables this is from the authentication and similar that
+26:50
+Jango comes with now this uh warning should also be removed so to make it
+26:57
+possible to add data or categories to the project we need to log into the admin interface and to do this we need a
+27:03
+user so let's create one python manage by create super
+27:10
+user admin admin at puddle.com and then a
+27:16
+password then the super user created successfully so now we can run the web
+27:21
+server again try to log in so if I just copy this go to new tab SL admin
+27:28
+then I need to log in with the user I just created okay so now you can see here
+27:35
+that we have the authentication and authorization we have users where is the admin user I just created but the
+27:43
+category model isn't there even though the database should have it already but we need to just tell Jango
+27:50
+that we want the uh database table to show in the admin interface so if you go
+27:55
+to item and admin.py then we can first begin by importing the
+28:01
+category model here so from dot models import category and I can say do models
+28:07
+because this admin. P file is in the same folder as models and then to register it we just
+28:14
+say admin. site register pass in the category so if I now go back and refresh
+28:21
+the item app appeared here and we have the categories database table here nice
+28:29
+let's try to add a few if I just click add I can add a toys I can add uh
+28:39
+Furnitures I can add um
+28:44
+clothes and save so if you see here now I see two things that I just want to fix
+28:50
+first of all categories is misspelled that's because Jango just automatically adds an add an S to the end of the app
+28:59
+name but this should end in IES and the same here category object
+29:04
+three doesn't tell me anything about what this actually is so we need to set the string representation for this
+29:12
+Clause so if I just go back to the modly we can begin with the categories name uh
+29:20
+um so class meta and then we say verbos name plural
+29:30
+categories and save if I refresh now you can see here that this is now spelled
+29:36
+correctly then I want to show the name of the category here so now we need to override the string representation So
+29:44
+Def Str Str self return self. name so
+29:49
+I'm just want to show the name the value from here so if I now refresh you see
+29:54
+clothes Furnitures and toys nice last thing I just want to do now is to order
+30:00
+this by name and this is also done in the meta which is kind of options for
+30:06
+our configurations for the model so ordering name and since this is a temple
+30:13
+we need to add a comma here since this is uh
+30:19
+iterable so refresh then everything looks great there nice and then I want
+30:25
+to go to the next database model which is the item model so below here we can class item
+30:34
+pass in models. model uh I want this to have a name as
+30:40
+well so I can just copy this paste it and I want the description so
+30:47
+description equals models. text field so this is now expected to be much longer
+30:53
+than 255 characters that's why I want to use a text field and not a Char field buil I the blank equals true and null
+31:02
+equals true in case the user doesn't want to provide a description for the project and then I want the price for
+31:09
+the price field so price equals small. float
+31:14
+field and I want a bllen field to Mark
+31:20
+if it's sold or not so is sold equals models. B field default should be just
+31:27
+at theault and I want to know when this was created
+31:33
+so created at equals model do date time field and I just want to add this
+31:39
+automatically so then I can just add here Auto now add equals true and then
+31:45
+Jango will handle this for us but I also want to know who created this so created
+31:53
+at n created by equals models. forine key now this is a index in the database
+32:00
+between this item and the user for example the admin user so here I can
+32:05
+pass in the user which I will import very soon and then I need to set something called the related name to
+32:13
+items so it's very easy to get all of the items belonging to a specific user
+32:19
+and then the last parameter that we need here is the on delete model. Cascade so
+32:24
+if a user is deleted all of the items will also be uh
+32:30
+deleted so now we can see here that I get an error because user is not defined
+32:35
+so I need to import it up here from Jango
+32:41
+comb. models import user and then the warning is now
+32:47
+gone also want one more forine key up to the category so category equals models
+32:54
+do forine key pass in the category
+33:00
+and then we can set the related name here also to items and on delete models
+33:05
+do Cascade so if you delete a category all of the items belong into that category will also be deleted so the
+33:13
+last field I want to add now is the image so for example below the price we
+33:20
+can just say image equals model. image field then I want to specify where on
+33:26
+the server I want this to be uploaded so upload to item images and then jle will create
+33:35
+this folder for us if it doesn't exist blank equals true and null equals true
+33:42
+in case the user doesn't want to provide an image so if I now save we can go and
+33:48
+update the database again so just go back to the terminal stop the web server
+33:53
+then we can see here that I can't use the image VI because pillow is not in installed and to solve this I just need
+34:00
+to run this command so pip install pillow and pillow is a python library
+34:06
+for handling images like resizing saving them and similar so now that this is
+34:12
+gone and done I can run the make migration script again and I can see
+34:17
+here that I changed the meta option for the category and I want to create a new model called item and then just python
+34:24
+mened by migrate so the last step then or the next step
+34:31
+is to register this in the admin interface again so import item and admin
+34:37
+site register item and save so if I now go here and refresh okay sorry I need to
+34:45
+run the server again of course refresh and then I have the items
+34:50
+here uh but before I can create anyone I just need to do some configuration for the images
+34:58
+so if I go to the settings. P scroll down we find something called Static
+35:05
+files this is for example CSS files and similar as you can see here but I need to do the same thing for the media files
+35:12
+so media URL should be media slash and
+35:18
+then where the root folder for the media files should be so media root equals
+35:24
+base there/ media so now this will create a media folder
+35:30
+inside the root folder of the project this variable is Def finded at the top
+35:36
+here and it's just the root folder for the project so now we can try to add a few
+35:44
+of these so if I click add item and I select the categories
+35:50
+toys uh um for example Teddy Bear this is the
+35:58
+description and then the price for example $100 and then an
+36:04
+image then I can select Teddy Bear and this is created by admin so
+36:10
+then I can click save and add another one to create one more and the
+36:16
+clothes and then a jacket blah blah blah just add some
+36:21
+random information and then select an image
+36:27
+okay it's shoes that I have here so shoe one and this is also created by
+36:34
+admin so now we can see here that I have the same string representation problem here you just want to fix that before I
+36:41
+do anything more just copy this paste and save refresh and then we see the
+36:46
+name of the item so if I now go back to visual studio code you can see here that
+36:51
+we got a new folder called media and then Jango created a new folder called item images and in there the images is
+36:59
+uploaded nice so now I want to show the newest products from the database on the
+37:06
+front page so let's find core views.py then we
+37:11
+need to import the database models here so from item. Models
+37:18
+import uh category because I want to show this as well and item and then I can get the six newest
+37:26
+uh project product here say items equals item. object. filter is so equals false
+37:36
+because I don't want product that is sold and to get six I can just say six
+37:42
+like this 0 to six and then to get all of the categories you can say categories equals
+37:50
+category. objects. all and then to post them in and to be able to use them in the template we need
+37:56
+to add a text here so comma categories part in
+38:03
+categories and items items now these ha
+38:08
+two points up to these nice okay so then we can begin by showing the items so in
+38:17
+the index. HTML can just remove this one and create a new div div
+38:24
+close margin top six so we have space up to the menu
+38:32
+px-6 py12 PG gray 100 rounded
+38:40
+DXL close that div and then in here I want to add a title so H2
+38:47
+class mb12 text 2 * XL text Center and then
+38:55
+the title newest items and save so let's go to the front page
+39:01
+just to see that it looks okay yes newest items and then I have a
+39:06
+box here to show the items in so here I want to have a grid where I show three
+39:11
+and three items So Below the title I can create a new div
+39:17
+class grid grid calls three because I want to add three columns and then Gap
+39:24
+three oops Gap three which is the space between each of the
+39:30
+items and then in here I want to Loop through the items that we provided in the
+39:37
+view that is these ones which is a list of items and can just four item in
+39:46
+items close this one and four and then we create an element here
+39:53
+div just close it and a hrf just close that one as well it can just
+40:00
+be empty for now and then we can show the image on the top so
+40:06
+div and then IM SRC item.
+40:13
+image. URL now this will give us the full absolute URL to the image class
+40:20
+rounded top XL so at the top of the image will have rounded corners
+40:28
+and then below here I want to show the name and the price so div class P6 so I
+40:34
+have pading on the side and on the top and bottom want the background to be
+40:40
+white and round de B XL so the bottom of this div will be arounded
+40:47
+corners and then here we have a H2 for the title text to
+40:54
+XL item. title I can close that one and below here I
+41:00
+want to show the price P Clause text Gray 500
+41:07
+price item do price and close so if I now save this we should
+41:15
+see a loop of the project products we have added okay the name isn't there because
+41:24
+it's name and not title sorry so now we have the teddy bear price 100
+41:29
+shoe price 50 nice but the image is missing and this is because that Jango
+41:37
+really doesn't handle media image for us but since we're just in development now
+41:43
+we can do a little hack or use Jango for this but in production you should never
+41:48
+do this so inside urls.py we can import two new things from chango docon import
+41:58
+settings and from Jango doc con. URLs
+42:03
+static import oops import static and then at
+42:10
+the bottom here you can add this plus static settings
+42:17
+dot oops media URL so now this points to
+42:23
+the URL that we set in the me uh settings. p and the document route to
+42:29
+find these files is settings.
+42:35
+Media rout and save so if I now go back and
+42:40
+refresh the images is loaded nice and then below the newest images I
+42:47
+want to show the categories just like in the demo so let's go back to the
+42:54
+template and make a copy of
+43:01
+this and just paste it below here and instead of saying newest items we say
+43:08
+categories I can close this div and I can close that div and then in here I want to Loop through the
+43:15
+categories so four category in
+43:21
+categories and four and then I can show
+43:28
+can actually copy most of this and just paste it in
+43:33
+here but the categories doesn't have image so let's remove that and the
+43:40
+categories doesn't have uh price but we can show how many products or items is
+43:47
+in here so to do that we can create a function or we can just say category.
+43:55
+items do count and items so I think this should
+44:03
+be correct one items zero items one
+44:08
+items uh but this should of course be category do name so now we have clothes one items
+44:16
+Furniture Zero items toys one items nice so now we have a working front page for
+44:22
+this project Next Step now is to make it possible to go into the detail page of
+Item detail
+44:30
+an item so let's begin with the view for this this view should be in the item
+44:36
+views. Pi so here we can say def detail POS in
+44:41
+the request parameter but since we want to find the detail of an item we need an
+44:47
+ID or a primary key for this so let's add one more primer here PK for primary
+44:53
+key and then to get this from the database we say it m equals get object
+44:59
+or 404 now jangle will give us a 404 error if this object doesn't exist in
+45:06
+the database and we want to get this uh item from the item model where the primary
+45:13
+key is primary key so this is now the primary key on the model itself and this
+45:20
+is the one we get from the URL so you can see here that I get two warnings because I haven't imported the
+45:27
+shortcut this can be together with render and I need to import this
+45:33
+model so from do models import item so
+45:38
+now the warning is gone now we can return and render template so return
+45:45
+render request PA in item SL detail.
+45:50
+HTML and then the context which is item item and Save
+45:57
+so the next step then is to create the folders and this template so here create a new folder
+46:04
+templates and item and detail so detail.
+46:12
+HTML and this should also extend the base. HTML so
+46:19
+extends core base. HTML I want to have the title here so
+46:25
+block title and then in here we can show the name of the uh the item so item. name and then
+46:34
+just close this block and block and then the block for the content
+46:39
+block [Music] content and
+46:46
+block so then in here I want to have a grid for I want to show and then in here
+46:52
+I want to have a grid because I want to have the image on the left and then information about the item on the right
+46:58
+side so div class grid grid calls
+47:04
+five and GAP can be set to
+47:12
+six and then on the left side we have the image so div close
+47:18
+call oops call span call sorry call- span three because
+47:25
+I want to take up three of the available five columns M
+47:31
+SRC item. image. URL close rounded Xcel because I want
+47:40
+the image to have rounded Corners so before I add anything more
+47:45
+here I just want to see what this looks like so the next step them is to import
+47:51
+this into the URLs file I want to have a separate URLs file for the items because this is a much
+47:57
+cleaner way to do this so here I want to create a new file URLs p and then we
+48:03
+first need to import path so from Chango do URLs import
+48:10
+path and we can import all of the views for the item so from do import oops
+48:20
+views and URL patterns oops URL
+48:25
+patterns part and when this has an integer primary key we want to use the
+48:32
+views. detail view the name can be
+48:37
+detail so this now expects an integer called primary key or PK and this PK has
+48:44
+to be the same as we set there um detail might be a little bit
+48:50
+confusing now so I want to import or Implement something called app name here
+48:55
+app name item and I will show you very soon how this works this will now be a name space
+49:02
+for this app then I just need to import this URLs
+49:07
+file to the main URLs file so in puddle URLs at the top here ex part
+49:17
+items include item. URLs and this points to
+49:22
+the URL file we just created and I get the warning here because you need to Port this together with
+49:28
+part and then all urls that begins with item will automatically go into this and
+49:36
+check if there is a partt with the primary key there nice so the last thing
+49:43
+we can do now before test this is to go into index.html and activate the link here so
+49:53
+URL then we provide item which is the Nam space or the app name detail and
+49:59
+then we provide the primary key bying item. ID save so now Jango will fix this URL
+50:07
+for us so if I click this now teddy bear you can see that I'm sent into the detail page for the teddy bear and you
+50:14
+can see the teddy bear name up there great so now I want to show some information on the right side here like
+50:21
+the name the price who is selling this the description and similar
+50:27
+so let's go back to the detail. HTML create a new div
+50:32
+class call span span whoops
+50:38
+D2 close that div actually I want some more classes here like
+50:44
+p-6 and BG gray 100 and rounded D
+50:51
+XL and then the first element in here I want to add is an H1 h H1
+50:58
+close mb-6 text 3 XL and then item. name close
+51:06
+AG one let's see what this looks like yes you have the gray box here with the
+51:12
+title nice so now let's add the price and who's selling this P
+51:18
+close text Gray 500 strong price
+51:27
+item do price and close the paragraph if I just
+51:33
+make a copy of this we can rename the title here to seller and then item do
+51:40
+created by do user name so this will give us the username for the person who
+51:46
+added this so 100 and the seller is admin below here I want to show the
+51:52
+description for the uh the item so P
+51:58
+close text Gray 700 a little bit
+52:03
+darker strong and then close can have text Gray 500 on
+52:10
+this [Music] description close the string add the BR
+52:17
+for line break and then item do description close that one and Save
+52:28
+nice so I only want to show this description or this title if there is
+52:33
+and actually description so we can test that up here if item. description so now
+52:40
+this will only be rendered if the user fill in and description for the item so
+52:46
+let's close this and if like that and then below here I can have a button
+52:51
+which we will activate later a hrf close
+52:57
+inline block margin top six we have space on this padding X6 and
+53:04
+py3 the text can be large and the font can be semi
+53:11
+Bold and the background can be BG t-500 text can be set to White and if we
+53:19
+hover this we want the background to be darker so hover PG teal 700 and we can
+53:27
+also have rounded Corners so rounded DXL and then the title contact
+53:35
+seller so we will come back to this and activate it later but let's make sure
+53:40
+it's looking good and it does nice then below here I just want to show the
+53:47
+related products or items so if there are more products in the same category
+53:53
+so let's add one toy car blah blah
+54:00
+blah um toy car created by admin and then I want
+54:06
+this to be showing at the bottom here so let's first make some changes in the
+54:12
+view because here is where we get the related uh items related items equals
+54:20
+item doob filter and then I want to get all of the
+54:27
+uh items in the same category as this one so category equals item.
+54:35
+category and I want to filter out the ones which set to sold so is sold is
+54:42
+still false and I want to exclude this item
+54:47
+from the list so dot exclude exclude PK equals PK
+54:57
+and I only want to have three so zero colon three to split
+55:03
+it and then we just need to append this related
+55:09
+items list like this and save and then to show this I just want
+55:16
+to Loop through and show them just like we do on the front page so just copy this entire div here and paste it below
+55:26
+this grid the bottom but instead of saying item in items you can say related items and
+55:35
+replace the title with related items and save so let's see what this looks like
+55:43
+related items and I have the toy car here if I go into this the teddy bear will be a related product nice great so
+55:51
+now that I have the basic browsing for this project I want to make it possible to sign up
+Signing up
+55:58
+so I Can Begin by creating a new file in the core
+56:04
+app so in the core app is where I want all of these views to be located let me
+56:11
+just close a little bit of this and then in the core app I want to create a new URLs P file to clean up a little bit now
+56:19
+you can import path again so from Chango do URLs import path
+56:26
+and from dot import views so I import all of the views belonging to this app
+56:33
+also then we set app name to be core now we set up the URL patterns can begin
+56:41
+with empty one part empty views. index and the name is
+56:47
+also index and we can also add about there so
+56:53
+or contact or whatever we created so if I just go to puddle URLs now we have
+57:00
+this contact so let me move this in here and say views. contact and save so now I
+57:10
+can remove this from there and when the URL here is empty I want to use the
+57:17
+include statement here as well so include core. URLs so now it it will
+57:24
+Loop through all of the parts here before it continue and test with the
+57:30
+items so then I don't need to import this here anymore but if I now save and
+57:36
+go here and refresh I will get an error on this one in the footer because now
+57:41
+this doesn't exist anymore so let me open up base. HTML and rename this to
+57:48
+core colon contact since I added app name here so if I refresh now everything
+57:55
+is back at it was okay so let's continue with signing up a user so inside the
+58:02
+core app I want to create one more file called forms. P so Jango will helps us
+58:07
+with creating users validation and similar let's first import forms from
+58:13
+Jango from Jango import forms and we can import a user creation
+58:21
+form from Chango contrib o. fors import user creation
+58:29
+form and I need to import the database model for the user so from Jango
+58:37
+trib models import user and then we can
+58:42
+create it here so close sign up form and we pass in the user creation form which
+58:49
+we imported up here and then we need to do some configurations close mattera
+58:56
+we need to set the model we're going to use which is user that comes from Jango and then I want to specify which
+59:03
+Fields I want the user to fill out Fields equals username I want them to
+59:10
+fill out email password one one and password two which is the
+59:19
+repeat password so let's save this for now and then we can create The View
+59:26
+where we are going to show this form so inside the view. pi we can
+59:32
+import the form we just create from dot forms import uh sign up
+59:41
+form and then we create the view so at the bottom here we can say def sign up
+59:47
+pass in the request parameter and then we can create an instance of the form form equals sign up
+59:55
+form whoops and then we say return render
+1:00:03
+request then the template which is coreign up. HTML then we just need to
+1:00:09
+post the form into the front end form form like this and save then we need to
+1:00:15
+create the template before we can test this so sign up. HTML I want this to extend the base as
+1:00:24
+well oops extends core base.
+1:00:31
+HTML what is that the block title sign up and oops and block okay I
+1:00:41
+have a double there block
+1:00:47
+content and close this one and block and then in here we can begin with
+1:00:54
+a box around four div CLA
+1:00:59
+W12 which just fills out half the screen my6 so we have space above and below
+1:01:06
+this button box and mx- auto so it's centered on the screen on the background
+1:01:12
+to be BG gray 100 and have rounded Corners close that one then we can have
+1:01:20
+a title H1 clause and b-6
+1:01:26
+text 3XL sign up so before I add anything more here we
+1:01:34
+can test that this is working so let's go to url. P show uh to
+1:01:42
+addit here po sign up slash views. signup and the name is
+1:01:50
+sign up now we can update the menu so this link to the correct page
+1:01:57
+so that is the first link here URL core colon sign
+1:02:05
+up and save so if I go back now refresh click
+1:02:10
+sign up now we have this box that fills out half of the screen and is
+1:02:16
+centered um looks like I forgot to add some padding to this box so let's go
+1:02:23
+here and say p-6 save refresh and now it looks a
+1:02:28
+little bit better then below here we can show the form so let's go back here
+1:02:33
+create a form element form method should be set to post action dot
+1:02:40
+which is the same page we are on and since we are using a post request we need to add something called a csrf
+1:02:47
+token this is security built in with Jango to prevent cross site reforce
+1:02:52
+request for jury I think it's called now we can render the form by saying form. s
+1:03:00
+p and then we have a button so button class py4 px8 text can be large
+1:03:10
+background can be teal 500 and when we hover this can be darker so BG
+1:03:17
+te 700 and I want the corners to be arounded XL and the text to be y
+1:03:26
+and we can just set the title to be submit and close the
+1:03:31
+button save go back and refresh and we have the form here which doesn't look
+1:03:37
+very good but we can try to customize this so it looks a little bit
+1:03:44
+better so if I then go back here just remove this this is the
+1:03:51
+easiest way to show the form then we can first make sure sure that if there are errors that are not connected to the
+1:03:59
+fields we showed them here by saying form. non field
+1:04:04
+errors then we can add a div clause
+1:04:10
+mb-3 and in here we have a label for the username label
+1:04:17
+Clause inline block margin bottom two
+1:04:22
+username close the label and then form.
+1:04:29
+username close that Dev if I save it now refresh we just have the username it
+1:04:35
+looks a little bit better but I will make it even better let add the BR
+1:04:41
+here and we can copy this paste it for the
+1:04:46
+email and form. email and the same with the password so
+1:04:53
+password form. password
+1:04:59
+one and the repeat password repeat
+1:05:04
+password repeat or password two and
+1:05:10
+save refresh so now the Forum looks a little bit better we will fix more styling I just want to make sure that we
+1:05:17
+print out more errors down here if there are any so if form. errors or
+1:05:26
+form. non field errors then we can close this by and if
+1:05:34
+and if there are any we create a new div div close
+1:05:39
+mb3 padding six in all Direction background can be BG red 100 rounded
+1:05:49
+Xcel div and then we just Loop through the images here and the errors
+1:05:56
+form dot sorry we need to Loop through them by saying for field in
+1:06:04
+form field do errors we close this and
+1:06:10
+four and I just want to move this down there sorry it shouldn't be up
+1:06:17
+there paste and save so if I now refresh it looks a little doesn't look any
+1:06:24
+different and I can't submit it yet but let's fix the rest of the styling here
+1:06:31
+which is done inside the user creation or the sign up
+1:06:36
+form so let's go back to forms Pi then we need to do some changes
+1:06:43
+here so the username let's begin with that username equals form. Char
+1:06:51
+field then we set something called widget equal form do forms. text
+1:06:59
+input that set attributes ATS equals create the dictionary
+1:07:07
+placeholder your username let's save this see if it works
+1:07:12
+yes now we have a placeholder there now we can add some claes to it as well so
+1:07:18
+Clause w- full py4 PX 6 and round the
+1:07:25
+said XL nice so now this looks much better
+1:07:30
+let's do this for the other three field as well email and this should be an email
+1:07:39
+input so Jango will validate for us your email
+1:07:45
+address and then password one this should be a password input
+1:07:55
+or password I can just copy this password
+1:08:01
+two and then repeat password and save so if I
+1:08:08
+now go back and refresh the form looks much better still nothing happens if I
+1:08:13
+try to submit this so I need to do some more changes in the view.py here I need to check if the user
+1:08:21
+has submitted and to do that I if request. method it's post then I know
+1:08:27
+that the form has been submitted so then I can create a new instance of the form by say form equals sign a form and pass
+1:08:35
+in request. poost which is all of the information from the form then I can check if it's valid so
+1:08:42
+if form do is valid then I can say form. save and then the user will be created
+1:08:50
+in the database and when that is done we can redirect the user to the login page
+1:08:56
+that doesn't exist yet so we can just say return redirect SL log in and we will get a 44
+1:09:03
+error but we'll fix it later and if it's not the post
+1:09:09
+request then we just use the empty form like that now we get a new warning here
+1:09:15
+because we haven't imported this so let's import it up here together with
+1:09:20
+render so if I now refresh try to submit assign a
+1:09:33
+pair so then I was redirected to the login there nice but it means that it
+1:09:38
+was working so if I not go to users I will have a code with Stein the email and the password you can
+1:09:45
+see here that user is active but it's not status staff and it's not a super
+1:09:51
+user that means that I cannot log in into the admin interface with its user
+1:09:56
+only super users can do that so now we have the possibility to sign up a
+1:10:03
+user then we can make it possible to log in a
+Logging in
+1:10:09
+user so I Can Begin by creating the form so if I just go to forms. Pi we going to
+1:10:16
+still be using an authentication form from Jango so where we import this we
+1:10:22
+can also import Authentication [Music]
+1:10:27
+form and then we can create it at the top here doesn't really matter close
+1:10:33
+login form authentication form I'm done here I want to override uh
+1:10:42
+the fields for the username and the password so I can copy
+1:10:49
+this paste it and the password here it's just just called
+1:10:55
+password and not password one but besides this it's completely
+1:11:02
+same so I don't need a view for this because I just going to be use a login
+1:11:07
+view that Jango comes with so if I now just go to URL P I Can Begin by
+1:11:12
+importing this from Jango so from Jango do
+1:11:18
+trib o import views now this will crash
+1:11:23
+with this one so we need to Reen this by saying s or views then I can append it here po
+1:11:32
+login slash and then the view we're going to use which is now a views. login
+1:11:40
+views view like that and then we set the name
+1:11:46
+to be login but now I need to specify that we are going to use the form we
+1:11:51
+created here so we need to import it here from forms import login form so I
+1:12:00
+can just say authentication oops
+1:12:06
+authentication form equals login form so if I now just go to base. HTML I
+1:12:16
+can import this uh sorry fix this here URL core
+1:12:21
+login save so now we can try to use it okay so now I get a template does not
+1:12:28
+exist error because this doesn't exist but this is still not the file we're
+1:12:34
+going to use so I need to update here to tell Jango which files to use template name
+1:12:43
+is core login. HTML and this will look very similar to
+1:12:50
+the sign up file so just copy everything
+1:12:55
+create a new file and save it as login. HTML here I don't need a repeat password
+1:13:02
+this should be called form password and I only need the username and the
+1:13:08
+password so then I can just fix the title log in and
+1:13:15
+save uh Jango automatically calls a form for form that's why I don't need to
+1:13:21
+rename this and everything should now be working so let's go back refresh and now we see
+1:13:29
+the login form so now I can try to log in with the user I created Cod it Stein and then my
+1:13:36
+password so now I was automatically redirected to something called accounts SL profile this doesn't exist and we are
+1:13:43
+not going to use it either it's just the default URL that Jango tries to redirect
+1:13:48
+you to so we can override this by going to settings P settings
+1:13:54
+over go login redirect URL it can be sent to the front
+1:13:59
+page when you are logged in and we can set something called login
+1:14:04
+URL login so if you try to visit the page you don't have access to you will
+1:14:10
+be redirected to this URL and we can also set log out redirect URL while
+1:14:16
+we're still here to the front page when you log out
+1:14:21
+you will be sent to the front page so if I just remove this now it doesn't look
+1:14:28
+like we are authenticated I want to hide these two buttons when we are authenticated and show an inbox button
+1:14:35
+and a dashboard button instead so let me go to base. HTML and then above here you
+1:14:43
+can say if request. user do is
+1:14:48
+authenticated then I want to show two buttons else then we can show these two
+1:14:55
+so let me close this and if and save so if I go back and refresh those two
+1:15:00
+buttons are now gone that's because the request user is
+1:15:06
+authenticated there is always a user and if it's not authenticated it's an anonymous user so then I can make a copy
+1:15:15
+of these two
+1:15:20
+buttons just paste it in there then the first one can be in boooks and the other
+1:15:26
+one can be dashboard then that can just be empty
+1:15:32
+for now save go back and refresh now we have
+1:15:38
+inbox and the dashboard button instead nice okay so now I want to make it
+Adding items
+1:15:44
+possible to add items for the users so we can begin by creating new
+1:15:50
+form for this so if I just go back to editor and find the app for this item
+1:15:58
+and then create a new file here for forms.py then I Can Begin by importing
+1:16:03
+forms from D Jango from Jango import forms and I want to import the database
+1:16:09
+model item so form do models import item then I can create the form class
+1:16:18
+new item form and pass in forms. model form
+1:16:25
+can set the class meta so we can do some configurations we want to set the model to be item and the fields we want here
+1:16:32
+is category and we want the name the
+1:16:38
+description oops the price and the
+1:16:44
+image great so then we can save this for now we will come back to The Styling in a little while but now we can go to the
+1:16:52
+view. P to create the view for this So Def new
+1:16:58
+request and I want this to be I want D Jango to require that you're logged in
+1:17:04
+to access this here so to do that you can add something call a decorator so
+1:17:09
+let's begin by importing this from Chango contrib do. decorators import
+1:17:16
+login required and then to apply that to this
+1:17:22
+view we just at login required so if you not try to visit this without being
+1:17:27
+authenticated you will be redirected to the front page no sorry to the login page and then here we can say form
+1:17:34
+equals new item form we just need to import this from forms import new item
+1:17:43
+form and then we can say return render request Post in the template name which
+1:17:50
+here should be item form. HTML because I want to really use this for the edit as
+1:17:57
+well then we can pass in the form here form oops and form and
+1:18:04
+save and when that is done we can create the
+1:18:10
+template so just open up here again and then inside the item folder create new
+1:18:15
+called form. HTML so here we can begin by extending the template
+1:18:21
+extends core base. HTML now we set up the title block
+1:18:29
+title new item no sorry actually here I want to pass in a variable called
+1:18:37
+title you might wonder where this is coming from and I will show you and
+1:18:42
+block in views here we can append it there title new item but then we can do
+1:18:49
+the same with the edit view we just say edit edit item
+1:18:55
+so when that is done you can go down here create a block uh
+1:19:02
+content just close it and then in here we can begin with
+1:19:07
+title H1 close mb-6 text 3 XL and then the value here
+1:19:15
+should also be title which will be new item and then we can set up the form
+1:19:22
+form method should be post the action can be the page we are on and here we
+1:19:28
+also need to set something called ank type to multi part slash form data and
+1:19:36
+this is needed to be able to upload images and then here we add the csrf
+1:19:41
+token and then we can say div close space- y4 to have space between
+1:19:48
+all of the fields and then just form. s p
+1:19:54
+we can close this one and then I want to show the errors there you just want to copy that from
+1:20:00
+the from the sign up form because this is identical or the login form that doesn't
+1:20:08
+matter let me just copy this go back and paste it here and then below here we can
+1:20:14
+have the button which is also the same as in the sign up or log in so just copy
+1:20:21
+this go back and paste it and then I just want to close the form
+1:20:26
+element okay um you should be there like that I think everything is
+1:20:34
+okay here now last step done is to import this to
+1:20:39
+the url's page so here you can add this above here part
+1:20:47
+new views do new
+1:20:52
+item isn't that what I call it no just new
+1:20:57
+okay and then we set the name to be
+1:21:04
+new like that great if I now save then I can go to the menu in base
+1:21:12
+at HTML to add a button here so we can have this together with these two the
+1:21:18
+Inbox and the dashboard can have it first here
+1:21:25
+URL should go to item
+1:21:31
+colon new like that and then we can rename the
+1:21:38
+title the link to new item and save so if I now go back and refresh I should
+1:21:45
+have a new okay I already had this of course so I don't need the button there
+1:21:50
+sorry but okay sorry let me just copy this and paste it there because it
+1:21:58
+should be on that link it doesn't need a separate button so save again refresh and if I
+1:22:05
+click this now I will be red to the login page because I wasn't logged in so
+1:22:10
+let me log in with code with Stein and then my password let me try to click it again new item and then I have the form
+1:22:17
+here nice so then I just want to fix the styling for
+1:22:23
+this so so if I go back to forms. Pi I can add it here I can do it a little bit
+1:22:30
+differently here and the other places just so we see another way we can do this so viets oops fgets equals then
+1:22:40
+create the dictionary category colon forms do
+1:22:46
+select and then I want to set the attribute so ERS a new dictionary
+1:22:52
+close w full py4 PX 6 rounded DXL and border and save
+1:23:05
+so we can see if this is working that did not
+1:23:12
+work okay soorry I need to have this inside the meta class of course so save this now refresh and then
+1:23:21
+I have the styling there nice then I can do the same thing for the other just that I want to have this as a
+1:23:30
+variable so up here I can say uh input classes equals paste it and then I can
+1:23:37
+say input classes like that so I don't have to repeat this multiple times and
+1:23:42
+this is still working nice so then I can copy this just add a comma here replace
+1:23:50
+this for name and then forms do text
+1:23:55
+input like that and the same with the
+1:24:02
+description this should be a forms. text area and then the price which should be
+1:24:11
+text input and the last one image which is a file
+1:24:19
+input so then I can save this now go back and refresh and now styling here is
+1:24:25
+also working perfect I want some space between these
+1:24:30
+two by the way so this should have empty
+1:24:36
+six that's better great so then the last thing we need to do now is to add a
+1:24:42
+check if this form is submitted and similar just like we did in the sign up
+1:24:47
+so in the views. pi here we can say if request. method method is
+1:24:56
+post then form equals new item form and
+1:25:01
+here we need to post in request. poost and also request. files so we get the
+1:25:07
+files that user uploads and then we can say if form. is
+1:25:12
+valid but instead of saying just form. save here we need to do some changes here we can say item equals
+1:25:20
+form. save and pass in commit equals false because if we try to save to the
+1:25:26
+database now the created by field is not added therefore we will get an error if
+1:25:32
+you try to do this that's why we need to set commit false so this will just create an object but not save it in the
+1:25:38
+database and then item do created by equals request. user which is always
+1:25:45
+authenticated since we have this login decorator item.
+1:25:50
+saave and when that is done we can just redirect the user back to the detail page of the item they just created so
+1:25:58
+return redirect PA in item colon detail and we
+1:26:05
+need to set the primary key equals item. ID which is the item we just created so
+1:26:11
+I get a warning here now because I haven't imported redirect together from the jangle
+1:26:18
+shortcuts and if it's not a post request then it's a get request and we can do it like this
+1:26:25
+so that is the whole new view perfect so
+1:26:30
+we can try it out now if I go here now select the category
+1:26:36
+Furniture chair test the description blah blah
+1:26:42
+$200 then I want to select an image so I can take the chair there
+1:26:50
+submit okay enter a number okay let me do that instead 200 maybe I
+1:26:58
+should use a DOT instead of a comma submit the image attribute has no file
+1:27:04
+associated with it okay so that didn't
+1:27:11
+work requested files that's correct then form has the an type
+1:27:20
+multiart SL form data that is
+1:27:29
+weird let me just try to log in here again with the admin user
+1:27:37
+oops
+1:27:42
+admin like that and I just want to delete this here where I can set an
+1:27:49
+chair one with it just so it's working now it's working here but why
+1:27:54
+didn't the image get uploaded okay let me just try one more time new item
+1:28:02
+Furniture chair 2 200 choose file chair 2 submit okay so
+1:28:11
+now it was working so I don't know what the error was because I haven't changed anything but at least now it was working
+1:28:18
+perfect so that means that now we have the possibility to add items
+Dashboard
+1:28:25
+okay so now I want to start building the dashboard where you can see your items
+1:28:30
+edit them delete them and similar so let's start by creating a new app so
+1:28:36
+python manage it by start app dasboard now we can add this to the
+1:28:43
+settings file
+1:28:48
+dashboard and save um here I don't want any database
+1:28:53
+tables but I want the view so if I just open up dashboard views. P then I Can
+1:29:00
+Begin by importing the item model so from item. Models import oops import
+1:29:09
+item and I can import the login decorator so from Chango
+1:29:15
+contrib o. models import sorry decorators import login required
+1:29:24
+then I can create the view just begin with adding this decorator def index
+1:29:31
+request and then I want to get all of the items that you have created so items
+1:29:36
+equals item. objects. filter created by equals request.
+1:29:43
+user and then I want to render the template render sorry return of course render
+1:29:51
+passing the request parameter and then set a template which should be
+1:29:57
+dashboard SL index.html and then here we can pass in
+1:30:02
+the items and save so then I can set up the template
+1:30:10
+for this I think it will be similar to the top here so no it will not but it
+1:30:17
+will be very similar to the front page the beginning of the front page so down
+1:30:24
+to the boxs for the categories let me just copy everything here and then create a folder
+1:30:33
+templates and then dashboard and then the file for that
+1:30:38
+index. HTML paste this and then I can just say and
+1:30:45
+block Um this can just be like it is and the title here can be dashboard
+1:30:54
+and instead of say newest items I can say my
+1:30:59
+items and then I can just save this so now we have the view and the template
+1:31:05
+then just want to create a separate URLs file here so URLs P begin with importing
+1:31:12
+from Jango URLs import po import all of the views from do import views set up
+1:31:20
+app name to be dashboard and then the URL patterns then I just
+1:31:27
+want one here pot empty because I want to prefix this in the main URL file use.
+1:31:33
+index set the name to be index and save then I just want to
+1:31:39
+import this to the main URLs so pudle urls.py
+1:31:46
+I can add it here below the items or above that doesn't matter po dashboard
+1:31:56
+include dashboard. URLs and
+1:32:01
+save so if I now just open up base. HTML I can activate this button here called
+1:32:09
+dashboard URL dashboard colon
+1:32:15
+index and save so then we can see if this is working now just refresh sorry I
+1:32:22
+need to run the server again again refresh again click dashboard my items and then I can see
+1:32:30
+them here nice so now we can continue to make it
+Delete items
+1:32:37
+possible to delete your items so I can create a view for this so
+1:32:44
+inside the dashboard views. P here I can say at login required
+1:32:52
+because you need to be logged into to delete your item def delete Po in the request
+1:32:58
+parameter and the PK which is the ID for the item we want to delete now we get
+1:33:04
+the item from the database by saying item equals get object or 404 so we need
+1:33:11
+to import this we want to use the item model and we want to get where the primary key is
+1:33:18
+primary key from the URL and we're created by equals request. user so we
+1:33:24
+can't get objects that you haven't created yourself and to delete it you just say item. delete and then we can
+1:33:31
+redirect you back to the index page of the of the of the
+1:33:39
+dashboard and when I think about it I actually want to have this in the
+1:33:45
+item item views instead so just copy and remove it from there go to item views. p
+1:33:54
+paste it below here then we can redirect user to the dashboard so return
+1:34:01
+redirect dashboard colon index like
+1:34:07
+that then we can import it to the URLs and add it here just copy this add
+1:34:14
+delete at the end use. delete and name is also
+1:34:19
+delete so if I now go to the detail page need to do some changes
+1:34:26
+here so here where we show the price I want to have a box telling it that it's
+1:34:35
+your uh telling it that it's your uh item and that should go here below the
+1:34:43
+description together with this contact seller so here I can say if request.
+1:34:49
+user equals item. created by then I know that you are the one who
+1:34:55
+created this to create a new div here mt6 to get some space above p-6 to get
+1:35:03
+Space Inside the Box PG white and rounded D XL to get rounded
+1:35:10
+Corners if you are not the one who owns the ad then and only then will I show
+1:35:16
+the button for contacting a seller and if and then in here we can say p this is
+1:35:24
+your item and then I can have the delete
+1:35:29
+button here so ah hrf
+1:35:35
+URL item colon delete pass in the item. ID which is the one you are
+1:35:41
+visiting then we need to set some classes on this button in line
+1:35:47
+block margin top 6 px-6 py3
+1:35:54
+text LG font semi bold BG red- 500 so we know that it's a
+1:36:03
+dangerous button to click Text white and rounded
+1:36:08
+DXL I PA in delete here so let's see if this is working now
+1:36:15
+by go back here going into one of the items nice this is your item and delete
+1:36:21
+because now I'm loaded in as the admin user okay I just want to add a edit button
+1:36:26
+here as well so I have it so I make a copy of this one paste it replace the title with edit
+1:36:35
+and the button here can be green instead so te
+1:36:41
+500 and the link can just be empty for now but at least now I have these two
+1:36:46
+buttons great so let me try to delete this one I'm by clicking this delete and now it's
+1:36:53
+going from the list there nice okay so now I want to make it
+Edit items
+1:37:00
+possible to add it an item so if I go to the forms. pi inside the item folder
+1:37:09
+then I can make a copy of this I could reuse this but I want to have an extra
+1:37:16
+field and I don't want the category here so let me remove the category remove it
+1:37:22
+from the list here as well well and then rename this to edit item form plus I
+1:37:29
+want to add one more field here is sold like the one we have in the models.py
+1:37:35
+this doesn't need any styling so the form can just be like it is
+1:37:40
+now and then if I go to views. Pi I can make copy of the new
+1:37:47
+view paste it and rename it to add it here we need a primary key so we can get
+1:37:52
+the correct item from the database and I want to get it just like we do down here
+1:37:58
+in the delete view here I do not want to use the new item form I want to use the addit item
+1:38:04
+form and the same down here addit item form you can see here I need to import
+1:38:10
+this so let me scroll to the top where we import the new item form and also
+1:38:16
+import the edit item form so let me scroll down and then the
+1:38:21
+error is now gone we also need to do some other changes first I need to import I edit the title there and here I
+1:38:30
+do not need to do this here I can actually just say form. save because now
+1:38:35
+the created by is already set one more problem now is that if you
+1:38:41
+try to go to this page the form will be empty so we need to pass in some data here and to do that we can say instance
+1:38:49
+equals item and the next problem is is that if we just try to save this the form will
+1:38:57
+get an error because the instance is not set on this one so let me set it here as
+1:39:02
+well instance equals form no sorry item so now everything here should be
+1:39:10
+okay so then I just need to update the URL urlp in the item
+1:39:17
+folder make a copy of this say edit edit and edit
+1:39:24
+the last step done is to find a detail page so we can update the URL so URL
+1:39:30
+item colon addit and pass in item. ID and save so now this should work so if I
+1:39:38
+try to go to the teddy bear edit you can see that I have it here
+1:39:45
+edited and save so ted bear edited that
+1:39:51
+means that it was working so you can now create edit and delete items
+1:39:58
+perfect now I want to work a little bit on the browse page so we can search filter on categories and similar so
+Searching
+1:40:06
+let's begin with the view for this can just close all the files so it's easier for you to follow along so if I open up
+1:40:14
+item views.py then can have this on the top
+1:40:19
+so I like to have the list View and then the detail View and then more more specified view below So Def items or you
+1:40:27
+can call it browse if you want to passing the request parameter here I want to get all of the
+1:40:34
+items from the database that is not sold so items equals item. objects. filter is so
+1:40:44
+equals false now we going render the template return
+1:40:49
+render request POS in I it/ items.
+1:40:56
+HTML and then we just need to PO in the items and save so let me import this
+1:41:05
+into the URLs file in the item folder this can just be empty since the
+1:41:12
+items is added in the main URLs file views. items and name
+1:41:21
+items and Save so if I now open up base. HTML we can
+1:41:28
+update the URL here URL uh it oops item
+1:41:36
+items save I can just close that one and I we can test I will get an error now
+1:41:42
+because we have not created the template so that is the next step so let me go
+1:41:47
+back to visual studio code create a new file browse. h sorry items.
+1:41:57
+HTML this should also extend the core base. HTML file set the title block
+1:42:06
+title and here we can just call this items you can call it browse or search
+1:42:12
+or whatever you want actually and block and then block Ty
+1:42:18
+content content close it and
+1:42:25
+block and then here I want this to be split in two just like in the demo so I
+1:42:31
+need to add a grid here div Clause
+1:42:36
+pb-6 so we get some padding on the bottom of the screen here and we the
+1:42:41
+grid grid calls 4 Gap
+1:42:46
+four I can close this one and then I want one to the left which should be the
+1:42:52
+side bar where we can select filter search and similar so div class call
+1:43:00
+span-1 just close it and in here should be the Side
+1:43:08
+Bar and then you have the div CL oops div class call span
+1:43:17
+three close and in here I want to list out the the
+1:43:23
+items just like on the front page so if I open up index. HTML can make a copy of
+1:43:30
+this one and just paste it in here and
+1:43:36
+save so let me try this now so if I refresh template is there we have the
+1:43:42
+sidebar and then the list of items perfect so then I can begin working with
+1:43:49
+the sidebar here I should maybe have a background here on
+1:43:55
+this here maybe if I just edit there BG gray
+1:44:02
+100 refresh so then I get the white background and this and similar which is a little bit better so then the next
+1:44:09
+step is to add the sidebar so we can begin with adding a form method get and not post action
+1:44:19
+should be URL item item that is the one we are on but I like to
+1:44:26
+do it like this now okay for to add that
+1:44:31
+one and since this is get request we do not need the csrf token and then first here we can add the
+1:44:39
+input field for the query input name query and the class w-
+1:44:46
+full py4 PX 6 I want this to be border and
+1:44:52
+round the- XL we can set the type to be
+1:44:57
+text and the value to be query I will get this from the back end very soon set
+1:45:05
+the placeholder to be find a bike a
+1:45:10
+chair or a car or whatever you want and then below
+1:45:16
+here I want to have a search button so button class mt-2 so a space up to the
+1:45:25
+input field py4 PX 8 text LG bgt
+1:45:35
+500 and text white and around that D XL
+1:45:41
+search close the button and the form is closed okay so if I save now go back and
+1:45:49
+refresh we should now have the search bar there nice
+1:45:54
+so let me just fix the back end for this as well so that we get the query and we
+1:46:00
+PA it into the front end when we have it so at the top here we can say query
+1:46:05
+equals request. get. get query default this to be empty now we can PA it into
+1:46:12
+the front end as well like that so if I now try this Teddy the search will not
+1:46:19
+work but you can see up here that Teddy is a panda there and we also have it in the form here nice so let me try to
+1:46:27
+filter the search as well if there is any query so below here we can say if
+1:46:32
+query and we know that the user has filled it out items equals items.
+1:46:38
+filter and then name I contains equals query so if the name
+1:46:45
+contains the query I insensitive then the query will be
+1:46:52
+filled out or processed is probably more correct so
+1:46:57
+if I refresh now you can see that only this is there if I empty this all of the
+1:47:02
+items are there but if I want to search in the description as well I need to introduce something called Q so let's
+1:47:10
+import this from Jango do um db. models
+1:47:17
+import Q this makes it easier to search in multiple fields and then here add the
+1:47:23
+Q around this so if it's in the name or
+1:47:28
+use a pipe here Q the description I contains equals query so
+1:47:36
+if the title or the description contains it it will be searched
+1:47:42
+perfect great so now that we have this we can continue with the categories
+1:47:47
+first you can get all of the categories from the database so category this equals
+1:47:54
+category. objects. all so we need to import this up here and we need to
+1:48:01
+append this down here in the context so now I can go back here and
+1:48:06
+then below the form I can Loop through them and make it possible to click them
+1:48:11
+so I want to separate this a little bit by adding HR CLA Mt oror m y
+1:48:18
+6 and then P CL font semi
+1:48:23
+bold categories p and then I Loop through
+1:48:28
+them inside an unordered list for category in
+1:48:37
+categories close to N4 and then in here can say Ali close
+1:48:44
+py2 px2 rounded DXL and then in here I want to have a
+1:48:51
+link so a hrf URL should be
+1:48:56
+item item colon items and just close it
+1:49:02
+like that and then we can append the query so query equals query from the
+1:49:08
+form up here but I also need to specify the category category
+1:49:15
+equals category. ID which is the iteration we are on now and then here we
+1:49:23
+can say category do name me close the link and I can close
+1:49:28
+the Ali and save so if now go back and refresh you now have the categories
+1:49:34
+showing here great um but if I now click this nothing happens and this is not
+1:49:40
+showing as active either so we can be Begin by making possible to show as
+1:49:45
+active so in the Clause here we can say if category. ID equals category ID I
+1:49:53
+need to provide this the from the back end time say BG gray
+1:50:00
+200 and if so this will not work now because we don't have access to this yet
+1:50:07
+so we need to go back to review P then I can say category ID equals request. get.
+1:50:13
+getet oops posing category ID
+1:50:19
+there and then just default this to be zero and save so if I refresh
+1:50:28
+now it's still not working let me just try to inspect
+1:50:45
+this okay so that does not [Music] work maybe if I default it to no sorry I
+1:50:52
+forg got to provide it down here of course and save so
+1:50:59
+refresh and it's still not working maybe if I take it back to
+1:51:05
+[Music] zero nope okay so items if the category. ID
+1:51:14
+equals category ID okay remove category ID from there so
+1:51:20
+this should just be category which is the name we have
+1:51:26
+appear so this is still not working so if I just convert this to
+1:51:32
+integer down here set this to Zero Save under refresh now you can see this has a
+1:51:39
+gray background color nice so then I need to just make it possible to filter
+1:51:45
+on the categories so above here I can say if category ID then I know that you
+1:51:50
+have selected a category items equals items filter
+1:51:57
+where category ID equals
+1:52:04
+category ID and save so let me refresh
+1:52:09
+and now it's only getting this if I select clothes doesn't get anything and toys get these two nice so that is now
+1:52:18
+working perfect so the last thing I want to do here now is make it possible to
+1:52:23
+clear the filters so if I just go back to the template make a copy of these
+1:52:32
+two and then say clear filters and then in here I just want to add a simple
+1:52:39
+button so make a copy of the ul
+1:52:45
+ul Li and then in here we have the button
+1:52:50
+ahrf which can go to to URL item colon items and this will then reset the
+1:52:58
+filters reset or clear just don't add some claes so this
+1:53:05
+is more like a button Clause
+1:53:10
+mt2 py4 px8 inline block BG yellow 500
+1:53:19
+text LG and round de- excl and text can
+1:53:25
+be white so refresh and then we have de cleare filters so if I click this now
+1:53:32
+the categories are cleared and this search is cleared perfect so everything here is now working as it
+1:53:40
+should right so now I want to make it possible to communicate with each other I want to make it possible for users to
+Communication
+1:53:47
+send messages to the owner of a product or an item so we can Can Begin by so we
+1:53:53
+can begin by creating a new app so stop the web server say python manage by
+1:53:59
+start app conversation hit enter then we can register this in
+1:54:06
+settings. P can close these other files add it there
+1:54:13
+conversation and save so when we have this now we can
+1:54:18
+create a new database model for this so in models Pi I want to create a new
+1:54:25
+uh model for the conversation Clause conversation passing model do
+1:54:33
+model and here I want a reference to the item so we also need to import this from
+1:54:39
+item models import item and item equals models. forine key
+1:54:47
+pass in the item and then we set a related name to conver
+1:54:54
+ations and if you delete an item also want to delete all of the conversations
+1:54:59
+so here we say models. Cascade great and then I want to know
+1:55:08
+who is the members of these conversations so members equals models. many to many
+1:55:16
+field because the conversation needs to have multiple users the owner and the one who is contacting
+1:55:23
+here I want to put in the user because the users object are going to be used set the related name to be
+1:55:30
+conversations so I get a warning here because I haven't imported this so we need to do that from jango.com
+1:55:38
+trib models import user and then I want to know when this
+1:55:44
+was created Created atals small. dat Time
+1:55:49
+Field posing Auto now add is true and I also want to know when
+1:55:58
+it was modified so we can update and order by this modied atals models. dat time field and
+1:56:07
+here we need use called Auto Now equals true so every time we save this object
+1:56:13
+this will automatically updated so let me add the close meta here so we can set ordering by
+1:56:20
+default POS then minus modified at and
+1:56:28
+save um but before we update the database we can add one more table here
+1:56:34
+close conversation message PA in models. model
+1:56:40
+I would love to just use message but that would crash with some buil-in functionality that Jango
+1:56:46
+has so we can begin by adding a reference up to the conversation
+1:56:53
+models. forine key conversation related name is
+1:56:59
+messages and on delete models. Cascade so if you delete an item the
+1:57:06
+conversation will deleted and also the messages so that makes it very easy I
+1:57:12
+need a field for the content of the message M text
+1:57:18
+field and when it was created so let me just copy this and I want to know who
+1:57:24
+created it so created by equals models. forine key user related name can be
+1:57:33
+created messages and if you delete user also delete all of the messages so models do
+1:57:44
+Cascade great so now we need to update the database and to make migrations and
+1:57:51
+then the migrates script then I can just run the server so we have it
+1:57:57
+running so before I do anything more I want to add open up the admin P so we
+1:58:03
+can register them in the admin interface from Models import
+1:58:08
+conversation and conversation message admin do sorry admin do site.
+1:58:16
+register [Music] conversation admin. site. register
+1:58:23
+conversation message so that's done nice so then I want to create a new file
+1:58:31
+here for the forums so we can have validation and similar fors P Can Begin
+1:58:37
+by importing the forms so from Jango import forms and we need to import
+1:58:44
+the conversation message model from Models import conversation message and
+1:58:51
+then we create the form conversation message
+1:58:58
+form PA in forms. model form and then we can add a class
+1:59:06
+meta set the model to be conversation message the fields we want to use is
+1:59:12
+only content and then we can set up the widgets so we get some nice styling only
+1:59:20
+for the content field forms. text area
+1:59:27
+ators new dictionary close W full py4 px6 rounded D Exel and
+1:59:37
+we want to have a border on it great so if I now save this we can
+1:59:44
+open up the views. pi in the conversation app and create the first view here so once you have a separate
+1:59:51
+view for for new conversation so when you click the the contact seller you will be sent
+1:59:58
+this page So Def new conversation pause in request and the
+2:00:04
+primary key and the primary key here is for the item and to make it easier to know this
+2:00:12
+maybe I should just call it itmore primary key just so I know that it's not for a
+2:00:18
+conversation and then I can get the item from the database get object or 404 item where the primary
+2:00:28
+key is item primary key then I need to import these two here
+2:00:35
+so can begin with the get object or 404 and from item. Models import
+2:00:44
+item and then I want to check here if you are the owner then you should not be able to visit this page so if I do
+2:00:52
+created by equals request user sorry I need to equal sign here then just return
+2:01:03
+redirect to dashboard colon index or you can redirect user wherever
+2:01:10
+you want but I think this is a good place you need to import this shortcut as
+2:01:15
+well and then I want to get all of the conversations connected to this item
+2:01:22
+where you are a member so conversations equals
+2:01:29
+conversation doobs filter
+2:01:35
+item equals item and then filter where
+2:01:40
+members in remember to double underscore equals request. user.
+2:01:47
+ID so what this is checking now is that if this ID is one of the members then we
+2:01:53
+can proceed okay so now I get a new error here because I haven't imported
+2:01:59
+this so from Models import
+2:02:05
+conversation and I can also import the form we just created from forms
+2:02:11
+import conversation message form and the reason why I want to do this here is I
+2:02:18
+want to check if there already is a conversation with you and the owner and in that case I want to redirect you to
+2:02:24
+that conversation so if conversations then there is an actual
+2:02:29
+conversation so we can just pause it here for now redirect to conversation because we
+2:02:36
+don't have that page yet and then down here we can check if
+2:02:42
+the form has been submitted if request. method is post then we can check the
+2:02:50
+form by saying form equals conversation form conversation message form posing
+2:02:58
+request. post data not pot post and then if form. is valid and the
+2:03:07
+contact field is filled out correctly and we can create a new conversation so
+2:03:14
+conversation equals conversation doob do create item equals item so I
+2:03:22
+want to do this before I create the message and then we need to add you to
+2:03:28
+the members list and the owner of the item to the members list so conversation. members. add request.
+2:03:38
+user and conversation members. add item. created
+2:03:45
+by and then we save it conversation Dove then we can and create the
+2:03:52
+conversation message conversation message equals form. saave and Po in the
+2:03:59
+commit equals false so we don't get error from the database then we need to set the
+2:04:05
+reference to the conversation conversation oops so this just points up to this one
+2:04:13
+and who created it so created by equals request do user now we can save this as
+2:04:21
+well and then we can redirect it back to the item so return
+2:04:28
+redirect items item sorry item colon detail where primary key is item primary
+2:04:37
+key and if it's not a post request and we just create an empty form form equals
+2:04:43
+conversation message form then we can return and render the template return
+2:04:50
+render equ Po in the template which here should be
+2:04:56
+conversation new. HTML and we can Po in the form like this
+2:05:02
+save so now I want to create a URLs file for this app as well oops that's wrong
+2:05:08
+place in the conversation app url.py from Jango import part and then the
+2:05:17
+views from do import views
+2:05:22
+and the app name should be conversation and it's the URL patterns
+2:05:29
+po can be new and here we want to pass in the integer called item primary
+2:05:37
+key and then we just vi. new conversation and the name should be new
+2:05:44
+so then to link to this we just say conversation colum new so let's import this to the main
+2:05:52
+URLs file which is in the pudle folder po
+2:05:58
+inbox or you can call it conversation if you want to do that include
+2:06:04
+conversation. URLs save and close that
+2:06:09
+file so now I want to create a template for this so let's begin with the folder
+2:06:18
+templates conversation and then the template itself new.
+2:06:25
+HTML and then again I want to extend the base template so extend core base.
+2:06:33
+HTML set up the title block Title Here we can say new
+2:06:41
+conversation and block oops and
+2:06:47
+block and block content
+2:06:52
+then we can add the title here H1 class oops
+2:06:58
+mb-6 and text 3XL new
+2:07:03
+conversation close this one and we can close the end block then I just want to
+2:07:08
+fix the link to this page so we can test that everything is working so let me
+2:07:15
+just open up detail. HTML you can activate this button URL
+2:07:22
+conversation colon new and then the item
+2:07:27
+ID so if you now go into one of these okay me to run cannot import Po from
+2:07:36
+Jango from Jango URLs import po okay so now that is working refresh
+2:07:44
+and now I can see this since I'm owning this so if I go into toy car and set
+2:07:50
+code with Stein as the owner just save refresh now I can click contact seller
+2:07:57
+and then I sent it to the new conversation page so that is working so now I just want to show the rest of this
+2:08:04
+form and I can copy this form from the item form page this will be very
+2:08:13
+similar so let me just copy this entire form
+2:08:19
+tag and paste it here here don't need the multiport because you're not going
+2:08:25
+to send images but the rest can be like it is maybe you can say send instead of
+2:08:32
+submit so save go back and refresh and then we have the content which is the
+2:08:37
+message itself perfect so that means that now I could
+2:08:43
+try to send this hello code with Stein I'm interested
+2:08:52
+send so now I was sent back here which means that it was working if I refresh
+2:08:58
+then I should have a conversations here we have one conversation between these two users for the toy car and then the
+2:09:05
+message which contains the hello code within I'm interested message
+2:09:10
+great so now I just want to set up the inbox page so we can list out all of
+2:09:17
+the all of the conversations that we
+2:09:23
+have so let me go back to view. Pi and I think I also want to add the
+2:09:29
+login required here before I forget it so let me import
+2:09:35
+this as well from Jango trators Port login
+2:09:41
+required then we can create the inbox view at login required def inbox
+2:09:49
+request and then here I want to get all of the conversations that you are a
+2:09:54
+member of so I can actually just copy the statement from up
+2:10:00
+here this can be a conversation you have created or M suggest that have been sent
+2:10:06
+to you just to remove the filter for the item then we can return and render the
+2:10:11
+template return render request
+2:10:17
+conversation inbox. HTML pass in the convers conversations
+2:10:22
+for the template and save so if I now import
+2:10:27
+this into the URLs I can just po empty here so the URL will just be
+2:10:33
+inbox and then views. inbox name is
+2:10:39
+Inbox and if I open up base. HTML I think I have a button for this this one
+2:10:45
+is Inbox URL conversation colon inbox
+2:10:51
+box save and then go back here refresh click inbox and then I get the template does
+2:10:58
+not exist error but that's great because makes sense since I have not created it
+2:11:05
+yet so let me find a template I can copy a little bit okay can take this
+2:11:11
+one and then create a new file inbox. HTML paste it say inbox
+2:11:21
+in books and block and save refresh and then it's
+2:11:29
+there great so then I'm just want to Loop through all of the conversations that we have here so below here a div
+2:11:38
+Clause space- Y6 space between the
+2:11:43
+conversations for conversation in
+2:11:49
+conversations can close this and four and now we can have a link a hrf
+2:11:56
+it's going to be empty for now since we don't have a detail page close
+2:12:03
+block I don't think that is correct actually maybe it's I'm just messing up a little bit
+2:12:10
+and then we have a div for the image of the item so div
+2:12:16
+Clause p-6 Flex cuz I want this to be Flex
+2:12:21
+container BG gray 100 and rounded
+2:12:27
+DXL close that one then I want the image to the left div Clause padding right can
+2:12:33
+be set to six M SRC conversation do item. image.
+2:12:43
+URL close w20 rounded DXL so the width to be 20
+2:12:51
+and we have rounded corners on the image as well so if I save now we can try to see
+2:12:57
+if this is working yes then I have the image for the toy card there then I want
+2:13:03
+to show here who the member I'm talking to is and the item we are talking
+2:13:09
+about so here we can say div just close it right under there then I want to Loop
+2:13:16
+through the members so four member in conversation members
+2:13:23
+all so this is how you get all of the members when you use a many to many field and
+2:13:30
+four and if the member is not you then I want to show it here so if member not
+2:13:38
+equals request. user and
+2:13:45
+for and then create a paragraph So Close B close
+2:13:52
+mb-4 strong member. username close the and then we can show
+2:14:00
+when it was sent so uh
+2:14:07
+conversation do modified at and we know when the last message was sent so close
+2:14:14
+this one and then below here we can show what the item is so conversation do
+2:14:21
+item. name and save so hopefully now I done
+2:14:29
+something wrong invalided block tag sorry this should be and if refresh and then see who we are
+2:14:37
+talking to when the message was last sent and the name of this item great
+2:14:44
+next and now is make it possible to click this conversation so we can see the detail page and make it possible to
+2:14:50
+talk to each other other so let me just go to views. Pi
+2:14:56
+create a new view at login required because you need to be logged in Def
+2:15:02
+detail request and the primary key and this primary key is for the conversation
+2:15:09
+not the item so now we can get the conversation by getting all of the conversations you
+2:15:16
+have first so we just set this in not singular not plural do get where primary
+2:15:24
+key is primary key and then we can just return this return
+2:15:32
+render request uh conversation SL detail.
+2:15:40
+HTML and then we pass in the conversation
+2:15:46
+conversation and save great so before we do anything with the form here I just want to create a
+2:15:53
+template so that we have it um I think I can just just copy all
+2:16:00
+of this create a new file and save it as detail.
+2:16:06
+HTML and then for the title we can say conversation with capital c same thing
+2:16:13
+with H1 here and I want to have this and I want to have this but here I want to say for message in Converse say
+2:16:22
+messages. all so we pass in the conversation here and we get the messages because they are linked in this
+2:16:30
+here so go back to the detail page then I can remove the anchor tag because this
+2:16:37
+is not going to link to anything and then here I want to show
+2:16:42
+the message so here I do not need an image for each
+2:16:48
+of these so let me just remove move everything in here so I still want to have the padding
+2:16:55
+the flex the rounded and messages and similar and then here I can create a new
+2:17:04
+div and a paragraph P close and b-4 so we have some styling for the
+2:17:13
+name and then strong message. created by
+2:17:20
+username and when it was sent soor I need to
+2:17:26
+close the strong pipe or at if you want that message. created
+2:17:34
+at I can close that paragraph and I can show the message so message do
+2:17:42
+content I close that and save so if I now go back sorry before I
+2:17:50
+can test it I need to add it to the URLs here so po where int is named primary
+2:17:58
+key I can use the views. detail name
+2:18:03
+detail so if I now go to the inbox I can update the URL here URL conversation
+2:18:10
+colum detail Po in the conversation. ID and ID and primary key is always the
+2:18:17
+same so let me save that now refresh and I click it I'm sent to the conversation
+2:18:23
+and here you can see the message and if I have sent the message I
+2:18:29
+want this to be blue and if you have sent a message I want it to be
+2:18:34
+gray so let me just close the inbox go back to detail and then here before we
+2:18:40
+add the background I can say if message do created by equals request.
+2:18:48
+user then we say BG blue 100
+2:18:53
+else then it's gray and if and save so now this will be
+2:18:59
+blue because I sent this message great but let me make it so that it was the
+2:19:06
+code Stein who sent this refresh and then it's gray okay so now I want to add
+2:19:13
+the form below here so I can send message back and talk to the other person
+2:19:21
+So Below this div I create a new the form so form method should be post
+2:19:27
+action dot which is the page we are on then we need to add the csrf token and
+2:19:33
+we can generate or show the form here form dosp then I need a button just go to the
+2:19:41
+sign up page and copy this like that and we can close the
+2:19:49
+form and let me just rename this to send since we are sending a
+2:19:54
+message so if I save now go back on refresh nothing happens except the
+2:19:59
+button is showing because we are not having any forums there yet so we need
+2:20:05
+to go back to view. p and fix it here first we can import okay we have
+2:20:12
+imported it but we can see if the form has been submitted so if uh request do
+2:20:19
+method equals post then form equals conversation message form and we
+2:20:27
+need to pause in request. poost data and if form. is form
+2:20:35
+is valid then we can create a new conversation message so conversation
+2:20:42
+message equals form. save and need to say commit equals
+2:20:49
+false and then we need to set a link up to this
+2:20:56
+conversation and we need to set who created it created bys request user and
+2:21:02
+then we save it and to update the modified date of the conversation we can
+2:21:08
+just say conversation. save since we have it already up here and when that is
+2:21:14
+done we can redirect the user back to the conversation page so return redirect
+2:21:23
+conversation colum detail set the primary key to be primary
+2:21:28
+key and else we just create an empty instance of this
+2:21:34
+form and save so if I now refresh I can't see it
+2:21:40
+yet because I forgot to add it down here form form save refresh and then we
+2:21:49
+have it here hello back send and now this is blue because I
+2:21:55
+sent it nice let's just add some space between these so close empty
+2:22:04
+six better okay so now we have the conversation here and everything seems
+2:22:11
+to be in order just want to fix the redirect that I did up
+2:22:16
+here um where is it the new conversation yes here if there are any conversation
+2:22:23
+now we can now return you to that return redirect
+2:22:30
+conversation colon detail and then we can pass in the primary key
+2:22:37
+equals we want to get the first one from this zero sorry first
+2:22:44
+dot ID I think it's the correct way to do this let me try so if I just go go
+2:22:50
+back to browse the toy car contact seller then I sent directly to the conversation page
+2:22:59
+perfect so now we have the possibility to create items we can edit them delete
+Summary
+2:23:05
+them we can set them sold we can view our items here in the my items section
+2:23:12
+we can go into them edit them delete them everything is working we have conversation between the users and
+2:23:18
+similar so that is a rep for this tutorial I hope you enjoyed it and that it was able
+2:23:24
+to follow along if you want to keep practicing your Jango skills feel free to keep
+2:23:30
+building on this project you can add things like email verification image Galleries and admin dashboard and
+2:23:37
+similar if you have any questions about the code or anything feel free to leave a comment below and I will answer as
+2:23:43
+soon as I can
+
+
+

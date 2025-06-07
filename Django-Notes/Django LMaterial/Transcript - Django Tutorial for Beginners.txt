@@ -1,0 +1,1237 @@
+Transcript - Django Tutorial for Beginners – Build Powerful Backends
+
+Introduction
+0:02
+welcome to the ultimate django course in this course i'm going to teach you everything you need to know about django
+0:07
+from the very basics to more advanced concepts so by the end of this course you'll be able to use django to build
+0:13
+production-grade back-ends for your web and mobile apps if you have always wanted to learn web development with
+0:18
+python you are in the right place we'll use python and django to build and deploy the backend for an
+0:24
+e-commerce application if you're looking for a comprehensive organized and practical course that
+0:29
+takes you from zero to hero and prepares you for the job this is the right django course for you
+0:34
+everything you need to know about django is in one place in the right order so you don't need to jump back and forth
+0:39
+between random tutorials amash hamadani i have taught millions of people how to advance their software
+0:45
+engineering skills through my youtube channel and online school code with mosh.com if you're new here be sure to subscribe
+0:51
+as i upload new videos all the time now let's jump in and get
+0:56
+started
+Prerequisites
+1:02
+let's talk about what you need to know to take this course for starters you need to know python you need to know
+1:08
+the basics of python as well as object-oriented programming concepts such as classes
+1:13
+inheritance polymorphism and so on you should also know the basics of relational databases
+1:19
+so you should be familiar with concepts such as tables columns primary and foreign keys relationships
+1:25
+and so on if you need to refresh the fundamentals i have a couple of beginner level tutorials on my youtube channel
+1:30
+as well as comprehensive courses on my website codewithmosh.com i'll put the links down below in case you're
+How to Take this Course
+1:38
+interested all right so i'm assuming that you're the right student for this course now
+1:44
+let's talk about how you should take this course first and foremost i want you to watch this entire course
+1:50
+all the way from the beginning to the end even if you're familiar with django because along the way i will share a lot of tips
+1:56
+and tricks and i don't want you to miss out on any of them if you have taken any of my other courses you know that i'm not gonna
+2:02
+waste your time with repetitive or useless stuff so make sure to watch every lesson now while watching each lesson i want
+2:09
+you to take notes you can just write down some keywords on a piece of paper if you don't want to write a lot of notes
+2:14
+i strongly believe that the act of writing things down will help you remember new things that you learn
+2:20
+then after each lesson go through your notes and repeat the same steps i showed you in the video
+2:25
+this is exactly how i personally learn new things also i've carefully designed tons of
+2:30
+exercises that help you understand and remember the materials so make sure to do all these exercises because the more
+2:36
+you practice the better you'll be at django or coding in general
+Getting Started with Django
+2:43
+welcome back to the ultimate django course in this section we're going to talk about the basics of django
+2:48
+first i will give you a quick introduction to what django is and why it's so popular then we'll talk
+2:54
+about the fundamental web development concepts that every web developer must know next we'll set up our machine for
+3:00
+development and create our first django project once that project is up and running i will show you two essential techniques
+3:07
+for debugging django applications this is going to be a short and sweet introduction to django so
+3:12
+let's jump in and get started
+What is Django?
+3:22
+so what is django and why is it so popular well django is a free and open source
+3:27
+framework for building web applications with python it's not the only web framework for python but it's the most
+3:33
+popular one because it helps us build a website in less time with fewer lines of code that's why a
+3:39
+lot of companies like youtube instagram spotify and dropbox use django
+3:44
+in their tech stack now django is what we call a batteries included framework which means
+3:50
+it comes with a lot of features out of the box so we don't have to code them from scratch for example it gives us an admin
+3:57
+interface for managing our data which is a huge time saver it also has an object relational
+4:02
+mapper that abstracts the database so we can query or persist data without writing a lot of sql code
+4:09
+it also comes with an authentication package for identifying users it also has a package for caching data
+4:15
+and much much more so since django offers all these amazing features we can focus on our application and its
+4:21
+requirements we don't have to reinvent the wheel and code all these features from scratch now once in a while you might come
+4:27
+across someone like our popular superstar developer john smith who thinks django
+4:32
+is a piece of crap because it's old and bloated with so many features he used it hated it and then rewrote his entire
+4:39
+project with a new shiny framework that is faster well saying a framework is better than
+4:44
+django because it's faster it's kind of like saying a ferrari is better than a truck because it's faster
+4:50
+what if you want to move something you're not going to use your ferrari for that right so a wise software engineer doesn't pick
+4:57
+up a framework merely based on his performance there are so many other things you need to take into account
+5:02
+like the maturity of the framework how stable it is from one version to another its learning curve the size of the
+5:08
+community and so on django has been around for a long time and it has a huge community so there are tons of django packages
+5:15
+built by the community that you can reuse in your applications also if you get stuck there's always
+5:20
+someone out there to help you if you want to hire people there are tons of people to choose from so these are the benefits of having a huge
+5:27
+community around the framework now regarding django features yes django comes with a lot of features
+5:32
+but you don't have to use or even learn all of them because all these features are optional so you
+5:38
+can use the features that make sense for your application so in my opinion debates about the best
+5:43
+framework in the world are useless we all like different things and just because someone doesn't like django it
+5:48
+doesn't mean it's bad a lot of companies are using django and are looking for django developers
+5:53
+here in the us the average salary of a django developer is just over 117 000 a year so
+6:00
+if you like python and want to get into web development learning django is a good investment for your future
+How the Web Works
+6:08
+[Music] so you learned that django is a
+6:14
+framework for building web applications with python now let's talk about some of the fundamental concepts you need to
+6:20
+understand to build web applications let's say we're going to build an online store and publish it at moshby.com
+6:27
+now this website is going to have two parts or two applications a front end and a backend the front end
+6:34
+is the part that is loaded inside a web browser on a client machine it's the part that the user sees and
+6:40
+interacts with the backend is the part that runs on a web server and is responsible for data processing
+6:47
+validating business rules and so on now let's imagine that alice wants to visit our website
+6:52
+so she points her browser to moshby.com this address is also called a url which
+6:58
+is short for uniform resource locator it's basically a way to locate a resource on our internet
+7:04
+a resource can be a web page an image a video a pdf and so on so alice types
+7:10
+moshby.com in her browser and presses enter at this moment a browser sends a request
+7:15
+to the web server that hosts our website and says hey alice wants to see the home page so
+7:21
+the web server should take this request process it and return a response back to the client
+7:26
+this data exchange is defined by a protocol called http which is short for hypertext transfer
+7:32
+protocol it defines how clients and servers can communicate so this is the big picture as alice
+7:38
+navigates our website for each page her browser sends an http request to the server
+7:44
+and receives an http response now as part of building the backend for this website
+7:49
+we need to decide how we're going to respond to clients one option is to generate the requested page on the
+7:54
+server and return it to the client we use html for that html is short for hypertext markup language it's a simple
+8:02
+language for representing web pages and their content every webpage you have seen on internet is built using html
+8:08
+so one option is to generate the page on the server and return an html document to the client the other option
+8:15
+is to return only the data needed on the requested page and have the client generate the page so
+8:21
+instead of putting a complete page or a complete html document in an http response
+8:27
+we only return the data like the list of products now what is the difference well if we
+8:32
+push this responsibility to the client we can free up the server so it can serve more clients
+8:37
+our application will be more scalable that's why over the past few years this approach has become more trendy and
+8:43
+is now considered the industry best practice these days we have tools like react angular and vue for generating web pages
+8:51
+on the client these are all client-side tools that are used by front-end developers in contrast we have server-side tools
+8:57
+for building back-ends django falls in this category so you should not compare django with let's say
+9:03
+react you may compare django with other server-side frameworks like asp.net core
+9:08
+which is used by c-sharp developers express used by javascript developers and so on
+9:14
+so if we push the responsibility of generating web pages to the client the server essentially becomes a gateway
+9:20
+to the data on the server we can provide endpoints that the client can talk to to get or save various pieces of data
+9:28
+for example we can provide one endpoint to get the list of products and another endpoint to get the list of orders
+9:34
+someone has placed now all these endpoints together represent the interface that clients use
+9:40
+to talk to the server in technical terms we say the server provides an api or an application programming interface
+9:47
+to clients this api is essentially like the buttons on a remote control all these buttons together represent the
+9:53
+interface or the api we use to interact with the tv okay so in this course our focus will be
+10:00
+on using django to build an api for our online store client applications can use this api to
+10:06
+get or save the data how these clients are built is irrelevant here we can use react
+10:11
+angular or even plain javascript that falls under front-end development which has nothing to do with django
+10:16
+once we build this api if you know front-end development you can always build a client app that talks to
+10:22
+this api alright now that you understand the big picture we are ready to set up our development environment
+10:27
+and that's what we will do next
+Setting Up the Development Environment
+10:32
+[Music] all right let's make sure you have the
+10:38
+right setup before we start coding the first thing i want you to do is upgrade your python to the latest
+10:44
+version so head over to python.org downloads and download the latest version of python
+10:49
+for your operating system once you do that then open up your terminal window and run python version to make sure you have
+10:57
+upgraded your python correctly now here we see python 2.7 because on mac we have two different versions of
+11:03
+python running side by side we have the old python 2 which is now deprecated and we also have python 3. so if you're
+11:11
+using a mac you have to run python3 dash dash version but if you're on windows or linux you
+11:17
+have to run python version okay so here i'm using python
+11:22
+3.9.5 great next we're going to use pip or pip3 if you're on mac to install
+11:29
+pip n i talked about paypal in my python course it's basically a dependency management
+11:34
+tool for installing our application dependencies in virtual environments this way our
+11:40
+application dependencies will not clash with other applications dependencies okay so
+11:45
+let's go ahead and install this
+11:50
+now in this course just like my other courses i'm going to use visual studio code or vs code as my editor it's just
+11:57
+my personal preference if you have a preference for a different tool like pycharm that's totally fine
+12:02
+having said that i highly encourage you to use vs code because throughout the course i'm going to show you a lot of shortcuts and
+12:08
+time saving tips that will not apply to your editor in case you don't have vs code you can get it from code.visualstudio.com
+12:16
+now once you run it i want you to go to the extensions panel over here and search for python make sure
+12:24
+to install this extension because with this we get features such as intelligence debugging code navigation
+12:30
+and so on
+Creating Your First Django Project
+12:38
+all right now that we have installed all the necessary tools let's create our first django project so here in the terminal window i'm going
+12:44
+to go to my desktop you can go anywhere on your machine it doesn't really matter now we're going to
+12:50
+create a directory called store front that is the name of our project
+12:55
+next we go inside this directory and run pip and install django so we're going to
+13:02
+install django using pip app inside a virtual environment now let's go ahead
+13:11
+all right well take a look so over here you can see that p-band has created a
+13:16
+virtual environment for this project down below you can see the path to this virtual environment
+13:22
+but if you're on windows you're going to see something like c drive backslash whatever now if you're on a
+13:27
+mac and using z shell which is this fancy colorful terminal window you can hold down the command key
+13:34
+and click on this path to go into it otherwise we can just copy this and use the cd command to go inside this
+13:41
+directory now take a look so here's our virtual environment
+13:46
+in this environment we have this bin folder that contains a bunch of binaries for example we have python pip django
+13:54
+admin and so on so back to the terminal pbn created a virtual environment and
+13:59
+installed django inside that environment but in addition to this ppm also created two files in this
+14:06
+directory pip file and pay file.log so i'm going to open this directory using visual
+14:12
+studio code by running code period if this doesn't work on your machine just drag and drop this folder onto vs
+14:19
+code alright so here's our pip file this is like package.json for javascript
+14:26
+projects so in this file we can see that our project needs this particular version of python and
+14:32
+under packages you can see the packages that our application is dependent upon
+14:38
+so here we have django equals asterisk that means any version or the latest version of
+14:43
+django if we installed a particular version of django we would see that version here
+14:49
+now back to the terminal window we need to activate this virtual environment so we'll use the python interpreter
+14:55
+inside this virtual environment not the one that is installed globally on this machine to do that we're going
+15:00
+to run ppm shell okay next we're going to use django
+15:07
+admin to start a new project django admin is a utility that comes with django so if you run it we can see all these
+15:15
+commands that we can use to work with django projects as we go through the course you will become familiar with this
+15:21
+command in this lesson we're going to use django admin start project
+15:27
+and we're going to call that project store front now back to vs code django admin created
+15:34
+this directory for our project and inside this directory it created another directory
+15:40
+that is the core of our application in this directory we have these files which i'm going to talk about in a second
+15:45
+but before i do so let's get rid of this redundancy because we have three storefront
+15:50
+directories the top one is the one that we created earlier in the terminal and then we have these two other
+15:57
+directories one for the project one for the core of our application so i'm gonna delete
+16:03
+this project directory now we're back in the previous step so we don't have a
+16:08
+django project at this stage now back in terminal let's bring up the
+16:13
+last command but type it period at the end this tells django to use the current directory as the
+16:19
+project directory so django is not going to create an additional directory for our project
+16:25
+okay now take a look so we have this directory which is the core of our application in
+16:32
+this directory we have this init file which defines this directory as a package we have this settings module where we
+16:38
+define our application settings we have the urls module where we define the urls of our application
+16:44
+and these two other modules that are used for deployment for now don't worry about them now next
+16:50
+to this directory we have this file manage.pi this is a wrapper around django admin so going forward
+16:58
+instead of django admin we're going to use manage.pi the reason for this is that manage.pi
+17:03
+takes the settings of this project into account let me show you what i mean so now that
+17:08
+we have a project we want to run a web server so another command that django admin provides is
+17:16
+run server however if you're on django admin run server we get an error saying
+17:24
+requested setting debug but settings are not configured because at this point django admin
+17:30
+doesn't know about the settings of our project so now that we have a project instead of django admin we're going to
+17:37
+run python manage.pi now look we see the same
+17:43
+commands that django admin provides so here we can say python manage.pi run server
+17:51
+now optionally we can supply a port number if we don't supply this by default this
+17:57
+will use port 8000 but you might have another application running on port 8000 in that case you might want to
+18:03
+explicitly set the port number so let's go ahead with that now we don't get an error
+18:09
+because manage the pi knows about the settings of our project now here we get this warning saying you
+18:15
+have 18 unapplied migrations don't worry about this yet we'll talk about this soon
+18:21
+so if you look over here you can see that django has started a development server at this address so
+18:28
+we can copy this and paste it into browser or if you're on a mac and using z shell you can hold down the command key and
+18:35
+click this all right beautiful our first django project is running successfully so let's move on to the
+18:41
+next lesson [Music]
+Using the Integrated Terminal in VSCode
+18:50
+so far i've been using a separate terminal window but vs code also has an integrated terminal window that is
+18:56
+easier to use but to use that we have to properly configure it to use the python interpreter
+19:01
+inside our virtual environment let me show you how to do this so back to our terminal window first
+19:07
+we're going to stop the web server by pressing ctrl and c okay now back in vs code on the top under the
+19:15
+view menu look we have this command pallet the shortcut on mac is
+19:21
+shift command and p now here we're going to search for python interpreter
+19:28
+so currently vs code is using this python interpreter that is installed globally on this machine we don't want
+19:35
+to use this you want to use the one inside our virtual environment but how can we find the path to our virtual
+19:40
+environment very easy so back to the terminal let's run pip and dash dash vm
+19:48
+all right here's the path so let's copy this good now back to vs code we're going to
+19:56
+select enter interpreter path then we're going to paste the path
+20:01
+and append slash bin slash python at the end if you're on windows
+20:08
+instead of a forward slash you have to use a backslash okay good now
+20:14
+in this project we have an extra directory vs code we have a settings file and here we have
+20:20
+the path to a python interpreter good with this we can go to the view menu
+20:27
+now look we have this integrated terminal the shortcut on mac is control and backtick
+20:35
+now vs code automatically activates the virtual environment for this project so here we can run python manage.pi
+20:43
+run server good so going forward i'm going to use the integrated terminal
+20:48
+window here it's easier we can always hide it by pressing ctrl and backtick or bring it back we can maximize it move
+20:56
+it around and so on now one quick tip sometimes when running this command you might get a syntax error saying
+21:03
+invalid syntax this happens every now and then when vs code fails to activate the virtual environment for
+21:09
+this project to solve this problem all you have to do is open a new terminal window and look
+21:16
+vs code executed this command to activate the virtual environment for this project
+21:21
+now we can run python manage.pi run server great hey guys bosh here i just wanted
+21:29
+to let you know that this tutorial you have been watching is actually the first hour of my ultimate django course
+21:35
+the complete course is about 10 hours and goes way beyond this tutorial so if you're serious about learning
+21:41
+django and are looking for a job as a back-end developer i highly encourage you to enroll in the course the course comes
+21:47
+with tons of exercises and solutions a full e-commerce project that you will eventually deploy to the cloud
+21:53
+plus a 30-day money-back guarantee and a certificate of completion you can add your resume
+21:58
+in case you're interested i'll put the link down below and if not that's totally fine let's move on to the next lesson
+Creating Your First App
+22:06
+[Music] all right let's talk about apps so every
+22:12
+django project is essentially a collection of various apps each providing certain functionality just like the apps
+22:19
+on your mobile phone each app provides a certain functionality right django projects are
+22:24
+exactly the same so in this project let's open up the storefront directory
+22:29
+and then look at our settings module now we can collapse this panel by pressing command and b on mac
+22:35
+or ctrl and b on windows okay now in this module we have a bunch of different
+22:40
+settings in this lesson we're going to look at the install apps so every django project by default
+22:47
+includes these apps the first app is the admin app which gives us an admin interface for
+22:53
+managing our data then we have the auth app which is used for authenticating users then we have
+22:59
+content types app which we'll talk about later in the course next we have the sessions app which is kind of legacy we don't use sessions
+23:06
+anymore a session is a temporary memory on the server for managing users data
+23:11
+these days when building apis with django we don't use the sessions app so we can come here and delete this app
+23:18
+then we have the messages app which is used for displaying one-time notifications to the user
+23:23
+and finally we have the static files app for serving static files like images
+23:28
+css files and so on so each app provides a certain piece of functionality okay
+23:34
+now we can also create our own apps here so let's save this file now let's open up the terminal window by pressing
+23:40
+control and backtick so here's our terminal window where we have our development server running we're
+23:47
+going to open a new terminal window okay now let's expand this to clear the
+23:53
+window we simply press ctrl and l now we're going to run python manage.pi start app and we're going to
+24:01
+call this app playground okay so let's close the screen now and open up
+24:08
+the explorer panel all right look here's our new app which is represented using a folder with a
+24:14
+special structure so every django app has the exact same structure here we have the migrations folder for
+24:20
+generating database tables we'll talk about that later in the course we have a complete section about this topic
+24:25
+we have the admin module where we define how the admin interface for this app is going to look like
+24:31
+next we have the apps module where we configure this app so the name is misleading i don't know
+24:37
+why django developers decided to call this module apps it would be better if it was called config that's just my two cents
+24:43
+next we have the models module where we define the model classes for this app we use model classes to pull out data
+24:50
+from the database and present to the user next we have the tests module where we write our unit tests
+24:56
+and finally we have the views module which we'll talk about in the next lesson again the name is misleading this is not
+25:02
+the view that you think if you come from a front-end development background so what we have here is essentially a
+25:07
+request handler it's not a view it doesn't have a template or html again we'll talk
+25:12
+about that in the next lesson so we created a new app now we need to register this app in the settings module
+25:18
+so every time you create a new app you need to register it here in the list
+25:24
+of installed apps we simply add the name of the app which is called playground
+25:30
+save the changes done in the next lesson we're going to talk about views
+Writing Views
+25:36
+[Music] alright let's talk about views so
+25:42
+earlier you learned that http is a request response protocol so every data exchange
+25:47
+involves a request and a response this is where we use views in django so here in the playground folder let's
+25:54
+open up the views module this is where we define our views or view functions
+25:59
+a view function is a function that takes a request and returns a response so more
+26:05
+accurately it's a request handler in some frameworks it's called an action in django it's called a view
+26:13
+but i don't agree with this name because from an architectural point of view a view is often associated with something
+26:19
+that the user sees that part in django is called a template and we'll talk about that later in this section
+26:24
+now that aside let's create our first view function so we're going to create a function we
+26:30
+can call it anything we want i'm going to call it say hello now this function should take a request
+26:36
+object and return a response so first on the top from django.http
+26:44
+package we're going to import the http response class now in this function we can do anything
+26:50
+we want in a real-world scenario we can pull data from a database we can transform data
+26:56
+we can send emails and so on for now let's just return a simple response so we're going to
+27:02
+return an instance of the http response class
+27:07
+and in this object in this response you want to add a simple string so let's say hello world okay
+27:14
+so this is our first view or first view function now we need to map this view to a url so
+27:19
+when we get a request at that url this function will be called and that's what we're going to do next
+Mapping URLs to Views
+27:27
+[Music] alright here's our django project now
+27:33
+let's say whenever we send a request to playground slash hello our view function should be called and
+27:39
+return hello world to the user let's see how we can do that so back to our project
+27:44
+here in the playground folder we're going to add a new file called urls.pi you could call it
+27:51
+anything the name doesn't matter but by convention we call it urls now in this module we're going to map our
+27:57
+urls to our view functions so on the top we're going to import the path function from django.urls
+28:05
+so from django.urls we're going to import the path function now don't worry about memorizing any of
+28:10
+these as you practice all of this will become second nature also from the current folder we should import
+28:17
+the views module so we can reference our view function now we should define a special variable called url patterns
+28:25
+all in lower case make sure to split it properly because this is what django looks for we should set this to an array of url
+28:33
+pattern objects we use the path function to create a url pattern object
+28:38
+so if we call this function look at the signature of this function this function has a bunch of parameters
+28:44
+the first one is route which is a string the notation you see here is called type annotation which is
+28:49
+kind of a new feature in python with type annotation we can see the type of parameters and the return value of a function so
+28:56
+the first parameter is route which is a string the second parameter is view which is a function that returns
+29:03
+http response object now look over here this notation represents the return type
+29:09
+of this function so the path function returns a url pattern object
+29:14
+so i'm going to call this function and give it two arguments a route or a url which is playground slash hello and
+29:22
+a view function so from the views module we're going to get say hello note that i'm not calling this
+29:28
+function so here we don't have a pair of parentheses we're just passing a reference to this function okay
+29:35
+so what we have here is called a url conf module that basically means url configuration
+29:42
+so every app can have its own url configuration but now we need to import this url
+29:47
+configuration into the main url configuration for this project where is it you saw it earlier so
+29:54
+back to the explorer panel here in the storefront folder we have another url's module
+30:02
+up here we have a bunch of comments about how we should use this module now look over here if you want to
+30:08
+include another url conf there are two things we need to do first we need to import the include
+30:13
+function from django.urls so over here we have from django.urls
+30:18
+we're going to import the include function next we need to add a url to url patterns
+30:25
+so in this module we also have a url patterns object which is an array
+30:31
+of url patterns object so here we're going to call path give it a route and then we use the
+30:38
+include function to reference the url configuration module in this app so
+30:46
+we're going to call path and say any urls that start with playground
+30:52
+followed by a forward slash should be routed to our playground app so this is where we
+30:57
+use the include function now the include function requires a parameter that is a string
+31:03
+here we're going to reference playground dot urls so if we send the request to playground
+31:11
+slash hello django knows that all requests that start with playground
+31:16
+should be handled by this app so it's going to chop off the first part of this url
+31:22
+and pass the rest to the url configuration module in the playground app so back to this
+31:28
+url's module we no longer need to add playground here because we added it once
+31:34
+in the main url configuration module so we simply add hello followed by a
+31:39
+forward slash i forgot to add that we always end our routes with a forward slash
+31:44
+so let's save the changes now whenever we change our code django web server automatically restores
+31:51
+itself so let's open up the terminal window make sure we don't have any arrows good
+31:56
+so back to the browser let's send a request to this endpoint great we see hello world on the screen
+32:04
+so this is how we can map urls to view functions next we're going to talk about templates
+Using Templates
+32:15
+so i told you that views in django are not really views they're more like request handlers or actions
+32:20
+what we often call a view in other frameworks is called a template in django so let's see how we can use a template
+32:27
+to return html content to the client so here in the playground app we're
+32:33
+going to add a new folder called templates and in this folder we're going to add a
+32:38
+new file called hello.html and of course we could call it anything
+32:44
+and here we can write some html markup for example we can type h1 and press tab to add an h1 heading
+32:50
+and say hello world now don't worry if you don't know html we're not going to use it in this course
+32:56
+i just want to show you how django templates work so let's save the changes now back to
+33:02
+our view function instead of returning a plain http response we're going to use the render function
+33:09
+to render a template and return html markup to the client so let's remove this line
+33:15
+and call the render function now look at the return type of this function it returns an http
+33:22
+response object so here we're going to return the response now let's remove the brackets and type
+33:29
+them again so we can see the function signature the first parameter here is a request
+33:35
+object and the type of this is http request so we're going to pass this request
+33:42
+object right here now the second parameter
+33:47
+that's the name of our template which is a string so here i'm going to say hello.html
+33:54
+the other parameters are optional so don't worry about them at this point now save the changes let's make sure our
+34:00
+project works up to this point so back in the browser refresh beautiful now we see html content we can verify it
+34:08
+by right clicking on this page and looking at the page source so look we
+34:13
+are returning html content great now let's make this a bit more interesting
+34:19
+so back to our template instead of hello world we can dynamically render some value so
+34:25
+back to review function let's type a comma to see the next parameter that is a
+34:31
+context object and the type of this is a mapping of string
+34:36
+to any that means we can pass any mapping object that maps a string value to any other
+34:43
+type of object so here we can pass a dictionary so let's pass a dictionary the type of
+34:50
+the key should be a string so we can call that name and we're going to set that to a value like let's say mosh
+34:56
+now back to our template instead of hello world we can render the
+35:02
+name that we passed here so we type two pairs of braces and in between
+35:08
+we type the name of the key save refresh beautiful now in this template
+35:15
+we can also write some logic so we can type an if statement so we type braces
+35:20
+and in between them we add two percentage signs in between them we can write an if
+35:27
+statement so we can say if name is set we can render it here
+35:32
+otherwise we can render hello world
+35:39
+and of course we need an end if clause as well so and if now this syntax is kind of ugly
+35:46
+but the good thing about django is that it's modular so you can easily replace django's default template engine with
+35:52
+your preferred template engine but once again we don't really use templates in django projects that often these days there are
+36:00
+special cases for them but for the most part we use django to build apis that return data
+36:05
+not html content so i just included this lesson so you know what templates are and how
+36:10
+they work we're not going to spend any more time on templates for now unless we encounter a situation where we
+36:16
+really need them [Music]
+Debugging Django Applications in VSCode
+36:24
+let's talk about debugging django applications in vs code this is particularly useful if our
+36:29
+application doesn't produce the right result and we want to run it line by line and see where exactly something has gone wrong
+36:36
+so click on this icon to open the run and debug panel now the first time you see this message saying
+36:43
+we should create a launch.json file basically we need to create a launch profile
+36:48
+so vs code knows how to run or debug this application so let's click on this now in this list
+36:55
+select django all right here's our launch.json file what you see here is kind of like a
+37:01
+dictionary in python we have a bunch of key value pairs these key value pairs define a launch
+37:08
+profile so vs code knows that to run this application it should use the current python
+37:14
+interpreter to run manage.pi which exists in our workspace folder and then as an
+37:20
+argument it should pass run server to it here we can add an additional argument to specify the
+37:28
+port so it doesn't clash with port 8000 which is currently in use okay save the changes we're done with
+37:35
+this file so let's close it now if you're curious let me show you where this file exists
+37:42
+it's added to our project up here inside the vs code folder so here's our launch
+37:48
+profile now that we have a launch profile if we go to the run and debug panel
+37:53
+we see something else so here we can start our application for debugging but before doing so i want to write some
+37:59
+dummy code here in our view function so let's set x to 1 and
+38:05
+y to 2. now i'm going to click on this line to insert a breakpoint when we add a
+38:11
+breakpoint via scope will execute every line of code until it hits our breakpoint from that point
+38:18
+onward we can execute our code line by line so let's add a breakpoint and then start
+38:24
+the application for debugging
+38:30
+all right let me collapse this window good so in this new terminal window we have a
+38:36
+development server listening on port 9000 so let's hold down the command key on mac or
+38:42
+control on windows and click on this link all right here's what we get the home page of our project is gone
+38:48
+because we have registered a custom route that is playground hello so we see the homepage only the
+38:54
+first time we run our django project so let's go to playground hello
+39:00
+all right our breakpoint is activated and we are on this line now on the left side in the variables
+39:07
+section you can see the local variables so currently we have the request object that is the request object that
+39:13
+we receive in this function so we can expand it and inspect its various attributes
+39:19
+we don't want to do that for now so let's close this we want to execute our code line by line
+39:26
+so here we have a bunch of functions the first one is step over and the shortcut for this is f10
+39:32
+with this we can step over the current line so if we press f10
+39:38
+this line gets executed and now we are on the second line now look over here in the list of local
+39:44
+variables we have x and its value is one this is very useful when debugging applications
+39:49
+so if something is not calculated properly we can inspect it here now most of the time you can see your
+39:55
+local variables here but if not you can always add them in the watch window so before recording this video i was
+40:02
+practicing that's why you see x here let me select this and delete it so in
+40:08
+your watch section you're not going to have any variables to add one we simply click on this and then type
+40:14
+the name of our variable okay so this is how we can step over various lines so we can press f10 again
+40:21
+and again so this function is executed and now back in the browser we see the final result now let's do
+40:28
+something more interesting so back to our code let's close the terminal window so we have more
+40:34
+space i'm going to define a function here called calculate
+40:40
+and here we're going to set x to 1 y to 2 and return x just some dummy code now over here
+40:47
+we're going to call the calculate function okay now save the changes back in the browser
+40:55
+let's refresh so our view function gets caught now we are right here now this time
+41:01
+instead of stepping over this line we want to step into it because if you step over this line
+41:06
+we're not going to see what happened in the calculate function we see the final result so we see x is
+41:13
+set to 1 and we can verify that over here as well but sometimes we need to step into a
+41:18
+function to see what is happening there maybe there is a bug inside the calculate function
+41:23
+so let's restart the debugger
+41:29
+okay i'm going to close this back in the browser let's refresh this page
+41:36
+okay we're back to this line now this time we're going to step into this function so look over here this is the icon for
+41:44
+stepping into a function and as you can see the shortcut is f11 so if you press f11
+41:51
+we go inside the calculate function now we can execute each line using f10 or step over and see where
+41:58
+something has gone wrong now let's imagine this calculate function is a large function with a lot of code
+42:04
+at some point we want to step out of it without having to execute every line of code in this function
+42:10
+there's a shortcut for this so look over here that is step out the shortcut is shift and f11
+42:18
+so if we press shift and f11 we get back to the previous function so this is how
+42:24
+we can debug django applications in vs code now once we're done it's always a good
+42:29
+practice to remove these breakpoints otherwise they get in the way so as you debug your applications you
+42:35
+place various breakpoints in different parts of your code and you will hit them all the time so
+42:40
+always remove your breakpoints once you're done with them so we're done with this debugging session
+42:45
+now we can disconnect by pressing shift and f5 or clicking on this icon
+42:52
+all right now one last tip before we finish this lesson on the top under the run menu look
+42:59
+we have a command called run without debugging the shortcut on mac is control and f5 so
+43:06
+if we use this shortcut we can start our application without having to run python manage.pi
+43:12
+run server let me show you what i mean so first let's bring up our terminal window
+43:18
+here's the second terminal window that we use for debugging i'm going to delete this here's the
+43:24
+first terminal window where we started our application by running python manage.pi
+43:29
+run server so let's press ctrl and c to stop the server good i'm also going
+43:35
+to delete this terminal window let's imagine we just opened this project in vs code day one
+43:40
+now to run this application without debugging we can press ctrl and f5
+43:48
+now our application has started on port 9000 so we can go to this address and then
+43:54
+hit playground hello so this is how we can run our application without debugging
+44:01
+just remember that if you use this command your breakpoints are not going to get hit so if you want to debug your
+44:06
+applications you should start it in the debug mode
+Using Django Debug Toolbar
+44:12
+[Music] there is another way to debug django
+44:18
+applications using a powerful tool called django debug toolbar so if you go to
+44:23
+google and search for django debug toolbar you're going to find this page
+44:28
+over here you're going to find the installation instructions so i highly encourage you to follow along with me and repeat the same steps
+44:36
+so we installed this toolbar together so first we have to use pip or ppf to
+44:41
+install django debug toolbar so back to vs code i'm going to open up a new terminal
+44:47
+window and as you can see vs code used the source command to activate our virtual
+44:53
+environment so now let's run pipen install django dash debug dash toolbar
+45:05
+good now back to the documentation the next step is to add debug toolbar in
+45:11
+the list of installed apps in our settings module so back to vs
+45:16
+code we can press command and p on mac or control and p on windows to bring up the search box now we search
+45:23
+for our settings module good now in the list of install apps at the end
+45:29
+we're going to add debug underline toolbar good now the next step
+45:36
+the next step is to add a new url pattern in our main url conf module
+45:41
+so i'm going to copy this line and back to vs code let's bring up the urls
+45:47
+module we're going to pick the one in the storefront folder okay now we add a comma here and paste
+45:54
+that line now here we have a compilation error because debug toolbar is a module that
+45:59
+we have to import on the top so if you look at the documentation you can see that over here
+46:05
+import debug toolbar so copy this and paste it right here good now back to the documentation
+46:13
+the next step is to add a middleware we use middleware to hook into django's request response processing
+46:19
+so in our settings module we have a setting for middleware we're going to add this line in that
+46:26
+file so copy this back to the settings module here we have the install apps
+46:31
+right after that you can see the middleware setting so we're going to add that on the top
+46:38
+now the final step is to add our ip address in the internal ips setting so for local
+46:44
+development we should use 127.001 so i'm going to copy this entire setting
+46:50
+because by default this doesn't exist in a new django project so copy this
+46:56
+and i'm going to paste it anywhere in this settings file it doesn't really matter okay save so we have completed all the
+47:03
+steps now back in the browser if you go to this url playground slash hello we don't see the toolbar it
+47:09
+should appear here because the toolbar only appears when we return a proper html document
+47:16
+if you right click here and look at the page source you can see that we are not returning a proper html document
+47:22
+so we don't have the html head and body elements so let's open up hello.html now on the
+47:30
+top we type html press tab now inside these elements we're going to add a body and then inside the body
+47:38
+we're going to add the code that we had earlier so let's move that right here good now we have a proper html document
+47:46
+of course the head element is missing but it doesn't really matter now back to the browser refresh and
+47:52
+here's django debug toolbar here we have different panels like history for seeing the urls we have hit
+47:58
+so far we have versions to see the version of django python and debug toolbar we're running we have
+48:04
+processing time we have our settings we have request headers and so on now my personal favorite panel is the
+48:12
+sql or sql panel here we can see the queries that are sent to the database so later
+48:17
+in the course where we talk about querying the database using django's object relational mapper we're going to
+48:23
+come back to this panel and see what queries django will generate and send to the database
+48:28
+so that's it for this lesson we're done with this section in the next section we're going to talk about building a data model so i'll see you in
+48:35
+the next section welcome back to another section of the
+Building a Data Model
+48:41
+ultimate django course in this section we're going to talk about models which are used to store and
+48:47
+retrieve data we'll start off by quick introduction to data modeling to make sure you know the essential concepts
+48:53
+then we're going to design the data model for an e-commerce application next we're going to talk about
+48:58
+organizing our models in apps to improve reusability this is one of the areas that is often
+49:04
+misunderstood so i'm going to demystify it once for all and then we'll spend the rest of this section in coding model classes
+49:11
+we'll use these classes to store and retrieve data throughout the course so let's jump in and get started
+49:17
+[Music]
+Introduction to Date Modeling
+49:24
+the first step in every django project is figuring out the pieces of data we want to store
+49:29
+so what entities or concepts do we have in an e-commerce application well for starters we need the concept of
+49:36
+a product with attributes like title description price and inventory now in a
+49:41
+real scenario a product entity might have other attributes it really depends on the requirements of our application
+49:48
+for now we just want to keep things simple okay now quite often our products are divided in different
+49:53
+categories like shoes beauty products fruits and so on so we need another entity called collection or
+50:00
+category with an attribute called title now we need to add a relationship or an
+50:05
+association between these entities so we can start from one end and navigate to the other end
+50:10
+for example we can get a collection and find all the products in that collection okay now let's assume that in our
+50:16
+application a product can belong to one and only one collection and a collection can have multiple
+50:23
+products so an asterisk represents many we could also use an n here okay now we have a one-to-many
+50:30
+relationship between collection and product so relationships can be one-to-one
+50:35
+one-to-many and many too many back to our diagram now over here we can add a label called
+50:40
+products and that means when we code these entities or these classes in the collection class we're
+50:46
+going to have an attribute called products for now i just want to hide this for simplicity okay
+50:51
+now sometimes we can have multiple relationships or multiple associations between two
+50:56
+entities so let's imagine that a collection can optionally have a featured product
+51:02
+that is the product whose picture we want to show to the user so we can add a second relationship
+51:07
+between these entities now look at this number here zero to one means a collection can have zero to one
+51:14
+product and we're gonna call that attribute featured product so once again that means in the collection class we're
+51:20
+going to have an attribute called featured product okay now you might ask what about the id attribute shouldn't
+51:27
+every entity have an id attribute yes but django is going to automatically create that for us that's why i haven't shown it here now a
+51:35
+little exercise for you grab a piece of paper and identify the other essential entities we need in an
+51:41
+e-commerce application just the bare minimum don't go ahead and create a complex diagram like this
+51:47
+i don't want this there are only five entities that i want you to identify so spend a couple minutes and identify
+51:53
+these entities along with the attributes and relationships then come back see my
+Building an E-Commerce Data Model
+52:02
+solution all right so this is what we ended up with in the previous lesson we have a
+52:09
+one-to-many relationship between collections and products now don't take this as a hard and fast rule
+52:15
+maybe in your application a product can belong to many collections then you're gonna have a many-to-many
+52:21
+relationship between products and collections okay so back to our model i'm gonna remove
+52:26
+the collection from here so we have some free space on the screen now what else do we need here
+52:32
+well in every e-commerce application we have the concept of a shopping cart right so we're going to have an entity
+52:38
+or a model or a class called cart with an attribute called created at
+52:43
+let's assume that we need to know when each card is created so every now and then we can do a clean up and remove cards that are 30 days old
+52:51
+i just made this up but in a real scenario you should always design your models based on the requirements of your
+52:57
+project don't make up your own rules okay now we need a relationship or an association between products and cards
+53:04
+because a card can have multiple products and a product might be in different cards so here we have a many-to-many
+53:10
+relationship between product and cart now sometimes the relationship between two entities can have
+53:16
+attributes for example if a product is in a shopping cart we need to know how many instances of
+53:22
+that product we have in the shopping cart so this relationship itself should have an attribute called
+53:28
+quantity so we're going to add a new entity here called cart item now look at the notation i've
+53:33
+used to represent this concept i've connected cart item to the relationship using a dashed line
+53:39
+that means cart item represents the relationship between these two entities product and cart this is what we call an
+53:47
+association class so cart item is an association class okay now there's another way to show this
+53:53
+instead of using an association class we can add a relationship between cart and cart item because a cart might
+54:00
+contain multiple items and an item belongs to one and only one cart
+54:06
+similarly we can add a relationship between product and card item because each card item represents
+54:11
+a single product and a product might be referenced by many card items so here we have two
+54:18
+one too many relationships between these entities now compare this with the association
+54:24
+class notation so we can either add a many-to-many relationship with an association class
+54:29
+or two one-to-many relationships it's a matter of personal preference okay
+54:35
+so we're done with the shopping cart but you might ask what about the user or the customer that owns this cart
+54:41
+where is that in the diagram well i haven't connected cart with an entity like customer because we don't want to force
+54:46
+people to register and log in before they can add products to their shopping cart okay so there is no
+54:52
+relationship between cards and customers so cars are essentially anonymous anyone
+54:57
+can have a cart whether they're anonymous users or registered customers okay so we're done with the cart now let's
+55:04
+talk about customers so our customer entity can have attributes like name email username password and so on now
+55:11
+for simplicity i'm only showing name and email here now a customer can have many orders and each order belongs to
+55:19
+one and only one customer so we need a one-to-many relationship between customers and orders
+55:25
+now once again the order entity might have multiple attributes for now we just want to know when this
+55:30
+order was placed okay now an order can contain multiple products and a product can be in
+55:36
+multiple orders so we have a many-to-many relationship between orders and products and similar to the shopping cart example
+55:43
+this relationship itself needs attributes so here we need another entity called order item with an attribute called
+55:49
+quantity that's our association class alternatively you could add a relationship between
+55:55
+order and order item because each order may contain multiple items and each order item
+56:01
+belongs to one and only one order similarly an order item references one
+56:06
+and only one product while a given product might be referenced by multiple order items so two one-to-many
+56:13
+relationships so these are the entities that i wanted you to identify but to make this project
+56:18
+more interesting i decided to throw in one more entity tag here we have a minute-to-many
+56:24
+relationship between products and tags because the product can have many tags and the tag might be referenced by
+56:30
+different products we'll come back to this entity in the next lesson
+Organizing Models in Apps
+56:35
+[Music]
+56:41
+so i told you that a django project contains one or more apps and just like the apps on your phone
+56:46
+each app in a django project provides a specific piece of functionality so that means
+56:52
+each app is going to have its own data model so in this lesson we're going to look at a few different ways to
+56:57
+organize our entities in different apps one way is to have a single app called the store and drop all of our entities here now we
+57:05
+can bundle and distribute this app via pip and this way anyone can install this app in their project
+57:11
+and get all these models and the functionality around them so next time we're working on an ecommerce project we don't have to
+57:17
+rewrite the same functionality over and over we simply install this app in our project and write extra code for customization
+57:24
+great but there's a problem here as this application grows and gets more complex it gets bloated with
+57:31
+too many things like too many models too many views and other stuff this is what we call a monolith like a
+57:37
+large heavy piece of stone so at some point our application might become hard to understand
+57:43
+hard to maintain and hard to reuse it becomes like one of those remote controls with too many buttons
+57:48
+when designing these apps we want to follow the unix philosophy so each app should do one thing and do
+57:54
+it well so here's another solution we can break down this project into four small apps
+58:00
+the products app which represents a product catalog so here we're gonna have three entities
+58:05
+product collection and tag then we're going to have the customers app for managing customers we're going to have
+58:12
+the shopping cart app for adding the shopping cart functionality and the orders app for adding the ordering functionality
+58:19
+not bad right well this is actually a poor way of breaking down this project for a number
+58:24
+of reasons look at the coupling or dependency between these apps the orders app is dependent on the
+58:30
+shopping cart app which is dependent on the products app so next time we're working on an e-commerce project we'll have to install
+58:37
+all these apps one by one first we have to install the products app followed by the shopping cart app the
+58:42
+customers app and the orders app ideally each app should be self-contained so we can easily drop it
+58:48
+into a new project the other problem is that if we publish a new version of the products app
+58:53
+that might cause a breaking change in the shopping cart and subsequently orders apps so anyone using
+58:59
+these apps have to upgrade all these apps together again more and more work also it doesn't really make sense to
+59:06
+have the shopping cart functionality without having a product catalog right why would we ever want to add the
+59:12
+shopping cart functionality to a project without a product catalog so shopping cart functionality and product catalog
+59:19
+always go together by the same token why would we ever want to add the shopping cart functionality to a project
+59:25
+without the ability to place an order just to allow people to add something to their shopping cart
+59:31
+then what again it doesn't really make sense so these concepts are highly related and should be bundled together
+59:38
+if we separate them we increase coupling between apps and we end up with the problems i just talked about
+59:43
+so does it mean we have to go back to the monolithic design no there is a middle ground here look at
+59:48
+the tag entity the ability to tag products is optional we don't necessarily need it in every
+59:54
+e-commerce application in fact we might need it in other types of applications like your blog
+1:00:00
+or video platform and so on so tagging is not specific to products or an
+1:00:05
+e-commerce application it's a separate piece of functionality so i'm going to move the tag entity to a
+1:00:11
+separate app called tags and here we're going to have another entity called tagged item which represents an item
+1:00:18
+that is tagged it can be a product an article a video and so on it's an abstract concept now with this
+1:00:24
+separation each app is self-contained and provides a specific piece of functionality
+1:00:30
+so we can use either or both of them in a new project depending on what we're going to build
+1:00:35
+plus we have zero coupling between these apps so we can independently change and deploy them without affecting other apps
+1:00:42
+this is the proper way to break down this project into multiple apps so here's the takeaway if our app
+1:00:49
+boundary is so large we'll end up with a monolith that gets bloated and becomes hard to reuse
+1:00:54
+on the other hand if our app boundaries are so small and fine grained we'll end up with a lot of coupling
+1:01:00
+between them a good design is one with minimal coupling and high cohesion meaning high focus so
+1:01:06
+each app is focused on a specific piece of functionality and includes everything needed to fulfill
+1:01:12
+that piece of functionality okay so back to vs code we're going to create two new apps
+1:01:18
+so we run python manage.pi start app the first app is store
+1:01:24
+and the second one is tags okay now as i told you before every time
+1:01:31
+we create a new app we should add it in the list of installed apps so let's close this window and go to our
+1:01:38
+settings module here's the list of install apps i'm going to add those apps right here so store and tags
+1:01:47
+all right we're done with this step starting from the next lesson we're going to create the model classes for
+1:01:52
+these apps hey guys bosh here i just wanted to let you know that this tutorial you have
+1:01:58
+been watching is actually the first hour of my ultimate django course the complete course is about 10 hours
+1:02:05
+and goes way beyond this tutorial so if you're serious about learning django and are looking for a job as a
+1:02:11
+back-end developer i highly encourage you to enroll in the course the course comes with tons of exercises
+1:02:16
+and solutions a full e-commerce project that you will eventually deploy to the cloud plus a 30-day money-back guarantee and a
+1:02:23
+certificate of completion you can add your resume in case you're interested i'll put the link down below so thank you for
+1:02:30
+watching and i hope to see you in the course
+1:02:35
+you
