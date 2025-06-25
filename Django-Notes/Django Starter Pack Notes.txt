@@ -6,7 +6,7 @@
 3. Run this command to create a virtual environment:
 
 • python -m venv env
-• .\env\Scripts\activate
+• .\env\Scripts\activate  ||    source env/bin/activate
 
 • To Close a Server
 	Ctrl + C
@@ -173,9 +173,9 @@ class Item(models.Model):
 - Register the model in admin.py :
 
 from django.contrib import admin                       
-from .models import Item                                        
+from .models import model_name                                        
                                                                                            
-admin.site.register(Item)                                          
+admin.site.register(model_name)                                          
 
 
 ============================================================================================
